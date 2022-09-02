@@ -1,0 +1,12 @@
+### Obtener lista de tipos de usuario
+
+GET http://localhost:8080/v1/adminTypes
+Content-Type: application/json
+
+
+### Obtener lista de administradores
+
+
+
+### Actualizar datos de administrador
+
