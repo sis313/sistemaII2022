@@ -2,38 +2,33 @@ package com.example.mslogin.entities;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 @Table(name = "product", schema = "service_maps", catalog = "")
 public class ProductEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_product")
+    @Column(name = "id_product", nullable = false)
     private int idProduct;
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
     @Basic
-    @Column(name = "description")
+    @Column(name = "description", nullable = false, length = 150)
     private String description;
     @Basic
-    @Column(name = "stock")
+    @Column(name = "stock", nullable = false)
     private int stock;
     @Basic
-    @Column(name = "price")
+    @Column(name = "price", nullable = false, precision = 2)
     private BigDecimal price;
     @Basic
-    @Column(name = "discount")
+    @Column(name = "discount", nullable = false, precision = 2)
     private BigDecimal discount;
     @Basic
-    @Column(name = "id_business")
+    @Column(name = "id_business", nullable = false)
     private int idBusiness;
-    @OneToMany(mappedBy = "productByIdProduct")
-    private Collection<BookingEntity> bookingsByIdProduct;
-    @ManyToOne
-    @JoinColumn(name = "id_business", referencedColumnName = "id_business", nullable = false)
-    private BusinessEntity businessByIdBusiness;
 
     public int getIdProduct() {
         return idProduct;
@@ -95,45 +90,12 @@ public class ProductEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         ProductEntity that = (ProductEntity) o;
-
-        if (idProduct != that.idProduct) return false;
-        if (stock != that.stock) return false;
-        if (idBusiness != that.idBusiness) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (price != null ? !price.equals(that.price) : that.price != null) return false;
-        if (discount != null ? !discount.equals(that.discount) : that.discount != null) return false;
-
-        return true;
+        return idProduct == that.idProduct && stock == that.stock && idBusiness == that.idBusiness && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(price, that.price) && Objects.equals(discount, that.discount);
     }
 
     @Override
     public int hashCode() {
-        int result = idProduct;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + stock;
-        result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + (discount != null ? discount.hashCode() : 0);
-        result = 31 * result + idBusiness;
-        return result;
-    }
-
-    public Collection<BookingEntity> getBookingsByIdProduct() {
-        return bookingsByIdProduct;
-    }
-
-    public void setBookingsByIdProduct(Collection<BookingEntity> bookingsByIdProduct) {
-        this.bookingsByIdProduct = bookingsByIdProduct;
-    }
-
-    public BusinessEntity getBusinessByIdBusiness() {
-        return businessByIdBusiness;
-    }
-
-    public void setBusinessByIdBusiness(BusinessEntity businessByIdBusiness) {
-        this.businessByIdBusiness = businessByIdBusiness;
+        return Objects.hash(idProduct, name, description, stock, price, discount, idBusiness);
     }
 }

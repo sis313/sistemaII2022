@@ -1,26 +1,21 @@
 package com.example.mslogin.entities;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 @Table(name = "zone", schema = "service_maps", catalog = "")
 public class ZoneEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_zone")
+    @Column(name = "id_zone", nullable = false)
     private int idZone;
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = 100)
     private String name;
     @Basic
-    @Column(name = "id_municipalities")
+    @Column(name = "id_municipalities", nullable = false)
     private int idMunicipalities;
-    @OneToMany(mappedBy = "zoneByIdZone")
-    private Collection<BranchEntity> branchesByIdZone;
-    @ManyToOne
-    @JoinColumn(name = "id_municipalities", referencedColumnName = "id_municipalities", nullable = false)
-    private MunicipalitiesEntity municipalitiesByIdMunicipalities;
 
     public int getIdZone() {
         return idZone;
@@ -50,37 +45,12 @@ public class ZoneEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         ZoneEntity that = (ZoneEntity) o;
-
-        if (idZone != that.idZone) return false;
-        if (idMunicipalities != that.idMunicipalities) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-
-        return true;
+        return idZone == that.idZone && idMunicipalities == that.idMunicipalities && Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        int result = idZone;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + idMunicipalities;
-        return result;
-    }
-
-    public Collection<BranchEntity> getBranchesByIdZone() {
-        return branchesByIdZone;
-    }
-
-    public void setBranchesByIdZone(Collection<BranchEntity> branchesByIdZone) {
-        this.branchesByIdZone = branchesByIdZone;
-    }
-
-    public MunicipalitiesEntity getMunicipalitiesByIdMunicipalities() {
-        return municipalitiesByIdMunicipalities;
-    }
-
-    public void setMunicipalitiesByIdMunicipalities(MunicipalitiesEntity municipalitiesByIdMunicipalities) {
-        this.municipalitiesByIdMunicipalities = municipalitiesByIdMunicipalities;
+        return Objects.hash(idZone, name, idMunicipalities);
     }
 }

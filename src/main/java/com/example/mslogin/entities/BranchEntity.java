@@ -4,56 +4,48 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.Arrays;
+import java.util.Objects;
 
 @Entity
 @Table(name = "branch", schema = "service_maps", catalog = "")
 public class BranchEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_branch")
+    @Column(name = "id_branch", nullable = false)
     private int idBranch;
     @Basic
-    @Column(name = "direction")
-    private String direction;
+    @Column(name = "address", nullable = false, length = 200)
+    private String address;
     @Basic
-    @Column(name = "open_hour")
+    @Column(name = "open_hour", nullable = false)
     private Time openHour;
     @Basic
-    @Column(name = "close_hour")
+    @Column(name = "close_hour", nullable = false)
     private Time closeHour;
     @Basic
-    @Column(name = "attention_days")
+    @Column(name = "attention_days", nullable = false, length = 100)
     private String attentionDays;
     @Basic
-    @Column(name = "image")
+    @Column(name = "image", nullable = false)
     private byte[] image;
     @Basic
-    @Column(name = "id_zone")
+    @Column(name = "id_zone", nullable = false)
     private int idZone;
     @Basic
-    @Column(name = "id_location")
+    @Column(name = "id_location", nullable = false)
     private int idLocation;
     @Basic
-    @Column(name = "id_business")
+    @Column(name = "id_business", nullable = false)
     private int idBusiness;
     @Basic
-    @Column(name = "create_date")
+    @Column(name = "create_date", nullable = false)
     private Date createDate;
     @Basic
-    @Column(name = "update_date")
+    @Column(name = "update_date", nullable = false)
     private Date updateDate;
     @Basic
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     private int status;
-    @ManyToOne
-    @JoinColumn(name = "id_zone", referencedColumnName = "id_zone", nullable = false)
-    private ZoneEntity zoneByIdZone;
-    @ManyToOne
-    @JoinColumn(name = "id_location", referencedColumnName = "id_location", nullable = false)
-    private LocationEntity locationByIdLocation;
-    @ManyToOne
-    @JoinColumn(name = "id_business", referencedColumnName = "id_business", nullable = false)
-    private BusinessEntity businessByIdBusiness;
 
     public int getIdBranch() {
         return idBranch;
@@ -63,12 +55,12 @@ public class BranchEntity {
         this.idBranch = idBranch;
     }
 
-    public String getDirection() {
-        return direction;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDirection(String direction) {
-        this.direction = direction;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Time getOpenHour() {
@@ -155,64 +147,14 @@ public class BranchEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         BranchEntity that = (BranchEntity) o;
-
-        if (idBranch != that.idBranch) return false;
-        if (idZone != that.idZone) return false;
-        if (idLocation != that.idLocation) return false;
-        if (idBusiness != that.idBusiness) return false;
-        if (status != that.status) return false;
-        if (direction != null ? !direction.equals(that.direction) : that.direction != null) return false;
-        if (openHour != null ? !openHour.equals(that.openHour) : that.openHour != null) return false;
-        if (closeHour != null ? !closeHour.equals(that.closeHour) : that.closeHour != null) return false;
-        if (attentionDays != null ? !attentionDays.equals(that.attentionDays) : that.attentionDays != null)
-            return false;
-        if (!Arrays.equals(image, that.image)) return false;
-        if (createDate != null ? !createDate.equals(that.createDate) : that.createDate != null) return false;
-        if (updateDate != null ? !updateDate.equals(that.updateDate) : that.updateDate != null) return false;
-
-        return true;
+        return idBranch == that.idBranch && idZone == that.idZone && idLocation == that.idLocation && idBusiness == that.idBusiness && status == that.status && Objects.equals(address, that.address) && Objects.equals(openHour, that.openHour) && Objects.equals(closeHour, that.closeHour) && Objects.equals(attentionDays, that.attentionDays) && Arrays.equals(image, that.image) && Objects.equals(createDate, that.createDate) && Objects.equals(updateDate, that.updateDate);
     }
 
     @Override
     public int hashCode() {
-        int result = idBranch;
-        result = 31 * result + (direction != null ? direction.hashCode() : 0);
-        result = 31 * result + (openHour != null ? openHour.hashCode() : 0);
-        result = 31 * result + (closeHour != null ? closeHour.hashCode() : 0);
-        result = 31 * result + (attentionDays != null ? attentionDays.hashCode() : 0);
+        int result = Objects.hash(idBranch, address, openHour, closeHour, attentionDays, idZone, idLocation, idBusiness, createDate, updateDate, status);
         result = 31 * result + Arrays.hashCode(image);
-        result = 31 * result + idZone;
-        result = 31 * result + idLocation;
-        result = 31 * result + idBusiness;
-        result = 31 * result + (createDate != null ? createDate.hashCode() : 0);
-        result = 31 * result + (updateDate != null ? updateDate.hashCode() : 0);
-        result = 31 * result + status;
         return result;
-    }
-
-    public ZoneEntity getZoneByIdZone() {
-        return zoneByIdZone;
-    }
-
-    public void setZoneByIdZone(ZoneEntity zoneByIdZone) {
-        this.zoneByIdZone = zoneByIdZone;
-    }
-
-    public LocationEntity getLocationByIdLocation() {
-        return locationByIdLocation;
-    }
-
-    public void setLocationByIdLocation(LocationEntity locationByIdLocation) {
-        this.locationByIdLocation = locationByIdLocation;
-    }
-
-    public BusinessEntity getBusinessByIdBusiness() {
-        return businessByIdBusiness;
-    }
-
-    public void setBusinessByIdBusiness(BusinessEntity businessByIdBusiness) {
-        this.businessByIdBusiness = businessByIdBusiness;
     }
 }

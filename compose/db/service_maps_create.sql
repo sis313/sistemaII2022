@@ -1,13 +1,13 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-09-02 17:45:04.9
+-- Last modification date: 2022-09-03 01:49:34.446
 
 -- -----------------------------------------------------
--- Schema twitter
+-- Schema service_maps
 -- -----------------------------------------------------
 DROP SCHEMA IF EXISTS service_maps;
 
 -- -----------------------------------------------------
--- Schema twitter
+-- Schema service_maps
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS service_maps DEFAULT CHARACTER SET utf8 ;
 SHOW WARNINGS;
@@ -16,124 +16,124 @@ USE service_maps;
 -- tables
 -- Table: booking
 CREATE TABLE booking (
-    id_booking int NOT NULL AUTO_INCREMENT,
-    date date NOT NULL,
-    time time NOT NULL,
-    amount decimal(5,2) NOT NULL,
-    id_product int NOT NULL,
-    id_user int NOT NULL,
-    CONSTRAINT booking_pk PRIMARY KEY (id_booking)
+                         id_booking int NOT NULL AUTO_INCREMENT,
+                         date date NOT NULL,
+                         time time NOT NULL,
+                         amount decimal(5,2) NOT NULL,
+                         id_product int NOT NULL,
+                         id_user int NOT NULL,
+                         CONSTRAINT booking_pk PRIMARY KEY (id_booking)
 );
 
 -- Table: branch
 CREATE TABLE branch (
-    id_branch int NOT NULL AUTO_INCREMENT,
-    direction varchar(200) NOT NULL,
-    open_hour time NOT NULL,
-    close_hour time NOT NULL,
-    attention_days varchar(100) NOT NULL,
-    image blob NOT NULL,
-    id_zone int NOT NULL,
-    id_location int NOT NULL,
-    id_business int NOT NULL,
-    create_date date NOT NULL,
-    update_date date NOT NULL,
-    status int NOT NULL,
-    CONSTRAINT branch_pk PRIMARY KEY (id_branch)
+                        id_branch int NOT NULL AUTO_INCREMENT,
+                        address varchar(200) NOT NULL,
+                        open_hour time NOT NULL,
+                        close_hour time NOT NULL,
+                        attention_days varchar(100) NOT NULL,
+                        image blob NOT NULL,
+                        id_zone int NOT NULL,
+                        id_location int NOT NULL,
+                        id_business int NOT NULL,
+                        create_date date NOT NULL,
+                        update_date date NOT NULL,
+                        status int NOT NULL,
+                        CONSTRAINT branch_pk PRIMARY KEY (id_branch)
 );
 
 -- Table: business
 CREATE TABLE business (
-    id_business int NOT NULL AUTO_INCREMENT,
-    name varchar(150) NOT NULL,
-    description varchar(250) NOT NULL,
-    id_type_business int NOT NULL,
-    create_date date NOT NULL,
-    update_date date NOT NULL,
-    status int NOT NULL,
-    user_id_user int NOT NULL,
-    CONSTRAINT business_pk PRIMARY KEY (id_business)
+                          id_business int NOT NULL AUTO_INCREMENT,
+                          name varchar(150) NOT NULL,
+                          description varchar(250) NOT NULL,
+                          id_type_business int NOT NULL,
+                          id_user int NOT NULL,
+                          create_date date NOT NULL,
+                          update_date date NOT NULL,
+                          status int NOT NULL,
+                          CONSTRAINT business_pk PRIMARY KEY (id_business)
 );
 
 -- Table: city
 CREATE TABLE city (
-    id_city int NOT NULL AUTO_INCREMENT,
-    name varchar(100) NOT NULL,
-    CONSTRAINT city_pk PRIMARY KEY (id_city)
+                      id_city int NOT NULL AUTO_INCREMENT,
+                      name varchar(100) NOT NULL,
+                      CONSTRAINT city_pk PRIMARY KEY (id_city)
 );
 
 -- Table: comment
 CREATE TABLE comment (
-    id_comment int NOT NULL AUTO_INCREMENT,
-    message varchar(255) NOT NULL,
-    id_user int NOT NULL,
-    id_business int NOT NULL,
-    status int NOT NULL,
-    CONSTRAINT comment_pk PRIMARY KEY (id_comment)
+                         id_comment int NOT NULL AUTO_INCREMENT,
+                         message varchar(255) NOT NULL,
+                         id_user int NOT NULL,
+                         id_business int NOT NULL,
+                         status int NOT NULL,
+                         CONSTRAINT comment_pk PRIMARY KEY (id_comment)
 );
 
 -- Table: location
 CREATE TABLE location (
-    id_location int NOT NULL AUTO_INCREMENT,
-    latitude float(10,10) NOT NULL,
+                          id_location int NOT NULL AUTO_INCREMENT,
+                          latitude float(10,10) NOT NULL,
     longitude float(10,10) NOT NULL,
     CONSTRAINT location_pk PRIMARY KEY (id_location)
 );
 
 -- Table: municipalities
 CREATE TABLE municipalities (
-    id_municipalities int NOT NULL AUTO_INCREMENT,
-    name varchar(100) NOT NULL,
-    id_city int NOT NULL,
-    CONSTRAINT municipalities_pk PRIMARY KEY (id_municipalities)
+                                id_municipalities int NOT NULL AUTO_INCREMENT,
+                                name varchar(100) NOT NULL,
+                                id_city int NOT NULL,
+                                CONSTRAINT municipalities_pk PRIMARY KEY (id_municipalities)
 );
 
 -- Table: product
 CREATE TABLE product (
-    id_product int NOT NULL AUTO_INCREMENT,
-    name varchar(50) NOT NULL,
-    description varchar(150) NOT NULL,
-    stock int NOT NULL,
-    price decimal(6,2) NOT NULL,
-    discount decimal(5,2) NOT NULL,
-    id_business int NOT NULL,
-    CONSTRAINT product_pk PRIMARY KEY (id_product)
+                         id_product int NOT NULL AUTO_INCREMENT,
+                         name varchar(50) NOT NULL,
+                         description varchar(150) NOT NULL,
+                         stock int NOT NULL,
+                         price decimal(6,2) NOT NULL,
+                         discount decimal(5,2) NOT NULL,
+                         id_business int NOT NULL,
+                         CONSTRAINT product_pk PRIMARY KEY (id_product)
 );
 
 -- Table: type_business
 CREATE TABLE type_business (
-    id_type_business int NOT NULL AUTO_INCREMENT,
-    name varchar(100) NOT NULL,
-    CONSTRAINT type_business_pk PRIMARY KEY (id_type_business)
+                               id_type_business int NOT NULL AUTO_INCREMENT,
+                               name varchar(100) NOT NULL,
+                               CONSTRAINT type_business_pk PRIMARY KEY (id_type_business)
 );
 
 -- Table: type_user
 CREATE TABLE type_user (
-    id_type_user int NOT NULL AUTO_INCREMENT,
-    name varchar(25) NOT NULL,
-    CONSTRAINT type_user_pk PRIMARY KEY (id_type_user)
+                           id_type_user int NOT NULL AUTO_INCREMENT,
+                           name varchar(25) NOT NULL,
+                           CONSTRAINT type_user_pk PRIMARY KEY (id_type_user)
 );
 
 -- Table: user
 CREATE TABLE user (
-    id_user int NOT NULL AUTO_INCREMENT,
-    name varchar(200) NOT NULL,
-    email varchar(150) NOT NULL,
-    nickname varchar(20) NOT NULL,
-    password varchar(20) NOT NULL,
-    id_type_user int NOT NULL,
-    create_date date NOT NULL,
-    update_date date NOT NULL,
-    status varchar(10) NOT NULL,
-    CONSTRAINT user_pk PRIMARY KEY (id_user)
+                      id_user int NOT NULL AUTO_INCREMENT,
+                      name varchar(200) NOT NULL,
+                      email varchar(150) NOT NULL,
+                      nickname varchar(20) NOT NULL,
+                      password varchar(20) NOT NULL,
+                      id_type_user int NOT NULL,
+                      create_date date NOT NULL,
+                      update_date date NOT NULL,
+                      status varchar(10) NOT NULL,
+                      CONSTRAINT user_pk PRIMARY KEY (id_user)
 );
 
 -- Table: zone
 CREATE TABLE zone (
-    id_zone int NOT NULL AUTO_INCREMENT,
-    name varchar(100) NOT NULL,
-    id_municipalities int NOT NULL,
-    CONSTRAINT zone_pk PRIMARY KEY (id_zone)
+                      id_zone int NOT NULL AUTO_INCREMENT,
+                      name varchar(100) NOT NULL,
+                      id_municipalities int NOT NULL,
+                      CONSTRAINT zone_pk PRIMARY KEY (id_zone)
 );
 
 -- foreign keys
@@ -162,7 +162,7 @@ ALTER TABLE business ADD CONSTRAINT business_type_business FOREIGN KEY business_
     REFERENCES type_business (id_type_business);
 
 -- Reference: business_user (table: business)
-ALTER TABLE business ADD CONSTRAINT business_user FOREIGN KEY business_user (user_id_user)
+ALTER TABLE business ADD CONSTRAINT business_user FOREIGN KEY business_user (id_user)
     REFERENCES user (id_user);
 
 -- Reference: comment_business (table: comment)
@@ -190,4 +190,5 @@ ALTER TABLE zone ADD CONSTRAINT zone_municipalities FOREIGN KEY zone_municipalit
     REFERENCES municipalities (id_municipalities);
 
 -- End of file.
+
 

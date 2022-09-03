@@ -1,32 +1,27 @@
 package com.example.mslogin.entities;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "comment", schema = "service_maps", catalog = "")
 public class CommentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_comment")
+    @Column(name = "id_comment", nullable = false)
     private int idComment;
     @Basic
-    @Column(name = "message")
+    @Column(name = "message", nullable = false, length = 255)
     private String message;
     @Basic
-    @Column(name = "id_user")
+    @Column(name = "id_user", nullable = false)
     private int idUser;
     @Basic
-    @Column(name = "id_business")
+    @Column(name = "id_business", nullable = false)
     private int idBusiness;
     @Basic
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     private int status;
-    @ManyToOne
-    @JoinColumn(name = "id_user", referencedColumnName = "id_user", nullable = false)
-    private UserEntity userByIdUser;
-    @ManyToOne
-    @JoinColumn(name = "id_business", referencedColumnName = "id_business", nullable = false)
-    private BusinessEntity businessByIdBusiness;
 
     public int getIdComment() {
         return idComment;
@@ -72,41 +67,12 @@ public class CommentEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         CommentEntity that = (CommentEntity) o;
-
-        if (idComment != that.idComment) return false;
-        if (idUser != that.idUser) return false;
-        if (idBusiness != that.idBusiness) return false;
-        if (status != that.status) return false;
-        if (message != null ? !message.equals(that.message) : that.message != null) return false;
-
-        return true;
+        return idComment == that.idComment && idUser == that.idUser && idBusiness == that.idBusiness && status == that.status && Objects.equals(message, that.message);
     }
 
     @Override
     public int hashCode() {
-        int result = idComment;
-        result = 31 * result + (message != null ? message.hashCode() : 0);
-        result = 31 * result + idUser;
-        result = 31 * result + idBusiness;
-        result = 31 * result + status;
-        return result;
-    }
-
-    public UserEntity getUserByIdUser() {
-        return userByIdUser;
-    }
-
-    public void setUserByIdUser(UserEntity userByIdUser) {
-        this.userByIdUser = userByIdUser;
-    }
-
-    public BusinessEntity getBusinessByIdBusiness() {
-        return businessByIdBusiness;
-    }
-
-    public void setBusinessByIdBusiness(BusinessEntity businessByIdBusiness) {
-        this.businessByIdBusiness = businessByIdBusiness;
+        return Objects.hash(idComment, message, idUser, idBusiness, status);
     }
 }
