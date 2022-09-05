@@ -1,3 +1,30 @@
 #####
 GET http://localhost:8080/api/city
 Content-Type: application/json
+
+
+#####
+GET http://localhost:8080/api/city/2
+Content-Type: application/json
+
+
+#####
+POST http://localhost:8080/api/city
+Content-Type: application/json
+
+{
+    "name": "La Paz"
+}
+
+
+#####
+PUT http://localhost:8080/api/city/1
+Content-Type: application/json
+
+{
+    "name": "La Paz 2"
+}
+
+#####
+DELETE http://localhost:8080/api/city/1
+Content-Type: application/json
