@@ -25,6 +25,7 @@ Content-Type: application/json
     "name": "La Paz 2"
 }
 
+
 #####
 DELETE http://localhost:8080/api/city/1
 Content-Type: application/json
