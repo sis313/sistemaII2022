@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ucb.edu.bo.tallersoftware.bl.TypeUserBl;
-import ucb.edu.bo.tallersoftware.model.TypeUser;
+import ucb.edu.bo.tallersoftware.bl.BusinessListBl;
+import ucb.edu.bo.tallersoftware.model.BusinessList;
 
 import java.util.List;
 
@@ -15,18 +15,18 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1")
 public class BusinessListApi {
-/*
-    private TypeUserBl typeUserBl;
+
+    private BusinessListBl businessListBl;
 
     @Autowired
-    public TypeuserApi(TypeUserBl typeUserBl) {
-        this.typeUserBl = typeUserBl;
+    public BusinessListApi(BusinessListBl businessListBl) {
+        this.businessListBl = businessListBl;
     }
 
-    @GetMapping(value = "/adminTypes", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<TypeUser> listAll() {
-        System.out.println("Invocando al metodo GET");
-        return typeUserBl.findAll();
-    }*/
+    @GetMapping(value = "/adminBusiness", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<BusinessList> listAll() {
+        System.out.println("Invocando al metodo GET :0");
+        return businessListBl.findAll();
+    }
 }
 
