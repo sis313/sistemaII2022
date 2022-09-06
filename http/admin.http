@@ -10,8 +10,21 @@ Content-Type: application/json
 
 
 ### Obtener lista de administradores
-
+GET http://localhost:8080/v1/user
+Content-Type: application/json
 
 
 ### Actualizar datos de administrador
+PUT http://localhost:8080/v1/user/1
+Content-Type: application/json
 
+{
+  "name" : "Prueba",
+  "email" : "Prueba",
+  "nickname" : "prueba1",
+  "password" : "123",
+  "typeUserId" : "1",
+  "createDate" : "2022-02-22",
+  "updateDate" : "2022-04-08",
+  "status": "1"
+}  
