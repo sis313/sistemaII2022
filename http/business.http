@@ -6,3 +6,5 @@ Content-Type: application/json
 GET http://localhost:8080/v1/adminBusiness/status=1
 Content-Type: application/json
 
+### Baja logica de negocio
+DELETE http://localhost:8080/v1/adminBusiness/delete

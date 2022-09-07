@@ -14,7 +14,16 @@ public interface BusinessListDao  extends JpaRepository<BusinessList, Integer> {
                     "   FROM business b" +
                     "   WHERE b.status = :status",
             nativeQuery = true
+
     )
     public List<BusinessList> findBusinessByStatus(@Param("status") Integer status);
 
+    @Query(
+            value = "DELETE b.*" +
+                    "   FROM business b" +
+                    "   WHERE b.id_business = :id_business",
+            nativeQuery = true
+
+    )
+    public List<BusinessList> findBusinessById(@Param("id_business") Integer id_business);
 }

@@ -3,6 +3,7 @@ package ucb.edu.bo.tallersoftware.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,12 @@ public class BusinessListApi {
     public List<BusinessList> findBusinessByStatus(@PathVariable("status") Integer status) {
         System.out.println("Invocando al metodo GET");
         return businessListBl.findBusinessByStatus(status);
+    }
+
+    @DeleteMapping(value = "/adminBusiness/delete", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<BusinessList> delete(@PathVariable("status") Integer status) {
+        System.out.println("Invocando al metodo DELETE");
+        return businessListBl.findBusinessById(status);
     }
 
 

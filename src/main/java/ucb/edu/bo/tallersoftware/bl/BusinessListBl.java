@@ -26,4 +26,9 @@ public class BusinessListBl implements BusinessListService {
     public List<BusinessList> findBusinessByStatus(Integer status) {
         return (List<BusinessList>) businessListDao.findBusinessByStatus(status);
     }
+
+
+    public List<BusinessList> findBusinessById(Integer status) {
+        return (List<BusinessList>) businessListDao.findAll();
+    }
 }
