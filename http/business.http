@@ -8,4 +8,21 @@ Content-Type: application/json
 
 ### Baja logica de negocio
 DELETE http://localhost:8080/v1/adminBusiness/delete
-##Endopoint
+
+### Obtener datos de usuario según su ID
+GET http://localhost:8080/v1/adminBusiness/5
+Content-Type: application/json
+
+### Actualizar datos de administrador
+PUT http://localhost:8080/v1/adminBusiness/1
+Content-Type: application/json
+
+{
+  "name" : "PRUEBA",
+  "description" : "DESCRIPCION DE PRUEBA",
+  "id_type_business" : "3",
+  "create_date" : "2022-05-09",
+  "update_date" : "2022-04-09",
+  "status": "1",
+  "user_id_user" : "1"
+}  
