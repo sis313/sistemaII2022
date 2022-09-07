@@ -1,16 +1,20 @@
 ### Obtener lista de tipos de usuario
-
 GET http://localhost:8080/v1/adminTypes
 Content-Type: application/json
 
-### Obtener lista de negocios :O
 
-GET http://localhost:8080/v1/adminBusiness
+### Obtener lista de usuarios
+GET http://localhost:8080/v1/user
 Content-Type: application/json
 
 
-### Obtener lista de administradores
-GET http://localhost:8080/v1/user
+### Obtener datos de usuario según su ID
+GET http://localhost:8080/v1/user/1
+Content-Type: application/json
+
+
+### Obtener lista de usuario según el tipo de usuario y su estado
+GET http://localhost:8080/v1/user/type=2/status=1
 Content-Type: application/json
 
 
@@ -19,7 +23,7 @@ PUT http://localhost:8080/v1/user/1
 Content-Type: application/json
 
 {
-  "name" : "Prueba",
+  "name" : "Prueba11111",
   "email" : "Prueba",
   "nickname" : "prueba1",
   "password" : "123",

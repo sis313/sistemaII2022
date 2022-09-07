@@ -9,6 +9,7 @@ import ucb.edu.bo.tallersoftware.service.UserService;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class UserBl implements UserService{
@@ -25,7 +26,16 @@ public class UserBl implements UserService{
         return (List<User>) userDao.findAll();
     }
 
-
+    @Override
+    public User findUserById(Integer id) {
+        Optional<User> userOpt = userDao.findById(id);
+        if(userOpt.isPresent()){
+            User user = userOpt.get();
+            return user;
+        }else{
+            return null;
+        }
+    }
     
     @Override
     public User updateUser(User user, Integer userId) {
@@ -55,5 +65,9 @@ public class UserBl implements UserService{
             userDB.setStatus(user.getStatus());
         }
         return userDao.save(userDB);
-    }    
+    }  
+    
+    public List<User> findUserByTypeAndStatus(Integer tipo, Integer status) {
+        return (List<User>) userDao.findUserByTypeAndStatus(tipo, status);
+    }
 }

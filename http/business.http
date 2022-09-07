@@ -1,0 +1,8 @@
+### Obtener lista de negocios :O
+GET http://localhost:8080/v1/adminBusiness
+Content-Type: application/json
+
+### Obtener lista de negocios según el estado
+GET http://localhost:8080/v1/adminBusiness/status=1
+Content-Type: application/json
+

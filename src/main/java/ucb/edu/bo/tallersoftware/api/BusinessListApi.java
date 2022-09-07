@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ucb.edu.bo.tallersoftware.bl.BusinessListBl;
@@ -28,5 +29,13 @@ public class BusinessListApi {
         System.out.println("Invocando al metodo GET :0");
         return businessListBl.findAll();
     }
+
+    @GetMapping(value = "/adminBusiness/status={status}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<BusinessList> findBusinessByStatus(@PathVariable("status") Integer status) {
+        System.out.println("Invocando al metodo GET");
+        return businessListBl.findBusinessByStatus(status);
+    }
+
+
 }
 
