@@ -8,3 +8,4 @@ Content-Type: application/json
 
 ### Baja logica de negocio
 DELETE http://localhost:8080/v1/adminBusiness/delete
+##Endopoint
