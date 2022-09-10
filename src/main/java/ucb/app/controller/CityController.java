@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.dto.CityDto;
 import ucb.app.model.City;
-import ucb.app.repository.CityRepository;
 import ucb.app.service.CityService;
 
 @RestController
