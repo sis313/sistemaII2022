@@ -4,7 +4,7 @@ Content-Type: application/json
 
 
 #####
-GET http://localhost:8080/api/city/2
+GET http://localhost:8080/api/city/1
 Content-Type: application/json
 
 

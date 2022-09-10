@@ -14,47 +14,48 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ucb.app.dto.CityDto;
 import ucb.app.model.City;
 import ucb.app.repository.CityRepository;
+import ucb.app.service.CityService;
 
 @RestController
 @RequestMapping("api/city")
 public class CityController {
-    private CityRepository cityRepository;
+    private CityService cityService;
 
     @Autowired
-    public CityController(CityRepository cityRepository) {
-        this.cityRepository = cityRepository;
+    public CityController(CityService cityService) {
+        this.cityService = cityService;
     }
 
     @GetMapping
-    public ResponseEntity<List<City>> getCities() {
-        List<City> cities = cityRepository.findAll();
+    public ResponseEntity<List<CityDto>> getCities() {
+        List<CityDto> cities = cityService.findAllDto();
         return new ResponseEntity<>(cities, HttpStatus.OK);
     }
 
     @GetMapping(path = "/{cityId}")
-    public ResponseEntity<City> getCityById(@PathVariable("cityId") Integer cityId) throws Exception {
-        City city = cityRepository.findById(cityId).orElseThrow(() -> new Exception("Could not find city"));
+    public ResponseEntity<CityDto> getCityById(@PathVariable("cityId") Integer cityId) throws Exception {
+        CityDto city = cityService.findByIdDto(cityId);
         return new ResponseEntity<>(city, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<City> postCity(@RequestBody City city) {
-        City cityReponse = cityRepository.save(city);
-        return new ResponseEntity<>(cityReponse, HttpStatus.OK);
+    public ResponseEntity<Boolean> postCity(@RequestBody City city) {
+        Boolean response = cityService.saveDto(city);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping(path = "/{cityId}")
-    public ResponseEntity<City> putCity(@PathVariable("cityId") Integer cityId, @RequestBody City city) {
-        City cityFound = cityRepository.getReferenceById(cityId);
-        City cityResponse = cityRepository.save(cityFound);
-        return new ResponseEntity<>(cityResponse, HttpStatus.OK);
+    public ResponseEntity<Boolean> putCity(@PathVariable("cityId") Integer cityId, @RequestBody City city) {
+        Boolean response = cityService.updateDto(cityId, city);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @DeleteMapping(path = "/{cityId}")
     public ResponseEntity<String> deleteCity(@PathVariable("cityId") Integer cityId) {
-        cityRepository.deleteById(cityId);
-        return new ResponseEntity<>("City deleted successfully", HttpStatus.OK);
+        String response = cityService.deleteByIdDto(cityId);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
