@@ -1,4 +1,4 @@
-package ucb.app.api;
+package ucb.app.controller;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ucb.app.entity.City;
+import ucb.app.model.City;
 import ucb.app.repository.CityRepository;
 
 @RestController

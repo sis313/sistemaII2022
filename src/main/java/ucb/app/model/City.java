@@ -1,4 +1,4 @@
-package ucb.app.entity;
+package ucb.app.model;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
