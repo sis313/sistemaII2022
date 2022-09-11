@@ -1,11 +1,15 @@
 package ucb.edu.bo.tallersoftware.model;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.SQLDelete;
+
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "business", schema = "project", catalog = "")
+@SQLDelete(sql = "UPDATE business SET status=0 WHERE id_user=?")
 public class BusinessList {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
