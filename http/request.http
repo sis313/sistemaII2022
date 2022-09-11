@@ -29,3 +29,51 @@ Content-Type: application/json
 #####
 DELETE http://localhost:8080/api/city/1
 Content-Type: application/json
+
+
+
+
+
+#####
+GET http://localhost:8080/api/business
+Content-Type: application/json
+
+
+#####
+GET http://localhost:8080/api/business/3
+Content-Type: application/json
+
+
+#####
+POST http://localhost:8080/api/business
+Content-Type: application/json
+
+{
+  "name": "business name",
+  "description": "business description",
+  "idTypeBusiness": 1,
+  "createDate": "2008-01-02",
+  "updateDate": "2008-01-02",
+  "status": 1,
+  "userIdUser": 1
+}
+
+
+#####
+PUT http://localhost:8080/api/business/3
+Content-Type: application/json
+
+{
+  "name": "business name",
+  "description": "business description",
+  "idTypeBusiness": 1,
+  "createDate": "2008-01-02",
+  "updateDate": "2008-01-02",
+  "status": 1,
+  "userIdUser": 1
+}
+
+
+#####
+DELETE http://localhost:8080/api/business/3
+Content-Type: application/json
