@@ -4,7 +4,7 @@ Content-Type: application/json
 
 
 #####
-GET http://localhost:8080/api/city/1
+GET http://localhost:8080/api/city/4
 Content-Type: application/json
 
 
@@ -13,16 +13,16 @@ POST http://localhost:8080/api/city
 Content-Type: application/json
 
 {
-    "name": "La Paz"
+    "name": 1
 }
 
 
 #####
-PUT http://localhost:8080/api/city/1
+PUT http://localhost:8080/api/city/4
 Content-Type: application/json
 
 {
-    "name": "La Paz 2"
+    "name": 1
 }
 
 
@@ -40,7 +40,7 @@ Content-Type: application/json
 
 
 #####
-GET http://localhost:8080/api/business/3
+GET http://localhost:8080/api/business/4
 Content-Type: application/json
 
 
@@ -51,29 +51,29 @@ Content-Type: application/json
 {
   "name": "business name",
   "description": "business description",
-  "idTypeBusiness": 1,
+  "idTypeBusiness": 4,
   "createDate": "2008-01-02",
   "updateDate": "2008-01-02",
-  "status": 1,
-  "userIdUser": 1
+  "status": 0,
+  "userIdUser": 4
 }
 
 
 #####
-PUT http://localhost:8080/api/business/3
+PUT http://localhost:8080/api/business/4
 Content-Type: application/json
 
 {
   "name": "business name",
   "description": "business description",
-  "idTypeBusiness": 1,
+  "idTypeBusiness": 4,
   "createDate": "2008-01-02",
   "updateDate": "2008-01-02",
   "status": 1,
-  "userIdUser": 1
+  "userIdUser": 4
 }
 
 
 #####
-DELETE http://localhost:8080/api/business/3
+DELETE http://localhost:8080/api/business/1
 Content-Type: application/json

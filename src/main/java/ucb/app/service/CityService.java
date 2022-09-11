@@ -28,13 +28,16 @@ public class CityService {
                 .orElseThrow(() -> new Exception("Could not find city"));
     }
 
-    public Boolean saveDto(City city) {
-        return cityRepository.save(city).equals(city) ? true : false;
+    public CityDto saveDto(City city) {
+        City response = cityRepository.save(city);
+        return cityToCityDto(response);
     }
 
-    public Boolean updateDto(Integer cityId, City city) {
+    public CityDto updateDto(Integer cityId, City city) {
         City cityFound = cityRepository.getReferenceById(cityId);
-        return cityRepository.save(cityFound).equals(city) ? true : false;
+        cityFound.setName(city.getName());
+        City response = cityRepository.save(cityFound);
+        return cityToCityDto(response);
     }
 
     public String deleteByIdDto(Integer cityId) {

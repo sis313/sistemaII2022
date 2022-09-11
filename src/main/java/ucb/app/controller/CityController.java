@@ -41,14 +41,14 @@ public class CityController {
     }
 
     @PostMapping
-    public ResponseEntity<Boolean> postCity(@RequestBody City city) {
-        Boolean response = cityService.saveDto(city);
+    public ResponseEntity<CityDto> postCity(@RequestBody City city) {
+        CityDto response = cityService.saveDto(city);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping(path = "/{cityId}")
-    public ResponseEntity<Boolean> putCity(@PathVariable("cityId") Integer cityId, @RequestBody City city) {
-        Boolean response = cityService.updateDto(cityId, city);
+    public ResponseEntity<CityDto> putCity(@PathVariable("cityId") Integer cityId, @RequestBody City city) {
+        CityDto response = cityService.updateDto(cityId, city);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

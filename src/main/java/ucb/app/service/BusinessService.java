@@ -28,13 +28,21 @@ public class BusinessService {
                 .orElseThrow(() -> new Exception("Could not find business"));
     }
 
-    public Boolean saveDto(Business business) {
-        return businessRepository.save(business).equals(business) ? true : false;
+    public BusinessDto saveDto(Business business) {
+        Business response = businessRepository.save(business);
+        return businessToBusinessDto(response);
     }
 
-    public Boolean updateDto(Integer businessId, Business business) {
+    public BusinessDto updateDto(Integer businessId, Business business) {
         Business businessFound = businessRepository.getReferenceById(businessId);
-        return businessRepository.save(businessFound).equals(business) ? true : false;
+        businessFound.setName(business.getName());
+        businessFound.setDescription(business.getDescription());
+        businessFound.setIdTypeBusiness(business.getIdTypeBusiness());
+        businessFound.setCreateDate(business.getCreateDate());
+        businessFound.setUpdateDate(business.getUpdateDate());
+        businessFound.setUserIdUser(business.getUserIdUser());
+        Business response = businessRepository.save(businessFound);
+        return businessToBusinessDto(response);
     }
 
     public String deleteByIdDto(Integer businessId) {
