@@ -1,0 +1,8 @@
+###(local)
+POST http://localhost:8080/v1/sentiment
+Accept: application/json
+Content-Type: application/json
+
+{
+  "text": "buenos dias"
+}
