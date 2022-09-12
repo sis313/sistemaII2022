@@ -133,3 +133,45 @@ Content-Type: application/json
 ##### DELETE A BRANCH BY ID
 DELETE http://localhost:8080/api/branch/1
 Content-Type: application/json
+
+
+
+
+
+
+
+
+
+##### READ ALL LOCATIONS
+GET http://localhost:8080/api/location
+Content-Type: application/json
+
+
+##### READ A LOCATION BY ID
+GET http://localhost:8080/api/location/4
+Content-Type: application/json
+
+
+##### CREATE A LOCATION
+POST http://localhost:8080/api/location
+Content-Type: application/json
+
+{
+    "latitude": 0.0,
+    "longitude": 0.0
+}
+
+
+##### UPDATE A LOCATION BY ID
+PUT http://localhost:8080/api/location/4
+Content-Type: application/json
+
+{
+    "latitude": 0.0,
+    "longitude": 0.0
+}
+
+
+##### DELETE A LOCATION BY ID
+DELETE http://localhost:8080/api/location/1
+Content-Type: application/json
