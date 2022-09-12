@@ -131,5 +131,5 @@ Content-Type: application/json
 
 
 ##### DELETE A BRANCH BY ID
-DELETE http://localhost:8080/api/branch/24
+DELETE http://localhost:8080/api/branch/1
 Content-Type: application/json
