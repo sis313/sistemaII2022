@@ -1,17 +1,16 @@
-package com.example.mslogin.entities;
+package com.example.mslogin.dto;
 
-import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
-@Table(name = "type_business", schema = "service_maps", catalog = "")
+@javax.persistence.Entity
+@javax.persistence.Table(name = "type_business", schema = "service_maps", catalog = "")
 public class TypeBusinessEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "id_type_business", nullable = false)
+    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+    @javax.persistence.Id
+    @javax.persistence.Column(name = "id_type_business")
     private int idTypeBusiness;
-    @Basic
-    @Column(name = "name", nullable = false, length = 100)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "name")
     private String name;
 
     public int getIdTypeBusiness() {

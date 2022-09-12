@@ -1,20 +1,19 @@
-package com.example.mslogin.entities;
+package com.example.mslogin.dto;
 
-import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
-@Table(name = "location", schema = "service_maps", catalog = "")
+@javax.persistence.Entity
+@javax.persistence.Table(name = "location", schema = "service_maps", catalog = "")
 public class LocationEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "id_location", nullable = false)
+    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+    @javax.persistence.Id
+    @javax.persistence.Column(name = "id_location")
     private int idLocation;
-    @Basic
-    @Column(name = "latitude", nullable = false, precision = 10)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "latitude")
     private double latitude;
-    @Basic
-    @Column(name = "longitude", nullable = false, precision = 10)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "longitude")
     private double longitude;
 
     public int getIdLocation() {

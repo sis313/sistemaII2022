@@ -1,36 +1,35 @@
-package com.example.mslogin.entities;
+package com.example.mslogin.dto;
 
-import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
-@Entity
-@Table(name = "business", schema = "service_maps", catalog = "")
+@javax.persistence.Entity
+@javax.persistence.Table(name = "business", schema = "service_maps", catalog = "")
 public class BusinessEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "id_business", nullable = false)
+    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+    @javax.persistence.Id
+    @javax.persistence.Column(name = "id_business")
     private int idBusiness;
-    @Basic
-    @Column(name = "name", nullable = false, length = 150)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "name")
     private String name;
-    @Basic
-    @Column(name = "description", nullable = false, length = 250)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "description")
     private String description;
-    @Basic
-    @Column(name = "id_type_business", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "id_type_business")
     private int idTypeBusiness;
-    @Basic
-    @Column(name = "id_user", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "id_user")
     private int idUser;
-    @Basic
-    @Column(name = "create_date", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "create_date")
     private Date createDate;
-    @Basic
-    @Column(name = "update_date", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "update_date")
     private Date updateDate;
-    @Basic
-    @Column(name = "status", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "status")
     private int status;
 
     public int getIdBusiness() {

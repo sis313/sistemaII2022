@@ -1,32 +1,31 @@
-package com.example.mslogin.entities;
+package com.example.mslogin.dto;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.Objects;
 
-@Entity
-@Table(name = "booking", schema = "service_maps", catalog = "")
+@javax.persistence.Entity
+@javax.persistence.Table(name = "booking", schema = "service_maps", catalog = "")
 public class BookingEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "id_booking", nullable = false)
+    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+    @javax.persistence.Id
+    @javax.persistence.Column(name = "id_booking")
     private int idBooking;
-    @Basic
-    @Column(name = "date", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "date")
     private Date date;
-    @Basic
-    @Column(name = "time", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "time")
     private Time time;
-    @Basic
-    @Column(name = "amount", nullable = false, precision = 2)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "amount")
     private BigDecimal amount;
-    @Basic
-    @Column(name = "id_product", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "id_product")
     private int idProduct;
-    @Basic
-    @Column(name = "id_user", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "id_user")
     private int idUser;
 
     public int getIdBooking() {

@@ -1,26 +1,25 @@
-package com.example.mslogin.entities;
+package com.example.mslogin.dto;
 
-import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
-@Table(name = "comment", schema = "service_maps", catalog = "")
+@javax.persistence.Entity
+@javax.persistence.Table(name = "comment", schema = "service_maps", catalog = "")
 public class CommentEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "id_comment", nullable = false)
+    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+    @javax.persistence.Id
+    @javax.persistence.Column(name = "id_comment")
     private int idComment;
-    @Basic
-    @Column(name = "message", nullable = false, length = 255)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "message")
     private String message;
-    @Basic
-    @Column(name = "id_user", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "id_user")
     private int idUser;
-    @Basic
-    @Column(name = "id_business", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "id_business")
     private int idBusiness;
-    @Basic
-    @Column(name = "status", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "status")
     private int status;
 
     public int getIdComment() {

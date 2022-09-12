@@ -1,0 +1,13 @@
+###
+POST http://localhost:80/user
+Content-Type: application/json
+
+{
+  "name": "Test1",
+  "email": "sv.kokonoe@gmail.com",
+  "nickname": "test_si",
+  "password": "test123",
+  "idTypeUser": 1,
+  "createDate": "2022-09-11",
+  "updateDate": "2022-09-11"
+}

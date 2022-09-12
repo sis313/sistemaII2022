@@ -1,40 +1,42 @@
-package com.example.mslogin.entities;
+package com.example.mslogin.dto;
 
-import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
-@Entity
-@Table(name = "user", schema = "service_maps", catalog = "")
+@javax.persistence.Entity
+@javax.persistence.Table(name = "user", schema = "service_maps", catalog = "")
 public class UserEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "id_user", nullable = false)
+    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+    @javax.persistence.Id
+    @javax.persistence.Column(name = "id_user")
     private int idUser;
-    @Basic
-    @Column(name = "name", nullable = false, length = 200)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "name")
     private String name;
-    @Basic
-    @Column(name = "email", nullable = false, length = 150)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "email")
     private String email;
-    @Basic
-    @Column(name = "nickname", nullable = false, length = 20)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "nickname")
     private String nickname;
-    @Basic
-    @Column(name = "password", nullable = false, length = 20)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "password")
     private String password;
-    @Basic
-    @Column(name = "id_type_user", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "id_type_user")
     private int idTypeUser;
-    @Basic
-    @Column(name = "create_date", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "create_date")
     private Date createDate;
-    @Basic
-    @Column(name = "update_date", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "update_date")
     private Date updateDate;
-    @Basic
-    @Column(name = "status", nullable = false, length = 10)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "status")
     private String status;
+
+    public UserEntity() {
+    }
 
     public int getIdUser() {
         return idUser;

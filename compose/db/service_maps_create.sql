@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-09-03 01:49:34.446
+-- Last modification date: 2022-09-09 18:22:16.22
 
 -- -----------------------------------------------------
 -- Schema service_maps
@@ -12,6 +12,9 @@ DROP SCHEMA IF EXISTS service_maps;
 CREATE SCHEMA IF NOT EXISTS service_maps DEFAULT CHARACTER SET utf8 ;
 SHOW WARNINGS;
 USE service_maps;
+
+    -- Created by Vertabelo (http://vertabelo.com)
+-- Last modification date: 2022-09-11 18:08:32.7
 
 -- tables
 -- Table: booking
@@ -32,7 +35,7 @@ CREATE TABLE branch (
                         open_hour time NOT NULL,
                         close_hour time NOT NULL,
                         attention_days varchar(100) NOT NULL,
-                        image blob NOT NULL,
+                        image blob NULL,
                         id_zone int NOT NULL,
                         id_location int NOT NULL,
                         id_business int NOT NULL,
@@ -100,6 +103,16 @@ CREATE TABLE product (
                          CONSTRAINT product_pk PRIMARY KEY (id_product)
 );
 
+-- Table: rating
+CREATE TABLE rating (
+                        id_rating int NOT NULL AUTO_INCREMENT,
+                        score int NOT NULL,
+                        favorite_status bool NOT NULL,
+                        id_branch int NOT NULL,
+                        id_user int NOT NULL,
+                        CONSTRAINT rating_pk PRIMARY KEY (id_rating)
+);
+
 -- Table: type_business
 CREATE TABLE type_business (
                                id_type_business int NOT NULL AUTO_INCREMENT,
@@ -126,6 +139,16 @@ CREATE TABLE user (
                       update_date date NOT NULL,
                       status varchar(10) NOT NULL,
                       CONSTRAINT user_pk PRIMARY KEY (id_user)
+);
+
+-- Table: verification_token
+CREATE TABLE verification_token (
+                                    id_verification_token int NOT NULL AUTO_INCREMENT,
+                                    token varchar(200) NOT NULL,
+                                    created_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                                    expiry_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                                    id_user int NOT NULL,
+                                    CONSTRAINT verification_token_pk PRIMARY KEY (id_verification_token)
 );
 
 -- Table: zone
@@ -181,14 +204,24 @@ ALTER TABLE municipalities ADD CONSTRAINT municipalities_city FOREIGN KEY munici
 ALTER TABLE product ADD CONSTRAINT product_business FOREIGN KEY product_business (id_business)
     REFERENCES business (id_business);
 
+-- Reference: rating_branch (table: rating)
+ALTER TABLE rating ADD CONSTRAINT rating_branch FOREIGN KEY rating_branch (id_branch)
+    REFERENCES branch (id_branch);
+
+-- Reference: rating_user (table: rating)
+ALTER TABLE rating ADD CONSTRAINT rating_user FOREIGN KEY rating_user (id_user)
+    REFERENCES user (id_user);
+
 -- Reference: user_type_user (table: user)
 ALTER TABLE user ADD CONSTRAINT user_type_user FOREIGN KEY user_type_user (id_type_user)
     REFERENCES type_user (id_type_user);
+
+-- Reference: verification_token_user (table: verification_token)
+ALTER TABLE verification_token ADD CONSTRAINT verification_token_user FOREIGN KEY verification_token_user (id_user)
+    REFERENCES user (id_user);
 
 -- Reference: zone_municipalities (table: zone)
 ALTER TABLE zone ADD CONSTRAINT zone_municipalities FOREIGN KEY zone_municipalities (id_municipalities)
     REFERENCES municipalities (id_municipalities);
 
 -- End of file.
-
-

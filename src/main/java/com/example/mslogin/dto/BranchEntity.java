@@ -1,50 +1,49 @@
-package com.example.mslogin.entities;
+package com.example.mslogin.dto;
 
-import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.Arrays;
 import java.util.Objects;
 
-@Entity
-@Table(name = "branch", schema = "service_maps", catalog = "")
+@javax.persistence.Entity
+@javax.persistence.Table(name = "branch", schema = "service_maps", catalog = "")
 public class BranchEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "id_branch", nullable = false)
+    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+    @javax.persistence.Id
+    @javax.persistence.Column(name = "id_branch")
     private int idBranch;
-    @Basic
-    @Column(name = "address", nullable = false, length = 200)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "address")
     private String address;
-    @Basic
-    @Column(name = "open_hour", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "open_hour")
     private Time openHour;
-    @Basic
-    @Column(name = "close_hour", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "close_hour")
     private Time closeHour;
-    @Basic
-    @Column(name = "attention_days", nullable = false, length = 100)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "attention_days")
     private String attentionDays;
-    @Basic
-    @Column(name = "image", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "image")
     private byte[] image;
-    @Basic
-    @Column(name = "id_zone", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "id_zone")
     private int idZone;
-    @Basic
-    @Column(name = "id_location", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "id_location")
     private int idLocation;
-    @Basic
-    @Column(name = "id_business", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "id_business")
     private int idBusiness;
-    @Basic
-    @Column(name = "create_date", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "create_date")
     private Date createDate;
-    @Basic
-    @Column(name = "update_date", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "update_date")
     private Date updateDate;
-    @Basic
-    @Column(name = "status", nullable = false)
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "status")
     private int status;
 
     public int getIdBranch() {
