@@ -18,7 +18,7 @@ public class AppApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**").allowedOrigins("https://serviceprojectspring.herokuapp.com",
-						"http://localhost:4200");
+						"http://localhost:4200").allowedMethods("*");
 			}
 		};
 	}
