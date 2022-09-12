@@ -48,7 +48,7 @@ public class VerificationMailBl {
         VerificationTokenEntity token = verificationTokenRepository.findToken(confirmationToken);
         Calendar cal = Calendar.getInstance();
 
-        if(token != null && (token.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0)
+        if(token != null && (token.getExpiryDate().getTime() - cal.getTime().getTime())>=0)
         {
             UserEntity user = userRepository.findUserByID(token.getIdUser());
             user.setStatus("Active");

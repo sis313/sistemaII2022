@@ -11,3 +11,5 @@ Content-Type: application/json
   "createDate": "2022-09-11",
   "updateDate": "2022-09-11"
 }
+###
+GET http://localhost:80/confirm-account?token=a1ce2ea0-ccc2-484f-b9f7-cb89ca90c777
