@@ -1,0 +1,16 @@
+###
+GET http://localhost:8080/Business
+Accept: application/json
+
+###
+GET http://localhost:8080/Business/name/Toy-Dooley
+Accept: application/json
+
+###
+GET http://localhost:8080/Business/Type/Farmacia
+Accept: application/json
+
+###
+GET http://localhost:8080/Business/filter/Farmacia/Hahn-Bayer
+Accept: application/json
+
