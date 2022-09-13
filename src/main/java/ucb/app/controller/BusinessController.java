@@ -42,8 +42,8 @@ public class BusinessController {
         return new ResponseEntity<>(business, HttpStatus.OK);
     }
 
-    @GetMapping(path = "/user/{userId}")
-    public ResponseEntity<List<BusinessDto>> getBusinessByUserId(@PathVariable("userId") Integer userId) {
+    @GetMapping(path = "/")
+    public ResponseEntity<List<BusinessDto>> getBusinessByUserId(@RequestParam("userId") Integer userId) {
         List<BusinessDto> businesses = businessService.findByUserIdDto(userId);
         return new ResponseEntity<>(businesses, HttpStatus.OK);
     }

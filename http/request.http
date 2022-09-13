@@ -45,7 +45,7 @@ Content-Type: application/json
 
 
 ##### READ A BUSINESS BY USER ID
-GET http://localhost:8080/api/business/user/3
+GET http://localhost:8080/api/business/?userId=4
 Content-Type: application/json
 
 
