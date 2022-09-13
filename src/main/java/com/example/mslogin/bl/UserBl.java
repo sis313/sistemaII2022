@@ -1,47 +1,49 @@
 package com.example.mslogin.bl;
 
+
 import com.example.mslogin.dao.UserRepository;
-import com.example.mslogin.dao.VerificationTokenRepository;
 import com.example.mslogin.dto.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.sql.Date;
 
 @Service
 public class UserBl {
     private UserRepository userRepository;
     private VerificationMailBl verificationMailBl;
 
-    Logger LOGGER = LoggerFactory.getLogger(UserBl.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(UserBl.class);
+    private PasswordEncoder passwordEncoder;
 
-    public UserBl(UserRepository userRepository, VerificationMailBl verificationMailBl) {
+    public UserBl(UserRepository userRepository, VerificationMailBl verificationMailBl, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.verificationMailBl = verificationMailBl;
+        this.passwordEncoder = passwordEncoder;
     }
-
-    public String createUser(UserEntity userEntity) {
-
-        userEntity.setStatus("Pending");
-
-        //Buscar coincidencias de correo electronico
-        UserEntity foundUser = userRepository.findUserByEmail(userEntity.getEmail());
-        if(foundUser!=null){
-            LOGGER.info("createUser from UserBl-no es null");
-            return "Error, the email entered already has an associated account.";
-        }else{
-            LOGGER.info("createUser from UserBl-null");
-            //Guardando usuario
-            UserEntity newUser = this.userRepository.save(userEntity);
-
-            //Enviando a verificacion
-            verificationMailBl.createToken(newUser);
-            /////
-
-            return "New user added successfully.";
-        }
+    @Transactional
+    public String saveUser(UserEntity user) {
+        LOGGER.info("saveUser from UserBl");
+        //Validate if user already exists
+        if(userRepository.existsByEmail(user.getEmail()))
+            return "Email already exists";
+        //Validate if user already exists
+        if(userRepository.existsByNickname(user.getNickname()))
+            return  "Nickname already exists";
+        user.setName(user.getName());
+        user.setEmail(user.getEmail());
+        user.setNickname(user.getNickname());
+        user.setPassword(this.passwordEncoder.encode(user.getPassword()));
+        user.setIdTypeUser(user.getIdTypeUser());
+        user.setCreateDate(new Date(System.currentTimeMillis()));
+        user.setUpdateDate(new Date(System.currentTimeMillis()));
+        user.setStatus("Pending");
+        UserEntity newUser = userRepository.save(user);
+        verificationMailBl.createToken(newUser);
+        LOGGER.info("User saved");
+        return "User created";
     }
-
-
 }

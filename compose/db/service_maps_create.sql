@@ -133,7 +133,7 @@ CREATE TABLE user (
                       name varchar(200) NOT NULL,
                       email varchar(150) NOT NULL,
                       nickname varchar(20) NOT NULL,
-                      password varchar(20) NOT NULL,
+                      password varchar(100) NOT NULL,
                       id_type_user int NOT NULL,
                       create_date date NOT NULL,
                       update_date date NOT NULL,
@@ -224,4 +224,6 @@ ALTER TABLE verification_token ADD CONSTRAINT verification_token_user FOREIGN KE
 ALTER TABLE zone ADD CONSTRAINT zone_municipalities FOREIGN KEY zone_municipalities (id_municipalities)
     REFERENCES municipalities (id_municipalities);
 
+INSERT Into type_user (name) VALUES ('ADMIN');
+INSERT Into type_user (name) VALUES ('USER');
 -- End of file.
