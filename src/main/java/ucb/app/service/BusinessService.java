@@ -28,6 +28,11 @@ public class BusinessService {
                 .orElseThrow(() -> new Exception("Could not find business"));
     }
 
+    public List<BusinessDto> findByUserIdDto(Integer userId) {
+        return businessRepository.findByUserIdUser(userId).stream().map(this::businessToBusinessDto)
+                .collect(Collectors.toList());
+    }
+
     public BusinessDto saveDto(Business business) {
         Business response = businessRepository.save(business);
         return businessToBusinessDto(response);

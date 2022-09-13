@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.dto.BusinessDto;
@@ -39,6 +40,12 @@ public class BusinessController {
             throws Exception {
         BusinessDto business = businessService.findByIdDto(businessId);
         return new ResponseEntity<>(business, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/user/{userId}")
+    public ResponseEntity<List<BusinessDto>> getBusinessByUserId(@PathVariable("userId") Integer userId) {
+        List<BusinessDto> businesses = businessService.findByUserIdDto(userId);
+        return new ResponseEntity<>(businesses, HttpStatus.OK);
     }
 
     @PostMapping

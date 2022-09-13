@@ -44,6 +44,11 @@ GET http://localhost:8080/api/business/4
 Content-Type: application/json
 
 
+##### READ A BUSINESS BY USER ID
+GET http://localhost:8080/api/business/user/3
+Content-Type: application/json
+
+
 ##### CREATE A BUSINESS
 POST http://localhost:8080/api/business
 Content-Type: application/json
