@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.SQLDelete;
 
-import java.util.Date;
+//import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -33,10 +33,10 @@ public class User {
     private int typeUserId;
     @Basic
     @Column(name = "create_date")
-    private Date createDate;
+    private String createDate;
     @Basic
     @Column(name = "update_date")
-    private Date updateDate;
+    private String updateDate;
     @Basic
     @Column(name = "status")
     private int status;
@@ -89,19 +89,19 @@ public class User {
         this.typeUserId = typeUserId;
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return this.createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 
-    public Date getUpdateDate() {
+    public String getUpdateDate() {
         return this.updateDate;
     }
 
-    public void setUpdateDate(Date updateDate) {
+    public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate;
     }
 

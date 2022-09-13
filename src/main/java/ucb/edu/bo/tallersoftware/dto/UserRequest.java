@@ -1,6 +1,6 @@
 package ucb.edu.bo.tallersoftware.dto;
 
-import java.util.Date;
+//import java.util.Date;
 
 public class UserRequest {
     private String name;
@@ -8,11 +8,11 @@ public class UserRequest {
     private String nickname;
     private String password;
     private String typeUser;
-    private Date createDate;
-    private Date updateDate;
+    private String createDate;
+    private String updateDate;
 
 
-    public UserRequest(String name, String email, String nickname, String password, String typeUser, Date createDate, Date updateDate) {
+    public UserRequest(String name, String email, String nickname, String password, String typeUser, String createDate, String updateDate) {
         this.name = name;
         this.email = email;
         this.nickname = nickname;
@@ -62,19 +62,19 @@ public class UserRequest {
         this.typeUser = typeUser;
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return this.createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 
-    public Date getUpdateDate() {
+    public String getUpdateDate() {
         return this.updateDate;
     }
 
-    public void setUpdateDate(Date updateDate) {
+    public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate;
     }
 

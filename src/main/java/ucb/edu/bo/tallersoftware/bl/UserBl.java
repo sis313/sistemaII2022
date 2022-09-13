@@ -6,7 +6,8 @@ import ucb.edu.bo.tallersoftware.dao.UserDao;
 import ucb.edu.bo.tallersoftware.model.User;
 import ucb.edu.bo.tallersoftware.service.UserService;
 
-
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -59,7 +60,10 @@ public class UserBl implements UserService{
             userDB.setCreateDate(user.getCreateDate());
         }
         if (Objects.nonNull(user.getUpdateDate())) {
-            userDB.setUpdateDate(user.getUpdateDate());
+            LocalDate dateObj = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String date = dateObj.format(formatter);
+            userDB.setUpdateDate(date);
         }
         if (Objects.nonNull(user.getStatus())) {
             userDB.setStatus(user.getStatus());
