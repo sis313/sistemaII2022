@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.dto.BranchDto;
@@ -37,12 +36,6 @@ public class BranchController {
     public ResponseEntity<BranchDto> getBranchById(@PathVariable("branchId") Integer branchId) throws Exception {
         BranchDto branch = branchService.findByIdDto(branchId);
         return new ResponseEntity<>(branch, HttpStatus.OK);
-    }
-
-    @GetMapping("/")
-    public ResponseEntity<List<BranchDto>> getBranchesByBusinessId(@RequestParam("businessId") Integer businessId) {
-        List<BranchDto> branches = branchService.findByBusinessIdDto(businessId);
-        return new ResponseEntity<>(branches, HttpStatus.OK);
     }
 
     @PostMapping

@@ -28,11 +28,6 @@ public class BranchService {
                 .orElseThrow(() -> new Exception("Could not find branch"));
     }
 
-    public List<BranchDto> findByBusinessIdDto(Integer businessId) {
-        return branchRepository.findByIdBusiness(businessId).stream().map(this::branchToBranchDto)
-                .collect(Collectors.toList());
-    }
-
     public BranchDto saveDto(Branch branch) {
         Branch response = branchRepository.save(branch);
         return branchToBranchDto(response);
