@@ -23,16 +23,20 @@ public class BusinessApi {
         return businessBl.ListBusiness();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/Business/Type/{name}")
     public List<Business> findByType(@PathVariable(name = "name") String name){
         return businessBl.findByType(name);
     }
 
-    @GetMapping(value = "/Business/name/{name}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(value = "/Business/name/{name}"
+    )
     public List<Business> findByName(@PathVariable(name = "name") String name){
         return businessBl.findByName(name);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/Business/filter/{type_name}/{business_name}")
     public List<Business> findByNameAndType(@PathVariable(name = "type_name") String type_name, @PathVariable(name = "business_name") String business_name){
         return businessBl.findByNameAndType(type_name, business_name);
