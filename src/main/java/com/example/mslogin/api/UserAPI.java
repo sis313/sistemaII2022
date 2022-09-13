@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/v1/api/user")
 public class UserAPI {
     private UserBl userBl;
+    private UserEntity userEntity;
     Logger LOGGER = LoggerFactory.getLogger(UserAPI.class);
 
     public UserAPI(UserBl userBl) {
@@ -27,5 +28,13 @@ public class UserAPI {
         LOGGER.info("addUser from UserAPI");
         String response = String.valueOf(this.userBl.saveUser(userEntity));
         return new ResponseEntity<String>(response, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Optional<userEntity>> getOrderById(@PathVariable Integer id){
+        LOGGER.info("Invocando al servicio REST para obtener un usuario");
+        Optional<userEntity> user = orderRepository.findById(id);
+        LOGGER.info("DATABASE-SUCCESS: Consulta exitosa para obtener un usuario {}", user);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }
