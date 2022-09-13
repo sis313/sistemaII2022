@@ -33,11 +33,7 @@ public class UserBl {
         //Validate if user already exists
         if(userRepository.existsByNickname(user.getNickname()))
             return  "Nickname already exists";
-        user.setName(user.getName());
-        user.setEmail(user.getEmail());
-        user.setNickname(user.getNickname());
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
-        user.setIdTypeUser(user.getIdTypeUser());
         user.setCreateDate(new Date(System.currentTimeMillis()));
         user.setUpdateDate(new Date(System.currentTimeMillis()));
         user.setStatus("Pending");
