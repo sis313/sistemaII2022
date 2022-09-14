@@ -97,11 +97,6 @@ GET http://localhost:8080/api/branch/4
 Content-Type: application/json
 
 
-##### READ A BRANCH BY ID
-GET http://localhost:8080/api/branch/?businessId=4
-Content-Type: application/json
-
-
 ##### CREATE A BRANCH
 POST http://localhost:8080/api/branch
 Content-Type: application/json
