@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/v1/api/user")
 public class UserAPI {
     private UserBl userBl;
+    private UserEntity userEntity;
     Logger LOGGER = LoggerFactory.getLogger(UserAPI.class);
 
     public UserAPI(UserBl userBl) {
@@ -24,5 +25,13 @@ public class UserAPI {
         LOGGER.info("addUser from UserAPI");
         UserEntity user = userBl.saveUser(userEntity);
         return new ResponseEntity<UserEntity>(user, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Optional<userEntity>> getOrderById(@PathVariable Integer id){
+        LOGGER.info("Invocando al servicio REST para obtener un usuario");
+        Optional<userEntity> user = orderRepository.findById(id);
+        LOGGER.info("DATABASE-SUCCESS: Consulta exitosa para obtener un usuario {}", user);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }
