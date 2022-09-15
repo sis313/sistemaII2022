@@ -6,7 +6,6 @@ import com.example.mslogin.dto.UserEntity;
 import com.example.mslogin.dto.VerificationTokenEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
@@ -14,19 +13,18 @@ import java.util.Calendar;
 
 @Service
 public class VerificationMailBl {
-    @Autowired
-    private VerificationTokenRepository verificationTokenRepository;
-    private UserRepository userRepository;
+    private final VerificationTokenRepository verificationTokenRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private EmailSenderService emailSenderService;
+    private final EmailSenderService emailSenderService;
 
     Logger LOGGER = LoggerFactory.getLogger(UserBl.class);
 
 
-    public VerificationMailBl(VerificationTokenRepository verificationTokenRepository, UserRepository userRepository) {
+    public VerificationMailBl(EmailSenderService emailSenderService,VerificationTokenRepository verificationTokenRepository, UserRepository userRepository) {
         this.verificationTokenRepository = verificationTokenRepository;
         this.userRepository = userRepository;
+        this.emailSenderService = emailSenderService;
     }
 
     public void createToken(UserEntity userEntity){
@@ -44,7 +42,7 @@ public class VerificationMailBl {
         LOGGER.info("createToken from VerificationMailBl");
     }
 
-    public String confirmUserAccount(String confirmationToken) {
+    public int confirmUserAccount(String confirmationToken) {
         VerificationTokenEntity token = verificationTokenRepository.findToken(confirmationToken);
         Calendar cal = Calendar.getInstance();
 
@@ -54,12 +52,40 @@ public class VerificationMailBl {
             user.setStatus("Active");
             userRepository.save(user);
             LOGGER.info("confirmUserAccount from VerificationMailBl-if");
-            return "Account verified";
+            return user.getIdUser();
         }
         else
         {
             LOGGER.info("confirmUserAccount from VerificationMailBl-else");
-            return "Error";
+            return -1;
         }
+    }
+
+    public String resendMail(String email) {
+        UserEntity currentUser = userRepository.findUserByEmail(email);
+        VerificationTokenEntity currentToken = verificationTokenRepository.findTokenByIdUser(currentUser.getIdUser());
+        Calendar cal = Calendar.getInstance();
+
+        if(currentToken != null)
+        {
+            if((currentToken.getExpiryDate().getTime() - cal.getTime().getTime())<=0){
+                currentToken = new VerificationTokenEntity(currentUser.getIdUser());
+                verificationTokenRepository.save(currentToken);
+            }
+
+            SimpleMailMessage mailMessage = new SimpleMailMessage();
+            mailMessage.setTo(currentUser.getEmail());
+            mailMessage.setSubject("Complete Registration!");
+            mailMessage.setText("To confirm your account, please click here : "
+                    +"http://localhost:80/confirm-account?token="+currentToken.getToken());
+
+            emailSenderService.sendEmail(mailMessage);
+            LOGGER.info("resendMail from VerificationMailBl-if");
+        } else {
+            createToken(currentUser);
+            LOGGER.info("resendMail from VerificationMailBl-else");
+        }
+
+        return "The mail has been re-sent";
     }
 }

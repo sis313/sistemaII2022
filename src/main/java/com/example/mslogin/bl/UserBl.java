@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.sql.Date;
+import java.util.Optional;
 
 @Service
 public class UserBl {
@@ -41,5 +42,9 @@ public class UserBl {
         verificationMailBl.createToken(newUser);
         LOGGER.info("User saved");
         return newUser;
+    }
+
+    public Optional<UserEntity> findUserByID(int id){
+        return userRepository.findById(id);
     }
 }
