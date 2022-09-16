@@ -57,8 +57,8 @@ public class BusinessService {
 
     private BusinessDto businessToBusinessDto(Business business) {
         BusinessDto businessDto = new BusinessDto(business.getIdBusiness(), business.getName(),
-                business.getDescription(), business.getIdTypeBusiness(), business.getCreateDate(),
-                business.getUpdateDate(), business.getStatus(), business.getIdUser());
+                business.getDescription(), business.getIdTypeBusiness(), business.getIdUser(), business.getCreateDate(),
+                business.getUpdateDate(), business.getStatus());
         return businessDto;
     }
 }

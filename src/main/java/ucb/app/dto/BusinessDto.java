@@ -7,21 +7,21 @@ public class BusinessDto {
     private String name;
     private String description;
     private int idTypeBusiness;
+    private int idUser;
     private Date createDate;
     private Date updateDate;
     private int status;
-    private int idUser;
 
-    public BusinessDto(Integer idBusiness, String name, String description, int idTypeBusiness, Date createDate,
-            Date updateDate, int status, int idUser) {
+    public BusinessDto(Integer idBusiness, String name, String description, int idTypeBusiness, int idUser,
+            Date createDate, Date updateDate, int status) {
         this.idBusiness = idBusiness;
         this.name = name;
         this.description = description;
         this.idTypeBusiness = idTypeBusiness;
+        this.idUser = idUser;
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.status = status;
-        this.idUser = idUser;
     }
 
     public Integer getIdBusiness() {
@@ -56,6 +56,14 @@ public class BusinessDto {
         this.idTypeBusiness = idTypeBusiness;
     }
 
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
     public Date getCreateDate() {
         return createDate;
     }
@@ -78,14 +86,6 @@ public class BusinessDto {
 
     public void setStatus(int status) {
         this.status = status;
-    }
-
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
     }
 
     @Override
