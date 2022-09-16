@@ -29,7 +29,7 @@ public class BusinessService {
     }
 
     public List<BusinessDto> findByUserIdDto(Integer userId) {
-        return businessRepository.findByUserIdUser(userId).stream().map(this::businessToBusinessDto)
+        return businessRepository.findByIdUser(userId).stream().map(this::businessToBusinessDto)
                 .collect(Collectors.toList());
     }
 
