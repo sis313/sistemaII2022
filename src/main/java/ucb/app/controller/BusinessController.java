@@ -62,8 +62,8 @@ public class BusinessController {
     }
 
     @DeleteMapping(path = "/{businessId}")
-    public ResponseEntity<String> deleteBusiness(@PathVariable("businessId") Integer businessId) {
-        String response = businessService.deleteByIdDto(businessId);
+    public ResponseEntity<BusinessDto> deleteBusiness(@PathVariable("businessId") Integer businessId) {
+        BusinessDto response = businessService.deleteByIdDto(businessId);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

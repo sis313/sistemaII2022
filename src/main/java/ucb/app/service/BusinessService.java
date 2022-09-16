@@ -50,9 +50,11 @@ public class BusinessService {
         return businessToBusinessDto(response);
     }
 
-    public String deleteByIdDto(Integer businessId) {
-        businessRepository.deleteById(businessId);
-        return "Business deleted successfully";
+    public BusinessDto deleteByIdDto(Integer businessId) {
+        Business businessFound = businessRepository.getReferenceById(businessId);
+        businessFound.setStatus(businessFound.getStatus() < 1 ? 1 : 0);
+        Business response = businessRepository.save(businessFound);
+        return businessToBusinessDto(response);
     }
 
     private BusinessDto businessToBusinessDto(Business business) {

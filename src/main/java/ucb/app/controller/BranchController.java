@@ -58,8 +58,8 @@ public class BranchController {
     }
 
     @DeleteMapping(path = "/{branchId}")
-    public ResponseEntity<String> deleteBranch(@PathVariable("branchId") Integer branchId) {
-        String response = branchService.deleteByIdDto(branchId);
+    public ResponseEntity<BranchDto> deleteBranch(@PathVariable("branchId") Integer branchId) {
+        BranchDto response = branchService.deleteByIdDto(branchId);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

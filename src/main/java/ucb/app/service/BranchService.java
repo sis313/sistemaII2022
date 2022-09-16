@@ -55,9 +55,11 @@ public class BranchService {
         return branchToBranchDto(response);
     }
 
-    public String deleteByIdDto(Integer branchId) {
-        branchRepository.deleteById(branchId);
-        return "Branch deleted successfully";
+    public BranchDto deleteByIdDto(Integer branchId) {
+        Branch branchFound = branchRepository.getReferenceById(branchId);
+        branchFound.setStatus(branchFound.getStatus() < 1 ? 1 : 0);
+        Branch response = branchRepository.save(branchFound);
+        return branchToBranchDto(response);
     }
 
     private BranchDto branchToBranchDto(Branch branch) {

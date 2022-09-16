@@ -4,7 +4,7 @@ Content-Type: application/json
 
 
 ##### READ A CITY BY ID
-GET http://localhost:8080/api/city/4
+GET http://localhost:8080/api/city/1
 Content-Type: application/json
 
 
@@ -18,7 +18,7 @@ Content-Type: application/json
 
 
 ##### UPDATE A CITY BY ID
-PUT http://localhost:8080/api/city/4
+PUT http://localhost:8080/api/city/1
 Content-Type: application/json
 
 {
@@ -40,12 +40,12 @@ Content-Type: application/json
 
 
 ##### READ A BUSINESS BY ID
-GET http://localhost:8080/api/business/4
+GET http://localhost:8080/api/business/1
 Content-Type: application/json
 
 
 ##### READ A BUSINESS BY USER ID
-GET http://localhost:8080/api/business/?userId=4
+GET http://localhost:8080/api/business/?userId=1
 Content-Type: application/json
 
 
@@ -56,26 +56,26 @@ Content-Type: application/json
 {
   "name": "business name",
   "description": "business description",
-  "idTypeBusiness": 4,
-  "idUser": 4,
+  "idTypeBusiness": 1,
+  "idUser": 1,
   "createDate": "2008-01-02",
   "updateDate": "2008-01-02",
-  "status": 0
+  "status": 1
 }
 
 
 ##### UPDATE A BUSINESS BY ID
-PUT http://localhost:8080/api/business/4
+PUT http://localhost:8080/api/business/1
 Content-Type: application/json
 
 {
   "name": "business name update",
   "description": "business description update",
-  "idTypeBusiness": 4,
-  "idUser": 4,
+  "idTypeBusiness": 1,
+  "idUser": 1,
   "createDate": "2008-01-02",
   "updateDate": "2008-01-02",
-  "status": 0
+  "status": 1
 }
 
 
@@ -93,12 +93,12 @@ Content-Type: application/json
 
 
 ##### READ A BRANCH BY ID
-GET http://localhost:8080/api/branch/4
+GET http://localhost:8080/api/branch/1
 Content-Type: application/json
 
 
 ##### READ ALL BRANCHES BY BUSINESS ID
-GET http://localhost:8080/api/branch/?businessId=4
+GET http://localhost:8080/api/branch/?businessId=1
 Content-Type: application/json
 
 
@@ -112,9 +112,9 @@ Content-Type: application/json
     "closeHour": "2022-01-01T10:01:01",
     "attentionDays": "Monday",
     "image": "aW1hZ2UgZmlsZQ==",
-    "idZone": 4,
-    "idLocation": 4,
-    "idBusiness": 104,
+    "idZone": 1,
+    "idLocation": 1,
+    "idBusiness": 1,
     "createDate": "2022-01-01",
     "updateDate": "2022-01-01",
     "status": 1
@@ -122,18 +122,18 @@ Content-Type: application/json
 
 
 ##### UPDATE A BRANCH BY ID
-PUT http://localhost:8080/api/branch/4
+PUT http://localhost:8080/api/branch/1
 Content-Type: application/json
 
 {
-    "address": "branch address",
+    "address": "branch address update",
     "openHour": "2022-01-01T10:01:01",
     "closeHour": "2022-01-01T10:01:01",
     "attentionDays": "Monday",
     "image": "aW1hZ2UgZmlsZQ==",
-    "idZone": 4,
-    "idLocation": 4,
-    "idBusiness": 104,
+    "idZone": 1,
+    "idLocation": 1,
+    "idBusiness": 1,
     "createDate": "2022-01-01",
     "updateDate": "2022-01-01",
     "status": 1
@@ -158,7 +158,7 @@ Content-Type: application/json
 
 
 ##### READ A LOCATION BY ID
-GET http://localhost:8080/api/location/4
+GET http://localhost:8080/api/location/1
 Content-Type: application/json
 
 
@@ -167,18 +167,18 @@ POST http://localhost:8080/api/location
 Content-Type: application/json
 
 {
-    "latitude": 0.0,
-    "longitude": 0.0
+    "latitude": 41.71727401,
+    "longitude": 72.00898606
 }
 
 
 ##### UPDATE A LOCATION BY ID
-PUT http://localhost:8080/api/location/4
+PUT http://localhost:8080/api/location/1
 Content-Type: application/json
 
 {
-    "latitude": 0.0,
-    "longitude": 0.0
+    "latitude": 41.71727411,
+    "longitude": 72.00898611
 }
 
 
