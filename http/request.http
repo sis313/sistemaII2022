@@ -36,6 +36,144 @@ Content-Type: application/json
 
 
 
+
+
+
+
+
+
+# --------------------------------- MUNICIPALITIES
+##### READ ALL MUNICIPALITIESES
+GET http://localhost:8080/api/municipalities
+Content-Type: application/json
+
+
+##### READ A MUNICIPALITIES BY ID
+GET http://localhost:8080/api/municipalities/1
+Content-Type: application/json
+
+
+##### CREATE A MUNICIPALITIES
+POST http://localhost:8080/api/municipalities
+Content-Type: application/json
+
+{
+    "name": "Municipality 1",
+    "idCity": 1
+}
+
+
+##### UPDATE A MUNICIPALITIES BY ID
+PUT http://localhost:8080/api/municipalities/1
+Content-Type: application/json
+
+{
+    "name": "Municipality 1 update",
+    "idCity": 1
+}
+
+
+##### DELETE A MUNICIPALITIES BY ID
+DELETE http://localhost:8080/api/municipalities/1
+Content-Type: application/json
+
+
+
+
+
+
+
+
+
+# --------------------------------- ZONE
+##### READ ALL ZONES
+GET http://localhost:8080/api/zone
+Content-Type: application/json
+
+
+##### READ A ZONE BY ID
+GET http://localhost:8080/api/zone/1
+Content-Type: application/json
+
+
+##### CREATE A ZONE
+POST http://localhost:8080/api/zone
+Content-Type: application/json
+
+{
+    "name": "Zone 1",
+    "idMunicipalities": 1
+}
+
+
+##### UPDATE A ZONE BY ID
+PUT http://localhost:8080/api/zone/1
+Content-Type: application/json
+
+{
+    "name": "Zone 1 update",
+    "idMunicipalities": 1
+}
+
+
+##### DELETE A ZONE BY ID
+DELETE http://localhost:8080/api/zone/1
+Content-Type: application/json
+
+
+
+
+
+
+
+
+
+
+
+
+
+# --------------------------------- TYPE BUSINESS
+##### READ ALL TYPE BUSINESSES
+GET http://localhost:8080/api/typeBusiness
+Content-Type: application/json
+
+
+##### READ A TYPE BUSINESS BY ID
+GET http://localhost:8080/api/typeBusiness/1
+Content-Type: application/json
+
+
+##### CREATE A TYPE BUSINESS
+POST http://localhost:8080/api/typeBusiness
+Content-Type: application/json
+
+{
+    "name": "Type business 1"
+}
+
+
+##### UPDATE A TYPE BUSINESS BY ID
+PUT http://localhost:8080/api/typeBusiness/1
+Content-Type: application/json
+
+{
+    "name": "Type business 1 update"
+}
+
+
+##### DELETE A TYPE BUSINESS BY ID
+DELETE http://localhost:8080/api/typeBusiness/1
+Content-Type: application/json
+
+
+
+
+
+
+
+
+
+
 # --------------------------------- BUSINESS
 ##### READ ALL BUSINESSES
 GET http://localhost:8080/api/business
@@ -53,7 +191,7 @@ Content-Type: application/json
 
 
 ##### CREATE A BUSINESS
-POST http://localhost:8080/api/business
+POST https://serviceprojectspring.herokuapp.com/api/business
 Content-Type: application/json
 
 {
@@ -85,6 +223,58 @@ Content-Type: application/json
 ##### DELETE A BUSINESS BY ID
 DELETE http://localhost:8080/api/business/1
 Content-Type: application/json
+
+
+
+
+
+
+
+
+
+# --------------------------------- LOCATION
+##### READ ALL LOCATIONS
+GET http://localhost:8080/api/location
+Content-Type: application/json
+
+
+##### READ A LOCATION BY ID
+GET http://localhost:8080/api/location/1
+Content-Type: application/json
+
+
+##### CREATE A LOCATION
+POST http://localhost:8080/api/location
+Content-Type: application/json
+
+{
+    "latitude": 41.71727401,
+    "longitude": 72.00898606
+}
+
+
+##### UPDATE A LOCATION BY ID
+PUT http://localhost:8080/api/location/1
+Content-Type: application/json
+
+{
+    "latitude": 41.71727411,
+    "longitude": 72.00898611
+}
+
+
+##### DELETE A LOCATION BY ID
+DELETE http://localhost:8080/api/location/1
+Content-Type: application/json
+
+
+
+
+
+
+
+
+
 
 
 
@@ -152,155 +342,3 @@ Content-Type: application/json
 
 
 
-
-
-# --------------------------------- LOCATION
-##### READ ALL LOCATIONS
-GET http://localhost:8080/api/location
-Content-Type: application/json
-
-
-##### READ A LOCATION BY ID
-GET http://localhost:8080/api/location/1
-Content-Type: application/json
-
-
-##### CREATE A LOCATION
-POST http://localhost:8080/api/location
-Content-Type: application/json
-
-{
-    "latitude": 41.71727401,
-    "longitude": 72.00898606
-}
-
-
-##### UPDATE A LOCATION BY ID
-PUT http://localhost:8080/api/location/1
-Content-Type: application/json
-
-{
-    "latitude": 41.71727411,
-    "longitude": 72.00898611
-}
-
-
-##### DELETE A LOCATION BY ID
-DELETE http://localhost:8080/api/location/1
-Content-Type: application/json
-
-
-
-
-
-
-# --------------------------------- TYPE BUSINESS
-##### READ ALL TYPE BUSINESSES
-GET http://localhost:8080/api/typeBusiness
-Content-Type: application/json
-
-
-##### READ A TYPE BUSINESS BY ID
-GET http://localhost:8080/api/typeBusiness/1
-Content-Type: application/json
-
-
-##### CREATE A TYPE BUSINESS
-POST http://localhost:8080/api/typeBusiness
-Content-Type: application/json
-
-{
-    "name": "Type business 1"
-}
-
-
-##### UPDATE A TYPE BUSINESS BY ID
-PUT http://localhost:8080/api/typeBusiness/1
-Content-Type: application/json
-
-{
-    "name": "Type business 1 update"
-}
-
-
-##### DELETE A TYPE BUSINESS BY ID
-DELETE http://localhost:8080/api/typeBusiness/1
-Content-Type: application/json
-
-
-
-# --------------------------------- ZONE
-##### READ ALL ZONES
-GET http://localhost:8080/api/zone
-Content-Type: application/json
-
-
-##### READ A ZONE BY ID
-GET http://localhost:8080/api/zone/1
-Content-Type: application/json
-
-
-##### CREATE A ZONE
-POST http://localhost:8080/api/zone
-Content-Type: application/json
-
-{
-    "name": "Zone 1",
-    "idMunicipalities": 1
-}
-
-
-##### UPDATE A ZONE BY ID
-PUT http://localhost:8080/api/zone/1
-Content-Type: application/json
-
-{
-    "name": "Zone 1 update",
-    "idMunicipalities": 1
-}
-
-
-##### DELETE A ZONE BY ID
-DELETE http://localhost:8080/api/zone/1
-Content-Type: application/json
-
-
-
-
-
-
-
-# --------------------------------- MUNICIPALITIES
-##### READ ALL MUNICIPALITIESES
-GET http://localhost:8080/api/municipalities
-Content-Type: application/json
-
-
-##### READ A MUNICIPALITIES BY ID
-GET http://localhost:8080/api/municipalities/1
-Content-Type: application/json
-
-
-##### CREATE A MUNICIPALITIES
-POST http://localhost:8080/api/municipalities
-Content-Type: application/json
-
-{
-    "name": "Municipality 1",
-    "idCity": 1
-}
-
-
-##### UPDATE A MUNICIPALITIES BY ID
-PUT http://localhost:8080/api/municipalities/1
-Content-Type: application/json
-
-{
-    "name": "Municipality 1 update",
-    "idCity": 1
-}
-
-
-##### DELETE A MUNICIPALITIES BY ID
-DELETE http://localhost:8080/api/municipalities/1
-Content-Type: application/json
