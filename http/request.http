@@ -284,17 +284,17 @@ Content-Type: application/json
 
 {
     "name": "Municipality 1",
-    "idCity":1
+    "idCity": 1
 }
 
 
 ##### UPDATE A MUNICIPALITIES BY ID
-PUT http://localhost:8080/api/municipalities/1
+PUT http://localhost:8080/api/municipalities/2
 Content-Type: application/json
 
 {
     "name": "Municipality 1 update",
-    "idCity":1
+    "idCity": 1
 }
 
 

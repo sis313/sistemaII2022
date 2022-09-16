@@ -38,7 +38,7 @@ public class MunicipalitiesService {
     public MunicipalitiesDto updateDto(Integer municipalitiesId, Municipalities municipalities) {
         Municipalities municipalitiesFound = municipalitiesRepository.getReferenceById(municipalitiesId);
         municipalitiesFound.setName(municipalities.getName());
-        municipalitiesFound.setIdMunicipalities(municipalities.getIdMunicipalities());
+        municipalitiesFound.setIdCity(municipalities.getIdCity());
         Municipalities response = municipalitiesRepository.save(municipalitiesFound);
         return municipalitiesToMunicipalitiesDto(response);
     }
