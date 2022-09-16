@@ -223,3 +223,40 @@ Content-Type: application/json
 ##### DELETE A TYPE BUSINESS BY ID
 DELETE http://localhost:8080/api/typeBusiness/1
 Content-Type: application/json
+
+
+
+
+##### READ ALL ZONES
+GET http://localhost:8080/api/zone
+Content-Type: application/json
+
+
+##### READ A ZONE BY ID
+GET http://localhost:8080/api/zone/1
+Content-Type: application/json
+
+
+##### CREATE A ZONE
+POST http://localhost:8080/api/zone
+Content-Type: application/json
+
+{
+    "name": "Zone 1",
+    "idMunicipalities": 1
+}
+
+
+##### UPDATE A ZONE BY ID
+PUT http://localhost:8080/api/zone/1
+Content-Type: application/json
+
+{
+    "name": "Zone 1 update",
+    "idMunicipalities": 1
+}
+
+
+##### DELETE A ZONE BY ID
+DELETE http://localhost:8080/api/zone/1
+Content-Type: application/json
