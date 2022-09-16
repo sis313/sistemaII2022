@@ -1,3 +1,6 @@
+
+
+# --------------------------------- CITY
 ##### READ ALL CITIES
 GET http://localhost:8080/api/city
 Content-Type: application/json
@@ -33,7 +36,7 @@ Content-Type: application/json
 
 
 
-
+# --------------------------------- BUSINESS
 ##### READ ALL BUSINESSES
 GET http://localhost:8080/api/business
 Content-Type: application/json
@@ -86,7 +89,7 @@ Content-Type: application/json
 
 
 
-
+# --------------------------------- BRANCH
 ##### READ ALL BRANCHES
 GET http://localhost:8080/api/branch
 Content-Type: application/json
@@ -151,7 +154,7 @@ Content-Type: application/json
 
 
 
-
+# --------------------------------- LOCATION
 ##### READ ALL LOCATIONS
 GET http://localhost:8080/api/location
 Content-Type: application/json
@@ -191,7 +194,7 @@ Content-Type: application/json
 
 
 
-
+# --------------------------------- TYPE BUSINESS
 ##### READ ALL TYPE BUSINESSES
 GET http://localhost:8080/api/typeBusiness
 Content-Type: application/json
@@ -226,7 +229,7 @@ Content-Type: application/json
 
 
 
-
+# --------------------------------- ZONE
 ##### READ ALL ZONES
 GET http://localhost:8080/api/zone
 Content-Type: application/json
@@ -267,7 +270,7 @@ Content-Type: application/json
 
 
 
-
+# --------------------------------- MUNICIPALITIES
 ##### READ ALL MUNICIPALITIESES
 GET http://localhost:8080/api/municipalities
 Content-Type: application/json
@@ -289,7 +292,7 @@ Content-Type: application/json
 
 
 ##### UPDATE A MUNICIPALITIES BY ID
-PUT http://localhost:8080/api/municipalities/2
+PUT http://localhost:8080/api/municipalities/1
 Content-Type: application/json
 
 {
