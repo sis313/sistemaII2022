@@ -1,33 +1,32 @@
 package ucb.app.dto;
 
 public class CityDto {
-    private Integer id_city;
-    private int name;
+    private Integer idCity;
+    private String name;
 
-    public CityDto(Integer id_city, int name) {
-        this.id_city = id_city;
+    public CityDto(Integer idCity, String name) {
+        this.idCity = idCity;
         this.name = name;
     }
 
-    public Integer getId_city() {
-        return id_city;
+    public Integer getIdCity() {
+        return idCity;
     }
 
-    public void setId_city(Integer id_city) {
-        this.id_city = id_city;
+    public void setIdCity(Integer idCity) {
+        this.idCity = idCity;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
     @Override
     public String toString() {
-        return "CityDto [id_city=" + id_city + ", name=" + name + "]";
+        return "CityDto [idCity=" + idCity + ", name=" + name + "]";
     }
-
 }

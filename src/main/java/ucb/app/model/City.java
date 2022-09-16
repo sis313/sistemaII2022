@@ -31,7 +31,7 @@ public class City implements Serializable {
     private Integer idCity;
     @Basic(optional = false)
     @Column(name = "name")
-    private int name;
+    private String name;
 
     public City() {
     }
@@ -40,7 +40,7 @@ public class City implements Serializable {
         this.idCity = idCity;
     }
 
-    public City(Integer idCity, int name) {
+    public City(Integer idCity, String name) {
         this.idCity = idCity;
         this.name = name;
     }
@@ -53,11 +53,11 @@ public class City implements Serializable {
         this.idCity = idCity;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 

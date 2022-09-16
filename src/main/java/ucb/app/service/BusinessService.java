@@ -45,7 +45,7 @@ public class BusinessService {
         businessFound.setIdTypeBusiness(business.getIdTypeBusiness());
         businessFound.setCreateDate(business.getCreateDate());
         businessFound.setUpdateDate(business.getUpdateDate());
-        businessFound.setUserIdUser(business.getUserIdUser());
+        businessFound.setIdUser(business.getIdUser());
         Business response = businessRepository.save(businessFound);
         return businessToBusinessDto(response);
     }
@@ -58,7 +58,7 @@ public class BusinessService {
     private BusinessDto businessToBusinessDto(Business business) {
         BusinessDto businessDto = new BusinessDto(business.getIdBusiness(), business.getName(),
                 business.getDescription(), business.getIdTypeBusiness(), business.getCreateDate(),
-                business.getUpdateDate(), business.getStatus(), business.getUserIdUser());
+                business.getUpdateDate(), business.getStatus(), business.getIdUser());
         return businessDto;
     }
 }

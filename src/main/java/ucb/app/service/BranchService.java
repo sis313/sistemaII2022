@@ -40,7 +40,7 @@ public class BranchService {
 
     public BranchDto updateDto(Integer branchId, Branch branch) {
         Branch branchFound = branchRepository.getReferenceById(branchId);
-        branchFound.setDirection(branch.getDirection());
+        branchFound.setAddress(branch.getAddress());
         branchFound.setOpenHour(branch.getOpenHour());
         branchFound.setCloseHour(branch.getCloseHour());
         branchFound.setAttentionDays(branch.getAttentionDays());
@@ -61,7 +61,7 @@ public class BranchService {
     }
 
     private BranchDto branchToBranchDto(Branch branch) {
-        BranchDto branchDto = new BranchDto(branch.getIdBranch(), branch.getDirection(), branch.getOpenHour(),
+        BranchDto branchDto = new BranchDto(branch.getIdBranch(), branch.getAddress(), branch.getOpenHour(),
                 branch.getCloseHour(), branch.getAttentionDays(), branch.getImage(), branch.getIdZone(),
                 branch.getIdLocation(), branch.getIdBusiness(), branch.getCreateDate(), branch.getUpdateDate(),
                 branch.getStatus());

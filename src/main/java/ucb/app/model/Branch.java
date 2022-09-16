@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 @NamedQueries({
         @NamedQuery(name = "Branch.findAll", query = "SELECT b FROM Branch b"),
         @NamedQuery(name = "Branch.findByIdBranch", query = "SELECT b FROM Branch b WHERE b.idBranch = :idBranch"),
-        @NamedQuery(name = "Branch.findByDirection", query = "SELECT b FROM Branch b WHERE b.direction = :direction"),
+        @NamedQuery(name = "Branch.findByAddress", query = "SELECT b FROM Branch b WHERE b.address = :address"),
         @NamedQuery(name = "Branch.findByOpenHour", query = "SELECT b FROM Branch b WHERE b.openHour = :openHour"),
         @NamedQuery(name = "Branch.findByCloseHour", query = "SELECT b FROM Branch b WHERE b.closeHour = :closeHour"),
         @NamedQuery(name = "Branch.findByAttentionDays", query = "SELECT b FROM Branch b WHERE b.attentionDays = :attentionDays"),
@@ -43,8 +43,8 @@ public class Branch implements Serializable {
     @Column(name = "id_branch")
     private Integer idBranch;
     @Basic(optional = false)
-    @Column(name = "direction")
-    private String direction;
+    @Column(name = "address")
+    private String address;
     @Basic(optional = false)
     @Column(name = "open_hour")
     @Temporal(TemporalType.TIME)
@@ -56,7 +56,6 @@ public class Branch implements Serializable {
     @Basic(optional = false)
     @Column(name = "attention_days")
     private String attentionDays;
-    @Basic(optional = false)
     @Lob
     @Column(name = "image")
     private byte[] image;
@@ -88,14 +87,13 @@ public class Branch implements Serializable {
         this.idBranch = idBranch;
     }
 
-    public Branch(Integer idBranch, String direction, Date openHour, Date closeHour, String attentionDays, byte[] image,
-            int idZone, int idLocation, int idBusiness, Date createDate, Date updateDate, int status) {
+    public Branch(Integer idBranch, String address, Date openHour, Date closeHour, String attentionDays, int idZone,
+            int idLocation, int idBusiness, Date createDate, Date updateDate, int status) {
         this.idBranch = idBranch;
-        this.direction = direction;
+        this.address = address;
         this.openHour = openHour;
         this.closeHour = closeHour;
         this.attentionDays = attentionDays;
-        this.image = image;
         this.idZone = idZone;
         this.idLocation = idLocation;
         this.idBusiness = idBusiness;
@@ -112,12 +110,12 @@ public class Branch implements Serializable {
         this.idBranch = idBranch;
     }
 
-    public String getDirection() {
-        return direction;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDirection(String direction) {
-        this.direction = direction;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Date getOpenHour() {

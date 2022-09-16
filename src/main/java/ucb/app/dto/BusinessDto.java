@@ -10,10 +10,10 @@ public class BusinessDto {
     private Date createDate;
     private Date updateDate;
     private int status;
-    private int userIdUser;
+    private int idUser;
 
     public BusinessDto(Integer idBusiness, String name, String description, int idTypeBusiness, Date createDate,
-            Date updateDate, int status, int userIdUser) {
+            Date updateDate, int status, int idUser) {
         this.idBusiness = idBusiness;
         this.name = name;
         this.description = description;
@@ -21,7 +21,7 @@ public class BusinessDto {
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.status = status;
-        this.userIdUser = userIdUser;
+        this.idUser = idUser;
     }
 
     public Integer getIdBusiness() {
@@ -80,18 +80,18 @@ public class BusinessDto {
         this.status = status;
     }
 
-    public int getUserIdUser() {
-        return userIdUser;
+    public int getIdUser() {
+        return idUser;
     }
 
-    public void setUserIdUser(int userIdUser) {
-        this.userIdUser = userIdUser;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
     @Override
     public String toString() {
         return "BusinessDto [createDate=" + createDate + ", description=" + description + ", idBusiness=" + idBusiness
-                + ", idTypeBusiness=" + idTypeBusiness + ", name=" + name + ", status=" + status + ", updateDate="
-                + updateDate + ", userIdUser=" + userIdUser + "]";
+                + ", idTypeBusiness=" + idTypeBusiness + ", idUser=" + idUser + ", name=" + name + ", status=" + status
+                + ", updateDate=" + updateDate + "]";
     }
 }

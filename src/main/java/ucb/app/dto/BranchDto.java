@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class BranchDto {
     private Integer idBranch;
-    private String direction;
+    private String address;
     private Date openHour;
     private Date closeHour;
     private String attentionDays;
@@ -17,10 +17,10 @@ public class BranchDto {
     private Date updateDate;
     private int status;
 
-    public BranchDto(Integer idBranch, String direction, Date openHour, Date closeHour, String attentionDays,
+    public BranchDto(Integer idBranch, String address, Date openHour, Date closeHour, String attentionDays,
             byte[] image, int idZone, int idLocation, int idBusiness, Date createDate, Date updateDate, int status) {
         this.idBranch = idBranch;
-        this.direction = direction;
+        this.address = address;
         this.openHour = openHour;
         this.closeHour = closeHour;
         this.attentionDays = attentionDays;
@@ -41,12 +41,12 @@ public class BranchDto {
         this.idBranch = idBranch;
     }
 
-    public String getDirection() {
-        return direction;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDirection(String direction) {
-        this.direction = direction;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Date getOpenHour() {
@@ -131,9 +131,9 @@ public class BranchDto {
 
     @Override
     public String toString() {
-        return "BranchDto [attentionDays=" + attentionDays + ", closeHour=" + closeHour + ", createDate=" + createDate
-                + ", direction=" + direction + ", idBranch=" + idBranch + ", idBusiness=" + idBusiness + ", idLocation="
-                + idLocation + ", idZone=" + idZone + ", image=" + Arrays.toString(image) + ", openHour=" + openHour
-                + ", status=" + status + ", updateDate=" + updateDate + "]";
+        return "BranchDto [address=" + address + ", attentionDays=" + attentionDays + ", closeHour=" + closeHour
+                + ", createDate=" + createDate + ", idBranch=" + idBranch + ", idBusiness=" + idBusiness
+                + ", idLocation=" + idLocation + ", idZone=" + idZone + ", image=" + Arrays.toString(image)
+                + ", openHour=" + openHour + ", status=" + status + ", updateDate=" + updateDate + "]";
     }
 }

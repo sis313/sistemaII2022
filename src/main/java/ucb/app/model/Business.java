@@ -26,10 +26,10 @@ import javax.persistence.TemporalType;
         @NamedQuery(name = "Business.findByName", query = "SELECT b FROM Business b WHERE b.name = :name"),
         @NamedQuery(name = "Business.findByDescription", query = "SELECT b FROM Business b WHERE b.description = :description"),
         @NamedQuery(name = "Business.findByIdTypeBusiness", query = "SELECT b FROM Business b WHERE b.idTypeBusiness = :idTypeBusiness"),
+        @NamedQuery(name = "Business.findByIdUser", query = "SELECT b FROM Business b WHERE b.idUser = :idUser"),
         @NamedQuery(name = "Business.findByCreateDate", query = "SELECT b FROM Business b WHERE b.createDate = :createDate"),
         @NamedQuery(name = "Business.findByUpdateDate", query = "SELECT b FROM Business b WHERE b.updateDate = :updateDate"),
-        @NamedQuery(name = "Business.findByStatus", query = "SELECT b FROM Business b WHERE b.status = :status"),
-        @NamedQuery(name = "Business.findByUserIdUser", query = "SELECT b FROM Business b WHERE b.userIdUser = :userIdUser") })
+        @NamedQuery(name = "Business.findByStatus", query = "SELECT b FROM Business b WHERE b.status = :status") })
 public class Business implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,6 +48,9 @@ public class Business implements Serializable {
     @Column(name = "id_type_business")
     private int idTypeBusiness;
     @Basic(optional = false)
+    @Column(name = "id_user")
+    private int idUser;
+    @Basic(optional = false)
     @Column(name = "create_date")
     @Temporal(TemporalType.DATE)
     private Date createDate;
@@ -58,9 +61,6 @@ public class Business implements Serializable {
     @Basic(optional = false)
     @Column(name = "status")
     private int status;
-    @Basic(optional = false)
-    @Column(name = "user_id_user")
-    private int userIdUser;
 
     public Business() {
     }
@@ -69,16 +69,16 @@ public class Business implements Serializable {
         this.idBusiness = idBusiness;
     }
 
-    public Business(Integer idBusiness, String name, String description, int idTypeBusiness, Date createDate,
-            Date updateDate, int status, int userIdUser) {
+    public Business(Integer idBusiness, String name, String description, int idTypeBusiness, int idUser,
+            Date createDate, Date updateDate, int status) {
         this.idBusiness = idBusiness;
         this.name = name;
         this.description = description;
         this.idTypeBusiness = idTypeBusiness;
+        this.idUser = idUser;
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.status = status;
-        this.userIdUser = userIdUser;
     }
 
     public Integer getIdBusiness() {
@@ -113,6 +113,14 @@ public class Business implements Serializable {
         this.idTypeBusiness = idTypeBusiness;
     }
 
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
     public Date getCreateDate() {
         return createDate;
     }
@@ -135,14 +143,6 @@ public class Business implements Serializable {
 
     public void setStatus(int status) {
         this.status = status;
-    }
-
-    public int getUserIdUser() {
-        return userIdUser;
-    }
-
-    public void setUserIdUser(int userIdUser) {
-        this.userIdUser = userIdUser;
     }
 
     @Override

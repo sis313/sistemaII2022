@@ -1,6 +1,7 @@
 package ucb.app.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,12 +31,14 @@ public class Location implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_location")
     private Integer idLocation;
+    // @Max(value=?) @Min(value=?)//if you know range of your decimal fields
+    // consider using these annotations to enforce field validation
     @Basic(optional = false)
     @Column(name = "latitude")
-    private float latitude;
+    private BigDecimal latitude;
     @Basic(optional = false)
     @Column(name = "longitude")
-    private float longitude;
+    private BigDecimal longitude;
 
     public Location() {
     }
@@ -44,7 +47,7 @@ public class Location implements Serializable {
         this.idLocation = idLocation;
     }
 
-    public Location(Integer idLocation, float latitude, float longitude) {
+    public Location(Integer idLocation, BigDecimal latitude, BigDecimal longitude) {
         this.idLocation = idLocation;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -58,19 +61,19 @@ public class Location implements Serializable {
         this.idLocation = idLocation;
     }
 
-    public float getLatitude() {
+    public BigDecimal getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(float latitude) {
+    public void setLatitude(BigDecimal latitude) {
         this.latitude = latitude;
     }
 
-    public float getLongitude() {
+    public BigDecimal getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(float longitude) {
+    public void setLongitude(BigDecimal longitude) {
         this.longitude = longitude;
     }
 

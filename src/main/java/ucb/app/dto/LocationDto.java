@@ -1,11 +1,13 @@
 package ucb.app.dto;
 
+import java.math.BigDecimal;
+
 public class LocationDto {
     private Integer idLocation;
-    private float latitude;
-    private float longitude;
+    private BigDecimal latitude;
+    private BigDecimal longitude;
 
-    public LocationDto(Integer idLocation, float latitude, float longitude) {
+    public LocationDto(Integer idLocation, BigDecimal latitude, BigDecimal longitude) {
         this.idLocation = idLocation;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -19,19 +21,19 @@ public class LocationDto {
         this.idLocation = idLocation;
     }
 
-    public float getLatitude() {
+    public BigDecimal getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(float latitude) {
+    public void setLatitude(BigDecimal latitude) {
         this.latitude = latitude;
     }
 
-    public float getLongitude() {
+    public BigDecimal getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(float longitude) {
+    public void setLongitude(BigDecimal longitude) {
         this.longitude = longitude;
     }
 
