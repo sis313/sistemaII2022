@@ -13,7 +13,7 @@ POST http://localhost:8080/api/city
 Content-Type: application/json
 
 {
-    "name": 1
+    "name": "La Paz"
 }
 
 
@@ -22,7 +22,7 @@ PUT http://localhost:8080/api/city/4
 Content-Type: application/json
 
 {
-    "name": 1
+    "name": "La Paz update"
 }
 
 
@@ -57,10 +57,10 @@ Content-Type: application/json
   "name": "business name",
   "description": "business description",
   "idTypeBusiness": 4,
+  "idUser": 4,
   "createDate": "2008-01-02",
   "updateDate": "2008-01-02",
-  "status": 0,
-  "userIdUser": 4
+  "status": 0
 }
 
 
@@ -69,13 +69,13 @@ PUT http://localhost:8080/api/business/4
 Content-Type: application/json
 
 {
-  "name": "business name",
-  "description": "business description",
+  "name": "business name update",
+  "description": "business description update",
   "idTypeBusiness": 4,
+  "idUser": 4,
   "createDate": "2008-01-02",
   "updateDate": "2008-01-02",
-  "status": 1,
-  "userIdUser": 4
+  "status": 0
 }
 
 
@@ -107,7 +107,7 @@ POST http://localhost:8080/api/branch
 Content-Type: application/json
 
 {
-    "direction": "branch direction",
+    "address": "branch address",
     "openHour": "2022-01-01T10:01:01",
     "closeHour": "2022-01-01T10:01:01",
     "attentionDays": "Monday",
@@ -126,7 +126,7 @@ PUT http://localhost:8080/api/branch/4
 Content-Type: application/json
 
 {
-    "direction": "branch direction",
+    "address": "branch address",
     "openHour": "2022-01-01T10:01:01",
     "closeHour": "2022-01-01T10:01:01",
     "attentionDays": "Monday",
