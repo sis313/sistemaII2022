@@ -342,3 +342,45 @@ Content-Type: application/json
 
 
 
+# --------------------------------- COMMENT
+##### READ ALL COMMENTS
+GET http://localhost:8080/api/comment
+Content-Type: application/json
+
+
+##### READ A COMMENT BY ID
+GET http://localhost:8080/api/comment/1
+Content-Type: application/json
+
+
+##### CREATE A COMMENT
+POST http://localhost:8080/api/comment
+Content-Type: application/json
+
+{
+    "message": "message 1",
+    "idUser": 1,
+    "idBusiness": 1,
+    "status": 1
+}
+
+
+##### UPDATE A COMMENT BY ID
+PUT http://localhost:8080/api/comment/1
+Content-Type: application/json
+
+{
+    "message": "message 1 update",
+    "idUser": 1,
+    "idBusiness": 1,
+    "status": 1
+}
+
+
+##### DELETE A COMMENT BY ID
+DELETE http://localhost:8080/api/comment/1
+Content-Type: application/json
+
+
+
+
