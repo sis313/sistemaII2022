@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ucb.app.dto.RatingAverageDto;
 import ucb.app.dto.RatingDto;
 import ucb.app.model.Rating;
 import ucb.app.repository.RatingRepository;
@@ -26,6 +27,12 @@ public class RatingService {
     public RatingDto findByIdDto(Integer ratingId) throws Exception {
         return ratingRepository.findById(ratingId).stream().map(this::ratingToRatingDto).findFirst()
                 .orElseThrow(() -> new Exception("Could not find rating"));
+    }
+
+    public RatingAverageDto findByBranchIdDto(Integer branchId) {
+        Integer averageRating = ratingRepository.findAverageByIdBranch(branchId);
+        RatingAverageDto ratingAverageDto = new RatingAverageDto(averageRating);
+        return ratingAverageDto;
     }
 
     public RatingDto saveDto(Rating rating) {

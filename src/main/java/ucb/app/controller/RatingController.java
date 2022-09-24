@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import ucb.app.dto.RatingAverageDto;
 import ucb.app.dto.RatingDto;
 import ucb.app.model.Rating;
 import ucb.app.service.RatingService;
@@ -37,6 +39,12 @@ public class RatingController {
     @GetMapping(path = "/{ratingId}")
     public ResponseEntity<RatingDto> getRatingById(@PathVariable("ratingId") Integer ratingId) throws Exception {
         RatingDto rating = ratingService.findByIdDto(ratingId);
+        return new ResponseEntity<>(rating, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/")
+    public ResponseEntity<RatingAverageDto> getRatingByBranchId(@RequestParam("branchId") Integer branchId) {
+        RatingAverageDto rating = ratingService.findByBranchIdDto(branchId);
         return new ResponseEntity<>(rating, HttpStatus.OK);
     }
 
