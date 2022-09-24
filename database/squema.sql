@@ -57,8 +57,8 @@ CREATE TABLE comment (
 -- Table: location
 CREATE TABLE location (
     id_location int NOT NULL AUTO_INCREMENT,
-    latitude decimal(10, 10) NOT NULL,
-    longitude decimal(10, 10) NOT NULL,
+    latitude decimal(10, 8) NOT NULL,
+    longitude decimal(11, 8) NOT NULL,
     CONSTRAINT location_pk PRIMARY KEY (id_location)
 );
 -- Table: municipalities

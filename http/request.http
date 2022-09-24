@@ -353,7 +353,7 @@ GET http://localhost:8080/api/comment/1
 Content-Type: application/json
 
 
-##### READ A COMMENT BY BUSINESS ID
+##### READ COMMENTS BY BUSINESS ID
 GET http://localhost:8080/api/comment/?businessId=1
 Content-Type: application/json
 
@@ -403,7 +403,7 @@ GET http://localhost:8080/api/rating/1
 Content-Type: application/json
 
 
-##### READ A RATING BY BRANCH ID
+##### READ AVERAGE RATING BY BRANCH ID
 GET http://localhost:8080/api/rating/?branchId=1
 Content-Type: application/json
 
