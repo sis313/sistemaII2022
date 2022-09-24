@@ -191,7 +191,7 @@ Content-Type: application/json
 
 
 ##### CREATE A BUSINESS
-POST https://serviceprojectspring.herokuapp.com/api/business
+POST http://localhost:8080/api/business
 Content-Type: application/json
 
 {
@@ -350,6 +350,11 @@ Content-Type: application/json
 
 ##### READ A COMMENT BY ID
 GET http://localhost:8080/api/comment/1
+Content-Type: application/json
+
+
+##### READ A COMMENT BY BUSINESS ID
+GET http://localhost:8080/api/comment/?businessId=1
 Content-Type: application/json
 
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.dto.CommentDto;
@@ -38,6 +39,12 @@ public class CommentController {
     public ResponseEntity<CommentDto> getCommentById(@PathVariable("commentId") Integer commentId) throws Exception {
         CommentDto comment = commentService.findByIdDto(commentId);
         return new ResponseEntity<>(comment, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/")
+    public ResponseEntity<List<CommentDto>> getCommentsByBusinessId(@RequestParam("businessId") Integer businessId) {
+        List<CommentDto> comments = commentService.findByBusinessIdDto(businessId);
+        return new ResponseEntity<>(comments, HttpStatus.OK);
     }
 
     @PostMapping

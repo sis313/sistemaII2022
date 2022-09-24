@@ -28,6 +28,11 @@ public class CommentService {
                 .orElseThrow(() -> new Exception("Could not find comment"));
     }
 
+    public List<CommentDto> findByBusinessIdDto(Integer businessId) {
+        return commentRepository.findByIdBusiness(businessId).stream().map(this::commentToCommentDto)
+                .collect(Collectors.toList());
+    }
+
     public CommentDto saveDto(Comment comment) {
         Comment response = commentRepository.save(comment);
         return commentToCommentDto(response);
