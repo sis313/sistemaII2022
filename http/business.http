@@ -3,7 +3,15 @@ GET http://localhost:8080/Business
 Accept: application/json
 
 ###
+GET http://localhost:8080/Business/2
+Accept: application/json
+
+###
 GET http://localhost:8080/Business/name/Toy-Dooley
+Accept: application/json
+
+###
+GET http://localhost:8080/Types
 Accept: application/json
 
 ###

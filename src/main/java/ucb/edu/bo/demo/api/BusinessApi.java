@@ -3,6 +3,7 @@ package ucb.edu.bo.demo.api;
 
 import ucb.edu.bo.demo.bl.BusinessBl;
 import ucb.edu.bo.demo.dto.Business;
+import ucb.edu.bo.demo.dto.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,14 +20,14 @@ public class BusinessApi {
     }
 
     @GetMapping(value = "/Business")
-    public List<Business> ListBusiness(){
-        return businessBl.ListBusiness();
+    public List<Business> getAll(){
+        return businessBl.getAll();
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping(value = "/Business/Type/{name}")
-    public List<Business> findByType(@PathVariable(name = "name") String name){
-        return businessBl.findByType(name);
+    @GetMapping(value = "/Business/{id}")
+    public List<Business> getById(@PathVariable(name = "id") int id){
+        return businessBl.getById(id);
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -34,6 +35,17 @@ public class BusinessApi {
     )
     public List<Business> findByName(@PathVariable(name = "name") String name){
         return businessBl.findByName(name);
+    }
+
+    @GetMapping(value = "/Types")
+    public List<Type> getAllTypes(){
+        return businessBl.getAllTypes();
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(value = "/Business/Type/{name}")
+    public List<Business> findByType(@PathVariable(name = "name") String name){
+        return businessBl.findByType(name);
     }
 
     @CrossOrigin(origins = "http://localhost:4200")

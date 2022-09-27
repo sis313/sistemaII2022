@@ -1,6 +1,7 @@
 package ucb.edu.bo.demo.dao;
 
 import ucb.edu.bo.demo.dto.Business;
+import ucb.edu.bo.demo.dto.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
@@ -17,7 +18,7 @@ public class BusinessDao {
         this.dataSource=dataSource;
     }
 
-    public List<Business> ListBusiness(){
+    public List<Business> getAll(){
         List<Business> result=new ArrayList<>();
         String query = "SELECT * FROM business";
 
@@ -26,6 +27,41 @@ public class BusinessDao {
                 PreparedStatement pstmt =  conn.prepareStatement(query);
                 ) {
                 System.out.println(query);
+                ResultSet rs = pstmt.executeQuery();
+                while (rs.next()) {
+                    Business business = new Business();
+                    business.setId_business(rs.getInt("id_business"));
+                    business.setName(rs.getString("name"));
+                    business.setDescription((rs.getString("description")));
+                    business.setId_type_business(rs.getInt("id_type_business"));
+                    business.setCreate_date(rs.getDate("create_date"));
+                    business.setUpdate_date(rs.getDate("update_date"));
+                    business.setStatus(rs.getInt("status"));
+                    business.setUser_id_user(rs.getInt("user_id_user"));
+
+                    result.add(business);
+                }
+                rs.close();
+                System.out.println("Si se logro :')");
+                System.out.println(result);
+
+            } catch (SQLException ex){
+                ex.printStackTrace();
+                System.out.println("No se logro :(");
+            }
+        return result;
+    }
+
+    public List<Business> getById(int id_b){
+        List<Business> result=new ArrayList<>();
+        String query = "SELECT * FROM business b where b.id = (?) ";
+
+        try (
+                Connection conn = dataSource.getConnection();
+                PreparedStatement pstmt =  conn.prepareStatement(query);
+                ) {
+                System.out.println(query);
+                pstmt.setInt(1, id_b);
                 ResultSet rs = pstmt.executeQuery();
                 while (rs.next()) {
                     Business business = new Business();
@@ -86,6 +122,33 @@ public class BusinessDao {
             }
         return result;
     } 
+
+    public List<Business> getAllTypes(){
+        List<Business> result=new ArrayList<>();
+        String query = "SELECT * FROM type_business";
+
+        try (
+                Connection conn = dataSource.getConnection();
+                PreparedStatement pstmt =  conn.prepareStatement(query);
+                ) {
+                System.out.println(query);
+                ResultSet rs = pstmt.executeQuery();
+                while (rs.next()) {
+                    Type_business type = new Business();
+                    type.setId_type_business(rs.getInt("id_type_business"));
+                    type.setName(rs.getString("name"));
+                    result.add(type);
+                }
+                rs.close();
+                System.out.println("Si se logro :')");
+                System.out.println(result);
+
+            } catch (SQLException ex){
+                ex.printStackTrace();
+                System.out.println("No se logro :(");
+            }
+        return result;
+    }
     
     public List<Business> findByType(String name) {
         List<Business> result = new ArrayList<>();
