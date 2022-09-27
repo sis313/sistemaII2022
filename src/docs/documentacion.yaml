@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Business API UCB
-  description: _La función principal de esta API es controlar y manejar de manera correcta la información que se encuentra en la Base de Datos, cuando `Business` realicen consultas como de servicios de cada negocio, consulta de sucursales, agregar, editar, eliminar de un servicio de algo específico._
+  description: _La función principal de esta API es controlar y manejar de manera correcta la información que se encuentra en la Base de Datos, cuando `Business` `Type Business` `City` `Municipalities` `Zone` `Rating` `Branch` `Comment` `Location` realicen consultas como de servicios de cada negocio, consulta de sucursales, agregar, editar, eliminar de un servicio de algo específico._
 
   termsOfService: http://swagger.io/terms/
   contact:
@@ -15,9 +15,36 @@ externalDocs:
   url: http://swagger.io
 servers:
   - url: https://api/v1/business
+  - url: https://api/v1/TypeBusiness
+  - url: https://api/v1/city
+  - url: https://api/v1/municipalities
+  - url: https://api/v1/zone
+  - url: https://api/v1/rating
+  - url: https://api/v1/comment
+  - url: https://api/v1/location
 tags:
   - name: business
     description: Todo acerca del acceso a business
+  - name: TYPEBUSINESS
+    description: Todo acerca del acceso a TypeBusiness
+
+  - name: CITY
+    description: Todo acerca del acceso a CITY
+  - name: MUNICIPALITIES
+    description: Todo acerca del acceso a MUNICIPALITIES
+  - name: ZONE
+    description: Todo acerca del acceso a ZONE
+  - name: RATING
+    description: Todo acerca del acceso a RATING
+  - name: BRANCH
+    description: Todo acerca del acceso a BRANCH
+  - name: COMMENT
+    description: Todo acerca del acceso a COMMENT
+  - name: LOCATION
+    description: Todo acerca del acceso a LOCATION
+
+
+
 
 
 paths:
@@ -33,13 +60,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BusinessCreate'
+              $ref: '#/components/schemas/Business'
           application/xml:
             schema:
-              $ref: '#/components/schemas/BusinessCreate'
+              $ref: '#/components/schemas/Business'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/BusinessCreate'
+              $ref: '#/components/schemas/Business'
         required: true
       responses:
         '200':
@@ -47,10 +74,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BusinessCreate'
+                $ref: '#/components/schemas/Business'
             application/xml:
               schema:
-                $ref: '#/components/schemas/BusinessCreate'
+                $ref: '#/components/schemas/Business'
         '405':
           description: Invalid input
 
@@ -108,7 +135,27 @@ paths:
         '400':
           description: Invalid ID supplied
         '404':
-          description: Pet not found
+          description: business not found
+
+
+    delete:
+      tags:
+        - business
+      summary: Delete business
+      description: This can only be done by the logged in user.
+      operationId: deleteUser
+      parameters:
+        - name: businessId
+          in: path
+          description: The name that needs to be deleted
+          required: true
+          schema:
+            type: integer
+      responses:
+        '400':
+          description: Invalid business supplied
+        '404':
+          description: business not found
 
     put:
       tags:
@@ -128,13 +175,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BusinessCreate'
+              $ref: '#/components/schemas/Business'
           application/xml:
             schema:
-              $ref: '#/components/schemas/BusinessCreate'
+              $ref: '#/components/schemas/Business'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/BusinessCreate'
+              $ref: '#/components/schemas/Business'
       responses:
         default:
           description: successful operation
@@ -168,73 +215,1396 @@ paths:
         '400':
           description: Invalid ID supplied
         '404':
-          description: Pet not found
+          description: Business not found
 
 
 
+
+  /typebusiness:
+    post:
+      tags:
+        - TYPEBUSINESS
+      summary: Crear una nueva ciudad
+      description: Agregar un nuevo typebusiness
+      operationId: addtypebusiness
+      requestBody:
+        description: Crear un nuevo typebusiness
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/typebusiness'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/typebusiness'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/typebusiness'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/typebusiness'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/typebusiness'
+        '405':
+          description: Invalid input
+
+
+  /typebusiness/:
+    get:
+      tags:
+        - TYPEBUSINESS
+      summary: Encontrar todos las ciudades
+      description: Se pueden proporcionar múltiples valores de estado con cadenas separadas por comas
+      operationId: findAlltypebusiness
+
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/typebusiness'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/typebusiness'
+        '400':
+          description: Invalid status value
+
+  /typebusiness/{typebusinessId}:
+    get:
+      tags:
+        - TYPEBUSINESS
+      summary: Encontrar una ciudad por ID
+      description: Retorna una ciudad
+      operationId: gettypebusinessById
+      parameters:
+        - name: typebusinessId
+          in: path
+          description: ID of typebusiness to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/typebusiness'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/typebusiness'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: typebusiness not found
 
     delete:
       tags:
-        - business
-      summary: Delete business
+        - TYPEBUSINESS
+      summary: Delete typebusiness
       description: This can only be done by the logged in user.
-      operationId: deleteUser
+      operationId: deletetypebusiness
       parameters:
-        - name: userId
+        - name: typebusinessId
           in: path
           description: The name that needs to be deleted
           required: true
           schema:
-            type: string
+            type: integer
       responses:
         '400':
-          description: Invalid username supplied
+          description: Invalid ID supplied
         '404':
-          description: User not found
+          description: typebusiness not found
+
+
+    put:
+      tags:
+        - TYPEBUSINESS
+      summary: Update typebusiness
+      description: This can only be done by the logged in typebusiness.
+      operationId: updatetypebusiness
+      parameters:
+        - name: typebusinessId
+          in: path
+          description: typebusinessId that need to be deleted
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Update an existent typebusiness
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/typebusiness'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/typebusiness'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/typebusiness'
+      responses:
+        default:
+          description: successful operation
+
+
+  /typebusiness/{userId}:
+    get:
+      tags:
+        - TYPEBUSINESS
+      summary: Encontrar un negocio por userID
+      description: Retorna un negocio
+      operationId: gettypebusinessUserById
+      parameters:
+        - name: userId
+          in: path
+          description: ID of userID to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/typebusiness'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/typebusiness'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: typebusiness not found
+
+
+
+
+  /city:
+    post:
+      tags:
+        - CITY
+      summary: Crear una nueva ciudad
+      description: Agregar un nuevo city
+      operationId: addCITY
+      requestBody:
+        description: Crear un nuevo city
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/City'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/City'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/City'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/City'
+        '405':
+          description: Invalid input
+
+
+  /city/:
+    get:
+      tags:
+        - CITY
+      summary: Encontrar todos las ciudades
+      description: Se pueden proporcionar múltiples valores de estado con cadenas separadas por comas
+      operationId: findAllCity
+
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/City'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/City'
+        '400':
+          description: Invalid status value
+
+  /city/{cityId}:
+    get:
+      tags:
+        - CITY
+      summary: Encontrar una ciudad por ID
+      description: Retorna una ciudad
+      operationId: getcityById
+      parameters:
+        - name: cityId
+          in: path
+          description: ID of city to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/City'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: city not found
+
+    delete:
+      tags:
+        - CITY
+      summary: Delete city
+      description: This can only be done by the logged in user.
+      operationId: deleteCity
+      parameters:
+        - name: cityId
+          in: path
+          description: The name that needs to be deleted
+          required: true
+          schema:
+            type: integer
+      responses:
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: city not found
+
+
+    put:
+      tags:
+        - CITY
+      summary: Update city
+      description: This can only be done by the logged in city.
+      operationId: updatecity
+      parameters:
+        - name: cityId
+          in: path
+          description: cityId that need to be deleted
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Update an existent city
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/City'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/City'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/City'
+      responses:
+        default:
+          description: successful operation
+
+
+  /city/{userId}:
+    get:
+      tags:
+        - CITY
+      summary: Encontrar un negocio por userID
+      description: Retorna un negocio
+      operationId: getCityUserById
+      parameters:
+        - name: userId
+          in: path
+          description: ID of userID to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/City'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: city not found
+
+
+
+
+  /municipalities:
+    post:
+      tags:
+        - MUNICIPALITIES
+      summary: Crear una nueva ciudad
+      description: Agregar un nuevo municipalities
+      operationId: addmunicipalities
+      requestBody:
+        description: Crear un nuevo municipalities
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/municipalities'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/municipalities'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/municipalities'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/municipalities'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/municipalities'
+        '405':
+          description: Invalid input
+
+
+  /municipalities/:
+    get:
+      tags:
+        - MUNICIPALITIES
+      summary: Encontrar todos las ciudades
+      description: Se pueden proporcionar múltiples valores de estado con cadenas separadas por comas
+      operationId: findAllmunicipalities
+
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/municipalities'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/municipalities'
+        '400':
+          description: Invalid status value
+
+  /municipalities/{municipalitiesId}:
+    get:
+      tags:
+        - MUNICIPALITIES
+      summary: Encontrar una ciudad por ID
+      description: Retorna una ciudad
+      operationId: getmunicipalitiesById
+      parameters:
+        - name: municipalitiesId
+          in: path
+          description: ID of municipalities to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/municipalities'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/municipalities'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: municipalities not found
+
+    delete:
+      tags:
+        - MUNICIPALITIES
+      summary: Delete municipalities
+      description: This can only be done by the logged in user.
+      operationId: deletemunicipalities
+      parameters:
+        - name: municipalitiesId
+          in: path
+          description: The name that needs to be deleted
+          required: true
+          schema:
+            type: integer
+      responses:
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: municipalities not found
+
+
+    put:
+      tags:
+        - MUNICIPALITIES
+      summary: Update municipalities
+      description: This can only be done by the logged in municipalities.
+      operationId: updatemunicipalities
+      parameters:
+        - name: municipalitiesId
+          in: path
+          description: municipalitiesId that need to be deleted
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Update an existent municipalities
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/municipalities'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/municipalities'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/municipalities'
+      responses:
+        default:
+          description: successful operation
+
+
+  /municipalities/{userId}:
+    get:
+      tags:
+        - MUNICIPALITIES
+      summary: Encontrar un negocio por userID
+      description: Retorna un negocio
+      operationId: getmunicipalitiesUserById
+      parameters:
+        - name: userId
+          in: path
+          description: ID of userID to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/municipalities'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/municipalities'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: municipalities not found
+
+
+
+
+  /zone:
+    post:
+      tags:
+        - ZONE
+      summary: Crear una nueva ciudad
+      description: Agregar un nuevo zone
+      operationId: addzone
+      requestBody:
+        description: Crear un nuevo zone
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/zone'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/zone'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/zone'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/zone'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/zone'
+        '405':
+          description: Invalid input
+
+
+  /zone/:
+    get:
+      tags:
+        - ZONE
+      summary: Encontrar todos las ciudades
+      description: Se pueden proporcionar múltiples valores de estado con cadenas separadas por comas
+      operationId: findAllzone
+
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/zone'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/zone'
+        '400':
+          description: Invalid status value
+
+  /zone/{zoneId}:
+    get:
+      tags:
+        - ZONE
+      summary: Encontrar una ciudad por ID
+      description: Retorna una ciudad
+      operationId: getzoneById
+      parameters:
+        - name: zoneId
+          in: path
+          description: ID of zone to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/zone'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/zone'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: zone not found
+
+    delete:
+      tags:
+        - ZONE
+      summary: Delete zone
+      description: This can only be done by the logged in user.
+      operationId: deletezone
+      parameters:
+        - name: zoneId
+          in: path
+          description: The name that needs to be deleted
+          required: true
+          schema:
+            type: integer
+      responses:
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: zone not found
+
+
+    put:
+      tags:
+        - ZONE
+      summary: Update zone
+      description: This can only be done by the logged in zone.
+      operationId: updatezone
+      parameters:
+        - name: zoneId
+          in: path
+          description: zoneId that need to be deleted
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Update an existent zone
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/zone'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/zone'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/zone'
+      responses:
+        default:
+          description: successful operation
+
+
+  /zone/{userId}:
+    get:
+      tags:
+        - ZONE
+      summary: Encontrar un negocio por userID
+      description: Retorna un negocio
+      operationId: getzoneUserById
+      parameters:
+        - name: userId
+          in: path
+          description: ID of userID to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/zone'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/zone'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: zone not found
+
+
+
+  /rating:
+    post:
+      tags:
+        - RATING
+      summary: Crear una nueva ciudad
+      description: Agregar un nuevo rating
+      operationId: addrating
+      requestBody:
+        description: Crear un nuevo rating
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/rating'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/rating'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/rating'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rating'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/rating'
+        '405':
+          description: Invalid input
+
+
+  /rating/:
+    get:
+      tags:
+        - RATING
+      summary: Encontrar todos las ciudades
+      description: Se pueden proporcionar múltiples valores de estado con cadenas separadas por comas
+      operationId: findAllrating
+
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/rating'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/rating'
+        '400':
+          description: Invalid status value
+
+  /rating/{ratingId}:
+    get:
+      tags:
+        - RATING
+      summary: Encontrar una ciudad por ID
+      description: Retorna una ciudad
+      operationId: getratingById
+      parameters:
+        - name: ratingId
+          in: path
+          description: ID of rating to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rating'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/rating'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: rating not found
+
+    delete:
+      tags:
+        - RATING
+      summary: Delete rating
+      description: This can only be done by the logged in user.
+      operationId: deleterating
+      parameters:
+        - name: ratingId
+          in: path
+          description: The name that needs to be deleted
+          required: true
+          schema:
+            type: integer
+      responses:
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: rating not found
+
+
+    put:
+      tags:
+        - RATING
+      summary: Update rating
+      description: This can only be done by the logged in rating.
+      operationId: updaterating
+      parameters:
+        - name: ratingId
+          in: path
+          description: ratingId that need to be deleted
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Update an existent rating
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/rating'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/rating'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/rating'
+      responses:
+        default:
+          description: successful operation
+
+
+  /rating/{userId}:
+    get:
+      tags:
+        - RATING
+      summary: Encontrar un negocio por userID
+      description: Retorna un negocio
+      operationId: getratingUserById
+      parameters:
+        - name: userId
+          in: path
+          description: ID of userID to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rating'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/rating'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: rating not found
+
+
+  /branch:
+    post:
+      tags:
+        - BRANCH
+      summary: Crear una nueva ciudad
+      description: Agregar un nuevo branch
+      operationId: addbranch
+      requestBody:
+        description: Crear un nuevo branch
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/branch'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/branch'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/branch'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/branch'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/branch'
+        '405':
+          description: Invalid input
+
+
+  /branch/:
+    get:
+      tags:
+        - BRANCH
+      summary: Encontrar todos las ciudades
+      description: Se pueden proporcionar múltiples valores de estado con cadenas separadas por comas
+      operationId: findAllbranch
+
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/branch'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/branch'
+        '400':
+          description: Invalid status value
+
+  /branch/{branchId}:
+    get:
+      tags:
+        - BRANCH
+      summary: Encontrar una ciudad por ID
+      description: Retorna una ciudad
+      operationId: getbranchById
+      parameters:
+        - name: branchId
+          in: path
+          description: ID of branch to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/branch'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/branch'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: branch not found
+
+    delete:
+      tags:
+        - BRANCH
+      summary: Delete branch
+      description: This can only be done by the logged in user.
+      operationId: deletebranch
+      parameters:
+        - name: branchId
+          in: path
+          description: The name that needs to be deleted
+          required: true
+          schema:
+            type: integer
+      responses:
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: branch not found
+
+
+    put:
+      tags:
+        - BRANCH
+      summary: Update branch
+      description: This can only be done by the logged in branch.
+      operationId: updatebranch
+      parameters:
+        - name: branchId
+          in: path
+          description: branchId that need to be deleted
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Update an existent branch
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/branch'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/branch'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/branch'
+      responses:
+        default:
+          description: successful operation
+
+
+  /branch/{userId}:
+    get:
+      tags:
+        - BRANCH
+      summary: Encontrar un negocio por userID
+      description: Retorna un negocio
+      operationId: getbranchUserById
+      parameters:
+        - name: userId
+          in: path
+          description: ID of userID to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/branch'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/branch'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: branch not found
+
+
+
+
+  /comment:
+    post:
+      tags:
+        - COMMENT
+      summary: Crear una nueva ciudad
+      description: Agregar un nuevo comment
+      operationId: addcomment
+      requestBody:
+        description: Crear un nuevo comment
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/comment'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/comment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/comment'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/comment'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/comment'
+        '405':
+          description: Invalid input
+
+
+  /comment/:
+    get:
+      tags:
+        - COMMENT
+      summary: Encontrar todos las ciudades
+      description: Se pueden proporcionar múltiples valores de estado con cadenas separadas por comas
+      operationId: findAllcomment
+
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/comment'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/comment'
+        '400':
+          description: Invalid status value
+
+  /comment/{commentId}:
+    get:
+      tags:
+        - COMMENT
+      summary: Encontrar una ciudad por ID
+      description: Retorna una ciudad
+      operationId: getcommentById
+      parameters:
+        - name: commentId
+          in: path
+          description: ID of comment to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/comment'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/comment'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: comment not found
+
+    delete:
+      tags:
+        - COMMENT
+      summary: Delete comment
+      description: This can only be done by the logged in user.
+      operationId: deletecomment
+      parameters:
+        - name: commentId
+          in: path
+          description: The name that needs to be deleted
+          required: true
+          schema:
+            type: integer
+      responses:
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: comment not found
+
+
+    put:
+      tags:
+        - COMMENT
+      summary: Update comment
+      description: This can only be done by the logged in comment.
+      operationId: updatecomment
+      parameters:
+        - name: commentId
+          in: path
+          description: commentId that need to be deleted
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Update an existent comment
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/comment'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/comment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/comment'
+      responses:
+        default:
+          description: successful operation
+
+
+  /comment/{userId}:
+    get:
+      tags:
+        - COMMENT
+      summary: Encontrar un negocio por userID
+      description: Retorna un negocio
+      operationId: getcommentUserById
+      parameters:
+        - name: userId
+          in: path
+          description: ID of userID to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/comment'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/comment'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: comment not found
+
+
+
+  /location:
+    post:
+      tags:
+        - LOCATION
+      summary: Crear una nueva ciudad
+      description: Agregar un nuevo location
+      operationId: addlocation
+      requestBody:
+        description: Crear un nuevo location
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/location'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/location'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/location'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/location'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/location'
+        '405':
+          description: Invalid input
+
+
+  /location/:
+    get:
+      tags:
+        - LOCATION
+      summary: Encontrar todos las ciudades
+      description: Se pueden proporcionar múltiples valores de estado con cadenas separadas por comas
+      operationId: findAlllocation
+
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/location'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/location'
+        '400':
+          description: Invalid status value
+
+  /location/{locationId}:
+    get:
+      tags:
+        - LOCATION
+      summary: Encontrar una ciudad por ID
+      description: Retorna una ciudad
+      operationId: getlocationById
+      parameters:
+        - name: locationId
+          in: path
+          description: ID of location to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/location'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/location'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: location not found
+
+    delete:
+      tags:
+        - LOCATION
+      summary: Delete location
+      description: This can only be done by the logged in user.
+      operationId: deletelocation
+      parameters:
+        - name: locationId
+          in: path
+          description: The name that needs to be deleted
+          required: true
+          schema:
+            type: integer
+      responses:
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: location not found
+
+
+    put:
+      tags:
+        - LOCATION
+      summary: Update location
+      description: This can only be done by the logged in location.
+      operationId: updatelocation
+      parameters:
+        - name: locationId
+          in: path
+          description: locationId that need to be deleted
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Update an existent location
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/location'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/location'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/location'
+      responses:
+        default:
+          description: successful operation
+
+
+  /location/{userId}:
+    get:
+      tags:
+        - LOCATION
+      summary: Encontrar un negocio por userID
+      description: Retorna un negocio
+      operationId: getlocationUserById
+      parameters:
+        - name: userId
+          in: path
+          description: ID of userID to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/location'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/location'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: location not found
+
+
+
+
+
+
+
+
+
+
+
 
 components:
   schemas:
-    BusinessCreate:
-      type: object
-      properties:
-
-        name:
-          type: string
-          format: string
-          example: 'business name'
-        description:
-          type: string
-          format: string
-          example: 'business description'
-        idTypeBusiness:
-          type: integer
-          format: int64
-          example: 198772
-        idUser:
-          type: integer
-          format: int64
-          example: 198772
-        createDate:
-          type: string
-          format: date
-          example: "2008-01-02"
-        UpdateDate:
-          type: string
-          format: date
-          example: "2008-01-02"
-        status:
-          type: integer
-          format: int64
-          example: 1
-          enum:
-            - 1
-            - 2
-            - 3
-
     Business:
       required:
-        - name
-        - photoUrls
+        - id
       type: object
       properties:
         id:
@@ -250,6 +1620,227 @@ components:
           format: string
           example: 'business description'
         idTypeBusiness:
+          type: integer
+          format: int64
+          example: 198772
+        idUser:
+          type: integer
+          format: int64
+          example: 1
+        createDate:
+          type: string
+          format: date
+          example: "2008-01-02"
+        status:
+          type: integer
+          format: int64
+          example: 1
+          enum:
+            - 1
+            - 2
+            - 3
+
+
+    typebusiness:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          format: string
+          example: 'typebusiness name'
+
+
+
+    City:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          format: string
+          example: 'City name'
+
+
+    municipalities:
+      required:
+        - id
+        - idCity
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          format: string
+          example: 'municipalities name'
+        idCity:
+          type: integer
+          format: int64
+          example: 2
+
+    zone:
+      required:
+        - id
+        - idMunicipalities
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          format: string
+          example: 'zone name'
+        idMunicipalities:
+          type: integer
+          format: int64
+          example: 1
+
+
+
+
+    rating:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        score:
+          type: integer
+          format: int64
+          example: 1
+          enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+        favoriteStatus:
+          type: boolean
+          format: boolean
+          example: True
+        idBranch:
+          type: integer
+          format: int64
+          example: 1
+        idUser:
+          type: integer
+          format: int64
+          example: 1
+
+    branch:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          format: string
+          example: 'branch name'
+        description:
+          type: string
+          format: string
+          example: 'branch description'
+        idTypebranch:
+          type: integer
+          format: int64
+          example: 198772
+        idUser:
+          type: integer
+          format: int64
+          example: 1
+        createDate:
+          type: string
+          format: date
+          example: "2008-01-02"
+        status:
+          type: integer
+          format: int64
+          example: 1
+          enum:
+            - 1
+            - 2
+            - 3
+
+
+    comment:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          format: string
+          example: 'comment name'
+        description:
+          type: string
+          format: string
+          example: 'comment description'
+        idTypecomment:
+          type: integer
+          format: int64
+          example: 198772
+        idUser:
+          type: integer
+          format: int64
+          example: 1
+        createDate:
+          type: string
+          format: date
+          example: "2008-01-02"
+        status:
+          type: integer
+          format: int64
+          example: 1
+          enum:
+            - 1
+            - 2
+            - 3
+
+
+    location:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          format: string
+          example: 'location name'
+        description:
+          type: string
+          format: string
+          example: 'location description'
+        idTypelocation:
           type: integer
           format: int64
           example: 198772
