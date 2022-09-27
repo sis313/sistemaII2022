@@ -28,6 +28,14 @@ public interface BusinessListDao  extends JpaRepository<BusinessList, Integer> {
     "and business.id=?1 ")
     public BusinessRequest getBusinessById(Integer businessId);
 
+    @Query(value = "select new ucb.edu.bo.tallersoftware.dto.BusinessRequest(" +
+    "business.name, business.description, business.id_type_business, " +
+    "business.create_date, business.update_date, business.user_id_user) " +
+    "from BusinessList business " +
+    "where business.status=0 " +
+    "and business.id=?1 ")
+    public BusinessRequest getInactiveBusinessById(Integer businessId);
+
     @Query(
             value = "DELETE b.*" +
                     "   FROM business b" +
