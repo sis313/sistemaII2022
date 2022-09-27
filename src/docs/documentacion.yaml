@@ -1754,26 +1754,46 @@ components:
           type: integer
           format: int64
           example: 1
-        name:
+        address:
           type: string
           format: string
-          example: 'branch name'
-        description:
+          example: 'branch address'
+        openHour:
+          type: string
+          format: datetime
+          example: "2022-01-01T10:01:01"
+        closeHour:
+          type: string
+          format: datetime
+          example: "2022-01-01T10:01:01"
+        attentionDays:
           type: string
           format: string
-          example: 'branch description'
-        idTypebranch:
+          example: 'Monday'
+        image:
+          type: string
+          format: string
+          example: 'aW1hZ2UgZmlsZQ=='
+        idZone:
           type: integer
           format: int64
           example: 198772
-        idUser:
+        idLocation:
+          type: integer
+          format: int64
+          example: 1
+        idBusiness:
           type: integer
           format: int64
           example: 1
         createDate:
           type: string
           format: date
-          example: "2008-01-02"
+          example: "2022-01-01"
+        updateDate:
+          type: string
+          format: date
+          example: "2022-01-01"
         status:
           type: integer
           format: int64
@@ -1793,26 +1813,18 @@ components:
           type: integer
           format: int64
           example: 1
-        name:
+        message:
           type: string
           format: string
-          example: 'comment name'
-        description:
-          type: string
-          format: string
-          example: 'comment description'
-        idTypecomment:
-          type: integer
-          format: int64
-          example: 198772
+          example: 'message 1'
         idUser:
           type: integer
           format: int64
+          example: 198772
+        idBusiness:
+          type: integer
+          format: int64
           example: 1
-        createDate:
-          type: string
-          format: date
-          example: "2008-01-02"
         status:
           type: integer
           format: int64
@@ -1832,31 +1844,11 @@ components:
           type: integer
           format: int64
           example: 1
-        name:
-          type: string
-          format: string
-          example: 'location name'
-        description:
-          type: string
-          format: string
-          example: 'location description'
-        idTypelocation:
-          type: integer
-          format: int64
-          example: 198772
-        idUser:
-          type: integer
-          format: int64
-          example: 1
-        createDate:
-          type: string
-          format: date
-          example: "2008-01-02"
-        status:
-          type: integer
-          format: int64
-          example: 1
-          enum:
-            - 1
-            - 2
-            - 3
+        latitude:
+          type: number
+          format: double
+          example: 41.71727401
+        longitude:
+          type: number
+          format: double
+          example: 72.00898606
