@@ -11,3 +11,15 @@ Content-Type: application/json
 }
 ###
 GET http://localhost:80/confirm-account?token=7661c129-c6a5-4649-bba9-f19f386d5777
+
+###
+GET http://localhost:80/resend
+Content-Type: application/json
+
+{
+  "name": "Test1",
+  "email": "sv.kokonoe@gmail.com",
+  "nickname": "test_si",
+  "password": "test123",
+  "idTypeUser": 1
+}
