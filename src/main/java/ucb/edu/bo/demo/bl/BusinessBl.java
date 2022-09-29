@@ -26,11 +26,7 @@ public class BusinessBl {
     public List<Business> findByName (String name){
         return businessDao.findByName(name);
     }
-
-    public List<Business> getAllTypes(){
-        return businessDao.getAllTypes();
-    }
-
+    
     public List<Business> findByType (String name){
         return businessDao.findByType(name);
     }

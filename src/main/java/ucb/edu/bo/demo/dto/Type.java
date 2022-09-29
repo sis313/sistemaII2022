@@ -1,8 +1,6 @@
 package ucb.edu.bo.demo.dto;
 
-import java.util.Date;
-
-public class Date {
+public class Type {
     private int id_type_business;
     private String name;
 
