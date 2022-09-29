@@ -2,9 +2,7 @@
 package ucb.edu.bo.demo.api;
 
 import ucb.edu.bo.demo.bl.BusinessBl;
-import ucb.edu.bo.demo.bl.TypeBl;
 import ucb.edu.bo.demo.dto.Business;
-import ucb.edu.bo.demo.dto.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,12 +12,10 @@ import java.util.List;
 public class BusinessApi {
 
     BusinessBl businessBl;
-    TypeBl typeBl;
 
     @Autowired
-    public BusinessApi(BusinessBl businessBl, TypeBl typeBl) {
+    public BusinessApi(BusinessBl businessBl) {
         this.businessBl = businessBl;
-        this.typeBl = typeBl;
     }
 
     @GetMapping(value = "/Business")
@@ -38,11 +34,6 @@ public class BusinessApi {
     )
     public List<Business> findByName(@PathVariable(name = "name") String name){
         return businessBl.findByName(name);
-    }
-
-    @GetMapping(value = "/Types")
-    public List<Type> getAllTypes(){
-        return typeBl.getAllTypes();
     }
 
     @CrossOrigin(origins = "http://localhost:4200")

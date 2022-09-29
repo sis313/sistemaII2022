@@ -53,7 +53,7 @@ public class BusinessDao {
 
     public List<Business> getById(int id_b){
         List<Business> result=new ArrayList<>();
-        String query = "SELECT * FROM business b where b.id_business = (?) ";
+        String query = "SELECT * FROM business b where b.id_business = (?)";
 
         try (
                 Connection conn = dataSource.getConnection();
