@@ -13,7 +13,14 @@ public interface UserRepository extends JpaRepository<UserEntity,Integer> {
                     "FROM UserEntity u\n" +
                     "WHERE u.email = ?1"
     )
-    public UserEntity findUserByEmail(String email);
+    UserEntity findUserByEmail(String email);
+
+    @Query(
+            value = "SELECT u \n" +
+                    "FROM UserEntity u\n" +
+                    "WHERE u.nickname = ?1"
+    )
+    UserEntity findUserByUser(String nickname);
 
     @Query(
             value = "SELECT u \n" +
@@ -23,6 +30,7 @@ public interface UserRepository extends JpaRepository<UserEntity,Integer> {
     public UserEntity findUserByID(int id);
 
     boolean existsByEmail(String email);
+
 
     boolean existsByNickname(String nickname);
 }
