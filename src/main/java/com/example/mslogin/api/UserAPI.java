@@ -33,7 +33,7 @@ public class UserAPI {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Optional<userEntity>> getOrderById(@PathVariable Integer id){
         LOGGER.info("Invocando al servicio REST para obtener un usuario");
-        Optional<userEntity> user = orderRepository.findById(id);
+        Optional<userEntity> user = userBl.findById(id);
         LOGGER.info("DATABASE-SUCCESS: Consulta exitosa para obtener un usuario {}", user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }

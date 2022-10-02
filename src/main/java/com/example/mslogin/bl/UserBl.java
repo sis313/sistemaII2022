@@ -42,4 +42,8 @@ public class UserBl {
         LOGGER.info("User saved");
         return "User created";
     }
+
+
+
+
 }
