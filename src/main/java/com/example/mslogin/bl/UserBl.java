@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.sql.Date;
+import java.util.Optional;
 
 @Service
 public class UserBl {
@@ -25,14 +26,14 @@ public class UserBl {
         this.passwordEncoder = passwordEncoder;
     }
     @Transactional
-    public String saveUser(UserEntity user) {
-        LOGGER.info("saveUser from UserBl");
+    public UserEntity saveUser(UserEntity user) {
+        LOGGER.info("saveUser from UserBl. {}", user.toString());
         //Validate if user already exists
         if(userRepository.existsByEmail(user.getEmail()))
-            return "Email already exists";
+            return null;
         //Validate if user already exists
         if(userRepository.existsByNickname(user.getNickname()))
-            return  "Nickname already exists";
+            return  null;
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
         user.setCreateDate(new Date(System.currentTimeMillis()));
         user.setUpdateDate(new Date(System.currentTimeMillis()));
@@ -40,7 +41,11 @@ public class UserBl {
         UserEntity newUser = userRepository.save(user);
         verificationMailBl.createToken(newUser);
         LOGGER.info("User saved");
-        return "User created";
+        return newUser;
+    }
+
+    public Optional<UserEntity> findUserByID(int id){
+        return userRepository.findById(id);
     }
 
 

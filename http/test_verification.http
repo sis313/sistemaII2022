@@ -1,5 +1,5 @@
 ###
-POST http://localhost:80/user
+POST http://localhost:80/v1/api/user
 Content-Type: application/json
 
 {
@@ -7,9 +7,19 @@ Content-Type: application/json
   "email": "sv.kokonoe@gmail.com",
   "nickname": "test_si",
   "password": "test123",
-  "idTypeUser": 1,
-  "createDate": "2022-09-11",
-  "updateDate": "2022-09-11"
+  "idTypeUser": 1
 }
 ###
-GET http://localhost:80/confirm-account?token=a1ce2ea0-ccc2-484f-b9f7-cb89ca90c777
+GET http://localhost:80/confirm-account?token=7661c129-c6a5-4649-bba9-f19f386d5777
+
+###
+GET http://localhost:80/resend
+Content-Type: application/json
+
+{
+  "name": "Test1",
+  "email": "sv.kokonoe@gmail.com",
+  "nickname": "test_si",
+  "password": "test123",
+  "idTypeUser": 1
+}

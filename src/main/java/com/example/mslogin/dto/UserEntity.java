@@ -122,4 +122,19 @@ public class UserEntity {
     public int hashCode() {
         return Objects.hash(idUser, name, email, nickname, password, idTypeUser, createDate, updateDate, status);
     }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "idUser=" + idUser +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", password='" + password + '\'' +
+                ", idTypeUser=" + idTypeUser +
+                ", createDate=" + createDate +
+                ", updateDate=" + updateDate +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }
