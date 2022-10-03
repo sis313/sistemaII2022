@@ -13,7 +13,7 @@ import java.util.List;
 
 import static com.example.mslogin.bl.UserBl.LOGGER;
 
-@Service
+/*@Service
 public class UserDetailsServiceImpl implements UserDetailsServiceImpl {
 
     @Autowired
@@ -32,3 +32,4 @@ public class UserDetailsServiceImpl implements UserDetailsServiceImpl {
         return user;
     }
 }
+*/

@@ -36,8 +36,6 @@ public class VerificationMailAPI {
     {
         LOGGER.info("confirmUserAccount from VerificationMailAPI");
         String res = verificationMailBl.resendMail(userEntity.getEmail());
-        return new ResponseEntity<String>(res, HttpStatus.OK);
+        return new ResponseEntity<>(res, HttpStatus.OK);
     }
-
-
 }
