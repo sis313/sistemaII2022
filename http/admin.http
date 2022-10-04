@@ -4,7 +4,7 @@ Content-Type: application/json
 
 
 ### Obtener lista de usuarios
-GET http://localhost:8080/v1/user
+GET http://localhost:8081/v1/user
 Content-Type: application/json
 
 
@@ -19,7 +19,7 @@ Content-Type: application/json
 
 
 ### Actualizar datos de administrador
-PUT http://localhost:8080/v1/user/1
+PUT http://localhost:8081/v1/user/1
 Content-Type: application/json
 
 {
@@ -39,12 +39,13 @@ DELETE http://localhost:8080/v1/adminBusiness
 Content-Type: application/json
 
 ### Obtener lista de dueños de un negocio con estado activo
-GET http://localhost:8080/v1/user/type=2/status=1
+GET http://localhost:8081/v1/user/type=2/status=1
 Content-Type: application/json
 
 ### Baja logica de dueño de negocio
-PUT http://localhost:8080/v1/user/deleteOwner/5
+PUT http://localhost:8081/v1/user/deleteOwner/6
 Content-Type: application/json
+
 { 
   "status": "0" 
 }  
