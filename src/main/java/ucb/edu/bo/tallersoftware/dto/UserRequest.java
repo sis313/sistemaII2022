@@ -10,9 +10,9 @@ public class UserRequest {
     private String typeUser;
     private String createDate;
     private String updateDate;
+    private String status;
 
-
-    public UserRequest(String name, String email, String nickname, String password, String typeUser, String createDate, String updateDate) {
+    public UserRequest(String name, String email, String nickname, String password, String typeUser, String createDate, String updateDate, String status) {
         this.name = name;
         this.email = email;
         this.nickname = nickname;
@@ -20,6 +20,7 @@ public class UserRequest {
         this.typeUser = typeUser;
         this.createDate = createDate;
         this.updateDate = updateDate;
+        this.status = status;
     }
 
     public String getName() {
@@ -77,6 +78,14 @@ public class UserRequest {
     public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate;
     }
+    
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     @Override
     public String toString() {
@@ -88,7 +97,9 @@ public class UserRequest {
             ", typeUser='" + typeUser + '\'' +
             ", createDate='" + createDate + '\'' +
             ", updateDate='" + updateDate + '\'' +
+            ", status='" + status + '\''+
             "}";
     }
+
 
 }

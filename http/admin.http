@@ -37,3 +37,15 @@ Content-Type: application/json
 ### Baja logica de negocio
 DELETE http://localhost:8080/v1/adminBusiness
 Content-Type: application/json
+
+### Obtener lista de dueños de un negocio con estado activo
+GET http://localhost:8080/v1/user/type=2/status=1
+Content-Type: application/json
+
+### Baja logica de dueño de negocio
+PUT http://localhost:8080/v1/user/deleteOwner/5
+Content-Type: application/json
+{ 
+  "status": "0" 
+}  
+

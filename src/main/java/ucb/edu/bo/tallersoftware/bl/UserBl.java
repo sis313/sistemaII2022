@@ -74,4 +74,14 @@ public class UserBl implements UserService{
     public List<User> findUserByTypeAndStatus(Integer tipo, Integer status) {
         return (List<User>) userDao.findUserByTypeAndStatus(tipo, status);
     }
+
+    @Override
+    public User updateUserStatus(User user, Integer userId) {
+        User userDB = userDao.getById(userId);
+        if (Objects.nonNull(user.getStatus())) {
+            userDB.setStatus(user.getStatus());
+        }
+        return userDao.save(userDB);
+    }  
+
 }
