@@ -56,4 +56,9 @@ public class BusinessListApi {
         System.out.println("Invocando al metodo PUT");
         return businessListBl.updateBusiness(business,id);
     }
+    @PutMapping(path="/adminBusinessStatus/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE )
+    public BusinessList updateBusinessStatus(@PathVariable("id") Integer id, @RequestBody BusinessList business) {
+        System.out.println("Invocando al metodo PUT");
+        return businessListBl.updateBusinessStatus(business,id);
+    }    
 }
