@@ -44,10 +44,10 @@ public class UserApi {
         return userBl.updateUser(user,id);
     }
 
-    @PutMapping(path="/user/deleteOwner/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE )
-    public User updateUserStatus(@PathVariable("id") Integer id, @RequestBody User user) {
-        System.out.println("Invocando al metodo PUT");
-        return userBl.updateUserStatus(user,id);
+    @DeleteMapping(value = "/user/deleteOwner/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public User DeleteUser(@PathVariable("id") Integer id) {
+        System.out.println("Invocando al metodo DELETE");
+        return userBl.DeleteUserById(id);
     }
 
 }

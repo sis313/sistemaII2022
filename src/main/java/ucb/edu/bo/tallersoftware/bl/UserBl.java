@@ -37,6 +37,13 @@ public class UserBl implements UserService{
             return null;
         }
     }
+
+    @Override
+    public User DeleteUserById(Integer id) {
+        User userOpt = userDao.getById(id);
+        userOpt.setStatus(0);
+        return userDao.save(userOpt);
+    }
     
     @Override
     public User updateUser(User user, Integer userId) {

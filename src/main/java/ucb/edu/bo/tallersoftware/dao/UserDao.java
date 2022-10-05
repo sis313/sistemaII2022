@@ -30,4 +30,5 @@ public interface UserDao extends JpaRepository<User, Integer> {
             nativeQuery = true
     )
     public List<User> findUserByTypeAndStatus(@Param("typeUser") Integer tipo, @Param("status") Integer status);
+
 }
