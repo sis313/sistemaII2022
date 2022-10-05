@@ -23,21 +23,9 @@ public class RestorePasswordAPI {
     }
 
     @PostMapping(path = "/recover", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> receiveEmail(@RequestBody UserEntity userEntity) {
-        LOGGER.info("receiveEmail from RestorePasswordAPI");
+    public ResponseEntity<String> sendEmail(@RequestBody UserEntity userEntity) {
+        LOGGER.info("sendEmail from RestorePasswordAPI");
         int res = restorePasswordBl.sendMailToRestorePass(userEntity.getEmail());
-
-        if(res>0){
-            return new ResponseEntity<>("A message to reset your password has been sent to your email.", HttpStatus.OK);
-        }
-        return new ResponseEntity<>("There is no user with the specified email.", HttpStatus.UNPROCESSABLE_ENTITY);
-        //Send to recuperacion
-    }
-
-    @PostMapping(path = "/resetPassword", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> receiveNewPassword(@RequestBody UserEntity userEntity) {
-        LOGGER.info("receiveNewPassword from RestorePasswordAPI");
-        int res = restorePasswordBl.sendUpdatePassword(userEntity);
 
         if(res>0){
             return new ResponseEntity<>("A message to reset your password has been sent to your email.", HttpStatus.OK);
@@ -52,12 +40,20 @@ public class RestorePasswordAPI {
         LOGGER.info("resendToResetPass from RestorePasswordAPI");
         int res = restorePasswordBl.confirmUser(user);
         if(res<0){
-            ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).location(URI.create("localhost:4200/error-verificacion")).build();
+            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).location(URI.create("localhost:4200/error-verificacion")).build();
         }
         return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("http://localhost:4200/recuperacion?user=")).build();
     }
 
+    @PostMapping(value="/reset-password")
+    public ResponseEntity<String> resetPass(@RequestBody UserEntity userEntity)
+    {
+        LOGGER.info("resetPass from RestorePasswordAPI");
+        int res = restorePasswordBl.saveNewPassword(userEntity);
 
-
-
+        if(res<0){
+            return new ResponseEntity<>("Something went wrong.", HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<>("Your password has been updated.", HttpStatus.OK);
+    }
 }

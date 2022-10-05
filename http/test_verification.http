@@ -13,7 +13,7 @@ Content-Type: application/json
 ###
 GET http://localhost:8081/v1/api/user/2
 ###
-GET http://localhost:80/confirm-account?token=7661c129-c6a5-4649-bba9-f19f386d5777
+GET http://localhost:80/confirm-account?token=25ec7d69-92b1-4dd5-b94f-af91cb2631fb
 
 ###
 GET http://localhost:80/resend

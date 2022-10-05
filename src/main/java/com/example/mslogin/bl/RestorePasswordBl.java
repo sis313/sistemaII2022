@@ -55,11 +55,12 @@ public class RestorePasswordBl {
         return -1;
     }
 
-    public int sendUpdatePassword(UserEntity userEntity) {
+    public int saveNewPassword(UserEntity userEntity) {
         UserEntity currentUser = this.userRepository.findUserByUser(userEntity.getNickname());
 
         if(currentUser!=null){
             currentUser.setPassword(this.passwordEncoder.encode(userEntity.getPassword()));
+            userRepository.save(currentUser);
             return currentUser.getIdUser();
         }
 
