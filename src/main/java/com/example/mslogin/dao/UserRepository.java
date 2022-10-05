@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository("userRepository")
 public interface UserRepository extends JpaRepository<UserEntity,Integer> {
     @Query(
@@ -27,7 +29,14 @@ public interface UserRepository extends JpaRepository<UserEntity,Integer> {
                     "FROM UserEntity u\n" +
                     "WHERE u.idUser = ?1"
     )
-    public UserEntity findUserByID(int id);
+    UserEntity findUserByID(int id);
+
+    @Query(
+            value = "SELECT u \n" +
+                    "FROM UserEntity u\n" +
+                    "WHERE u.nickname = ?1"
+    )
+    Optional<UserEntity> findByUsername(String user);
 
     boolean existsByEmail(String email);
 

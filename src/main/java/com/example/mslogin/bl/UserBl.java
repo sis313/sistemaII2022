@@ -48,6 +48,10 @@ public class UserBl {
         return userRepository.findById(id);
     }
 
+    public Optional<UserEntity> findByUsername(String username){
+        return userRepository.findByUsername(username);
+    }
+
 
 
 

@@ -140,6 +140,19 @@ CREATE TABLE user (
                       status varchar(10) NOT NULL,
                       CONSTRAINT user_pk PRIMARY KEY (id_user)
 );
+-- Table: roles
+CREATE TABLE roles (
+                       id INT AUTO_INCREMENT PRIMARY KEY,
+                       name VARCHAR(250) NOT NULL
+);
+-- Table: users_roles
+CREATE TABLE users_roles (
+                             user_id INTEGER NOT NULL,
+                             role_id INTEGER NOT NULL,
+                             FOREIGN KEY(user_id) REFERENCES user(id_user),
+                             FOREIGN KEY(role_id) REFERENCES roles(id),
+                             PRIMARY KEY (user_id, role_id)
+);
 
 -- Table: verification_token
 CREATE TABLE verification_token (

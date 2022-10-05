@@ -1,14 +1,17 @@
 ###
-POST http://localhost:80/v1/api/user
+POST http://localhost:8081/v1/api/user/publico/register
 Content-Type: application/json
 
 {
-  "name": "Test1",
-  "email": "sv.kokonoe@gmail.com",
-  "nickname": "test_si",
-  "password": "test123",
+  "name": "Mireya Huanca",
+  "email": "mire11@gmail.com",
+  "nickname": "Mire",
+  "password": "mire",
   "idTypeUser": 1
 }
+
+###
+GET http://localhost:8081/v1/api/user/2
 ###
 GET http://localhost:80/confirm-account?token=7661c129-c6a5-4649-bba9-f19f386d5777
 
@@ -22,4 +25,13 @@ Content-Type: application/json
   "nickname": "test_si",
   "password": "test123",
   "idTypeUser": 1
+}
+
+###
+POST http://localhost:8081/auth/signin
+Content-Type: application/json
+
+{
+  "username": "Mire",
+  "password": "mire"
 }

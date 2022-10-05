@@ -1,6 +1,11 @@
 package com.example.mslogin.dto;
 
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import java.sql.Date;
+import java.util.List;
 import java.util.Objects;
 
 @javax.persistence.Entity
@@ -35,6 +40,13 @@ public class UserEntity {
     @javax.persistence.Column(name = "status")
     private String status;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name="users_roles",
+            joinColumns={@JoinColumn(name="user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")}
+    )
+    private List<RoleEntity> roles;
     public UserEntity() {
     }
 
@@ -108,6 +120,14 @@ public class UserEntity {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public List<RoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RoleEntity> roles) {
+        this.roles = roles;
     }
 
     @Override
