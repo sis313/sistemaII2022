@@ -61,12 +61,12 @@ public class VerificationMailBl {
         }
     }
 
-    public String resendMail(String email) {
+    public int resendMail(String email) {
         UserEntity currentUser = userRepository.findUserByEmail(email);
         VerificationTokenEntity currentToken = verificationTokenRepository.findTokenByIdUser(currentUser.getIdUser());
         Calendar cal = Calendar.getInstance();
 
-        if(currentToken != null)
+        if(currentToken != null && currentUser!=null)
         {
             if((currentToken.getExpiryDate().getTime() - cal.getTime().getTime())<=0){
                 currentToken = new VerificationTokenEntity(currentUser.getIdUser());
@@ -82,10 +82,15 @@ public class VerificationMailBl {
             emailSenderService.sendEmail(mailMessage);
             LOGGER.info("resendMail from VerificationMailBl-if");
         } else {
-            createToken(currentUser);
-            LOGGER.info("resendMail from VerificationMailBl-else");
+            if(currentUser!=null){
+                createToken(currentUser);
+                LOGGER.info("resendMail from VerificationMailBl-else");
+            }else {
+                return -1;
+            }
+
         }
 
-        return "The mail has been re-sent";
+        return currentUser.getIdUser();
     }
 }

@@ -35,7 +35,12 @@ public class VerificationMailAPI {
     public ResponseEntity<String> resendMail(@RequestBody UserEntity userEntity)
     {
         LOGGER.info("confirmUserAccount from VerificationMailAPI");
-        String res = verificationMailBl.resendMail(userEntity.getEmail());
-        return new ResponseEntity<>(res, HttpStatus.OK);
+        int res = verificationMailBl.resendMail(userEntity.getEmail());
+
+        if(res>0){
+            return new ResponseEntity<>("The message to confirm your email has been resent.", HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>("Error. The email entered doesn't have an associated account.", HttpStatus.PRECONDITION_FAILED);
     }
 }

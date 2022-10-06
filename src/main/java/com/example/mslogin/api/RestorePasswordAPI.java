@@ -35,14 +35,16 @@ public class RestorePasswordAPI {
     }
 
     @RequestMapping(value="/reset-password", method= RequestMethod.GET)
-    public ResponseEntity<Void> resendToResetPass(@RequestParam("user")String user)
+    public ResponseEntity<Void> redirectFromMail(@RequestParam("user")String user)
     {
         LOGGER.info("resendToResetPass from RestorePasswordAPI");
-        int res = restorePasswordBl.confirmUser(user);
-        if(res<0){
-            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).location(URI.create("localhost:4200/error-verificacion")).build();
+        UserEntity res = restorePasswordBl.confirmUser(user);
+
+        if(res==null){
+            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).location(URI.create("localhost:4200/error-recuperacion")).build();
         }
-        return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("http://localhost:4200/recuperacion?user=")).build();
+
+        return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("http://localhost:4200/envio-recuperacion?user="+res.getNickname())).build();
     }
 
     @PostMapping(value="/reset-password")
