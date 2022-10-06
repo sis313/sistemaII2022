@@ -32,7 +32,3 @@ build/
 ### VS Code ###
 .vscode/
 .env
-
-### File ###
-src/main/java/ucb/app/configuration/FileConfiguration.java
-src/main/java/ucb/app/service/FileService.java
