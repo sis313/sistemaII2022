@@ -39,7 +39,7 @@ public class BusinessListApi {
         return businessListBl.findBusinessByStatus(status);
     }
 
-    @DeleteMapping(value = "/adminBusiness/delete", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/adminBusiness/delete/{}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<BusinessList> delete(@PathVariable("status") Integer status) {
         System.out.println("Invocando al metodo DELETE");
         return businessListBl.findBusinessById(status);
@@ -57,7 +57,7 @@ public class BusinessListApi {
         return businessListBl.updateBusiness(business,id);
     }
     @PutMapping(path="/adminBusinessStatus/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE )
-    public BusinessList updateBusinessStatus(@PathVariable("id") Integer id, @RequestBody BusinessList business) {
+    public BusinessList updateBusinessStatus(@PathVariable("id") Integer id, BusinessList business) {
         System.out.println("Invocando al metodo PUT");
         return businessListBl.updateBusinessStatus(business,id);
     }    

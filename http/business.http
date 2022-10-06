@@ -28,11 +28,9 @@ Content-Type: application/json
 }  
 
 ### Actualizar estado de negocio
-PUT http://localhost:8080/v1/adminBusinessStatus/1
+PUT http://localhost:8080/v1/adminBusinessStatus/6
 Content-Type: application/json
 
 {
-  
-  "status": "1"
   
 }  

@@ -76,7 +76,7 @@ public class BusinessListBl implements BusinessListService {
     public BusinessList updateBusinessStatus(BusinessList businessList, Integer businessListId) {
         BusinessList businessListDB = businessListDao.getById(businessListId);
         if (Objects.nonNull(businessList.getStatus())) {
-            businessListDB.setStatus(businessList.getStatus());
+            businessListDB.setStatus(1);
         }
         return businessListDao.save(businessListDB);
     }  
