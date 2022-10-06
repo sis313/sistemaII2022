@@ -18,7 +18,7 @@ CREATE TABLE branch (
     open_hour time NOT NULL,
     close_hour time NOT NULL,
     attention_days varchar(100) NOT NULL,
-    image blob NULL,
+    image varchar(200) NULL,
     id_zone int NOT NULL,
     id_location int NOT NULL,
     id_business int NOT NULL,

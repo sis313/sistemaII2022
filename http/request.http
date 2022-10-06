@@ -301,8 +301,8 @@ Content-Type: application/json
 
 {
     "address": "branch address",
-    "openHour": "2022-01-01T10:01:01",
-    "closeHour": "2022-01-01T10:01:01",
+    "openHour": "10:01:01",
+    "closeHour": "10:01:01",
     "attentionDays": "Monday",
     "image": "aW1hZ2UgZmlsZQ==",
     "idZone": 1,
