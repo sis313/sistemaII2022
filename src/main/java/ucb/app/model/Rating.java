@@ -24,7 +24,7 @@ import javax.persistence.Table;
         @NamedQuery(name = "Rating.findByFavoriteStatus", query = "SELECT r FROM Rating r WHERE r.favoriteStatus = :favoriteStatus"),
         @NamedQuery(name = "Rating.findByIdBranch", query = "SELECT r FROM Rating r WHERE r.idBranch = :idBranch"),
         @NamedQuery(name = "Rating.findByIdUser", query = "SELECT r FROM Rating r WHERE r.idUser = :idUser"),
-        @NamedQuery(name = "Rating.findAverageByIdBranch", query = "SELECT AVG(r.score) FROM Rating r WHERE r.idBranch = :idBranch") })
+        @NamedQuery(name = "Rating.findAverageByIdBranch", query = "SELECT coalesce(AVG(r.score),0) FROM Rating r WHERE r.idBranch = :idBranch") })
 public class Rating implements Serializable {
 
     private static final long serialVersionUID = 1L;
