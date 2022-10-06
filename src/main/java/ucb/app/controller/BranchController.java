@@ -53,8 +53,8 @@ public class BranchController {
     @PostMapping
     public ResponseEntity<BranchDto> postBranch(
             @RequestParam(value = "address") String address,
-            @RequestParam(value = "openHour") @DateTimeFormat(pattern = "HH:mm") Date openHour,
-            @RequestParam(value = "closeHour") @DateTimeFormat(pattern = "HH:mm") Date closeHour,
+            @RequestParam(value = "openHour") @DateTimeFormat(pattern = "HH:mm:ss") Date openHour,
+            @RequestParam(value = "closeHour") @DateTimeFormat(pattern = "HH:mm:ss") Date closeHour,
             @RequestParam(value = "attentionDays") String attentionDays,
             @RequestParam(value = "image") MultipartFile image,
             @RequestParam(value = "idZone") int idZone,
