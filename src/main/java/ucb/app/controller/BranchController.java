@@ -1,8 +1,10 @@
 package ucb.app.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,11 +15,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import ucb.app.dto.BranchDto;
 import ucb.app.model.Branch;
 import ucb.app.service.BranchService;
+import ucb.app.service.FileService;
 
 @RestController
 @RequestMapping("api/branch")
@@ -48,8 +53,20 @@ public class BranchController {
     }
 
     @PostMapping
-    public ResponseEntity<BranchDto> postBranch(@RequestBody Branch branch) {
-        BranchDto response = branchService.saveDto(branch);
+    public ResponseEntity<BranchDto> postBranch(
+            @RequestParam(value = "address") String address,
+            @RequestParam(value = "openHour") @DateTimeFormat(pattern = "HH:mm") Date openHour,
+            @RequestParam(value = "closeHour") @DateTimeFormat(pattern = "HH:mm") Date closeHour,
+            @RequestParam(value = "attentionDays") String attentionDays,
+            @RequestParam(value = "image") MultipartFile image,
+            @RequestParam(value = "idZone") int idZone,
+            @RequestParam(value = "idLocation") int idLocation,
+            @RequestParam(value = "idBusiness") int idBusiness,
+            @RequestParam(value = "createDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date createDate,
+            @RequestParam(value = "updateDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date updateDate,
+            @RequestParam(value = "status") int status) {
+        BranchDto response = branchService.saveDto(address, openHour, closeHour, attentionDays, image, idZone,
+                idLocation, idBusiness, createDate, updateDate, status);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

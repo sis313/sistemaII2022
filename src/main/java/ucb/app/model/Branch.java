@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -28,6 +27,7 @@ import javax.persistence.TemporalType;
         @NamedQuery(name = "Branch.findByOpenHour", query = "SELECT b FROM Branch b WHERE b.openHour = :openHour"),
         @NamedQuery(name = "Branch.findByCloseHour", query = "SELECT b FROM Branch b WHERE b.closeHour = :closeHour"),
         @NamedQuery(name = "Branch.findByAttentionDays", query = "SELECT b FROM Branch b WHERE b.attentionDays = :attentionDays"),
+        @NamedQuery(name = "Branch.findByImage", query = "SELECT b FROM Branch b WHERE b.image = :image"),
         @NamedQuery(name = "Branch.findByIdZone", query = "SELECT b FROM Branch b WHERE b.idZone = :idZone"),
         @NamedQuery(name = "Branch.findByIdLocation", query = "SELECT b FROM Branch b WHERE b.idLocation = :idLocation"),
         @NamedQuery(name = "Branch.findByIdBusiness", query = "SELECT b FROM Branch b WHERE b.idBusiness = :idBusiness"),
@@ -56,9 +56,8 @@ public class Branch implements Serializable {
     @Basic(optional = false)
     @Column(name = "attention_days")
     private String attentionDays;
-    @Lob
     @Column(name = "image")
-    private byte[] image;
+    private String image;
     @Basic(optional = false)
     @Column(name = "id_zone")
     private int idZone;
@@ -142,11 +141,11 @@ public class Branch implements Serializable {
         this.attentionDays = attentionDays;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

@@ -1,6 +1,5 @@
 package ucb.app.dto;
 
-import java.util.Arrays;
 import java.util.Date;
 
 public class BranchDto {
@@ -9,7 +8,7 @@ public class BranchDto {
     private Date openHour;
     private Date closeHour;
     private String attentionDays;
-    private byte[] image;
+    private String image;
     private int idZone;
     private int idLocation;
     private int idBusiness;
@@ -18,7 +17,7 @@ public class BranchDto {
     private int status;
 
     public BranchDto(Integer idBranch, String address, Date openHour, Date closeHour, String attentionDays,
-            byte[] image, int idZone, int idLocation, int idBusiness, Date createDate, Date updateDate, int status) {
+            String image, int idZone, int idLocation, int idBusiness, Date createDate, Date updateDate, int status) {
         this.idBranch = idBranch;
         this.address = address;
         this.openHour = openHour;
@@ -73,11 +72,11 @@ public class BranchDto {
         this.attentionDays = attentionDays;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -133,7 +132,7 @@ public class BranchDto {
     public String toString() {
         return "BranchDto [address=" + address + ", attentionDays=" + attentionDays + ", closeHour=" + closeHour
                 + ", createDate=" + createDate + ", idBranch=" + idBranch + ", idBusiness=" + idBusiness
-                + ", idLocation=" + idLocation + ", idZone=" + idZone + ", image=" + Arrays.toString(image)
+                + ", idLocation=" + idLocation + ", idZone=" + idZone + ", image=" + image
                 + ", openHour=" + openHour + ", status=" + status + ", updateDate=" + updateDate + "]";
     }
 }

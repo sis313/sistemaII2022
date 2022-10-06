@@ -1,10 +1,12 @@
 package ucb.app.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import ucb.app.dto.BranchDto;
 import ucb.app.model.Branch;
@@ -13,10 +15,12 @@ import ucb.app.repository.BranchRepository;
 @Service
 public class BranchService {
     private BranchRepository branchRepository;
+    private FileService fileService;
 
     @Autowired
-    public BranchService(BranchRepository branchRepository) {
+    public BranchService(BranchRepository branchRepository, FileService fileService) {
         this.branchRepository = branchRepository;
+        this.fileService = fileService;
     }
 
     public List<BranchDto> findAllDto() {
@@ -33,7 +37,21 @@ public class BranchService {
                 .collect(Collectors.toList());
     }
 
-    public BranchDto saveDto(Branch branch) {
+    public BranchDto saveDto(String address, Date openHour, Date closeHour, String attentionDays, MultipartFile image,
+            int idZone, int idLocation, int idBusiness, Date createDate, Date updateDate, int status) {
+        String imageName = fileService.uploadFile(image);
+        Branch branch = new Branch();
+        branch.setAddress(address);
+        branch.setOpenHour(openHour);
+        branch.setCloseHour(closeHour);
+        branch.setAttentionDays(attentionDays);
+        branch.setImage(imageName);
+        branch.setIdZone(idZone);
+        branch.setIdLocation(idLocation);
+        branch.setIdBusiness(idBusiness);
+        branch.setCreateDate(createDate);
+        branch.setUpdateDate(updateDate);
+        branch.setStatus(status);
         Branch response = branchRepository.save(branch);
         return branchToBranchDto(response);
     }
