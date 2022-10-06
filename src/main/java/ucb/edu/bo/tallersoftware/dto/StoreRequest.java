@@ -1,12 +1,16 @@
 package ucb.edu.bo.tallersoftware.dto;
 
+import java.util.List;
+
 public class StoreRequest {
     private String name;
     private Long numberBusiness;
+    private Integer idZone;
 
-        public StoreRequest(String name, Long numberBusiness) {
+    public StoreRequest(String name, Long numberBusiness, Integer idZone) {
         this.name = name;
         this.numberBusiness = numberBusiness;
+        this.idZone = idZone;
     }
 
     public String getName() {
@@ -23,6 +27,14 @@ public class StoreRequest {
 
     public void setNumberBusiness(Long numberBusiness) {
         this.numberBusiness = numberBusiness;
+    }
+
+    public Integer getIdZone() {
+        return idZone;
+    }
+
+    public void setIdZone(Integer idZone) {
+        this.idZone = idZone;
     }
 
     @Override

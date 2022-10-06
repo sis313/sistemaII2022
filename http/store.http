@@ -1,2 +1,5 @@
 GET http://localhost:8080/v1/countBusiness
 Content-Type: application/json
+###
+GET http://localhost:8080/v1/bussinesZone/1
+Content-Type: application/json
