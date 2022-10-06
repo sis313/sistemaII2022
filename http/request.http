@@ -404,7 +404,7 @@ Content-Type: application/json
 
 
 ##### READ AVERAGE RATING BY BRANCH ID
-GET http://localhost:8080/api/rating/?branchId=1
+GET http://localhost:8080/api/rating/?branchId=9
 Content-Type: application/json
 
 
