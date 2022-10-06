@@ -18,6 +18,12 @@ public class BusinessListBl implements BusinessListService {
         this.businessListDao = businessListDao;
     }
 
+    
+    public BusinessList DeleteBusinessById(Integer id) {
+        BusinessList businessOpt = businessListDao.getById(id);
+        businessOpt.setStatus(0);
+        return businessListDao.save(businessOpt);
+    }
 
     @Override
     public List<BusinessList> findAll() {
@@ -34,6 +40,8 @@ public class BusinessListBl implements BusinessListService {
         return (List<BusinessList>) businessListDao.findAll();
     }
 
+    
+    
     @Override
     public BusinessList findAdminBusinessById(Integer businessId) {
         Optional<BusinessList> BusinessOpt = businessListDao.findById(businessId);
@@ -80,5 +88,7 @@ public class BusinessListBl implements BusinessListService {
         }
         return businessListDao.save(businessListDB);
     }  
+
+    
 }
 

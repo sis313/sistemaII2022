@@ -39,10 +39,10 @@ public class BusinessListApi {
         return businessListBl.findBusinessByStatus(status);
     }
 
-    @DeleteMapping(value = "/adminBusiness/delete/{}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<BusinessList> delete(@PathVariable("status") Integer status) {
+    @DeleteMapping(value = "/adminBusiness/deleteBusiness/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public BusinessList DeleteBusiness(@PathVariable("id") Integer id) {
         System.out.println("Invocando al metodo DELETE");
-        return businessListBl.findBusinessById(status);
+        return businessListBl.DeleteBusinessById(id);
     }
 
     @GetMapping(value = "/adminBusiness/{id}")
