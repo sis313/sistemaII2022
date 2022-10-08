@@ -56,7 +56,23 @@ public class BranchService {
         return branchToBranchDto(response);
     }
 
-    public BranchDto updateDto(Integer branchId, Branch branch) {
+    public BranchDto updateDto(Integer branchId, String address, Date openHour, Date closeHour, String attentionDays,
+            MultipartFile image,
+            int idZone, int idLocation, int idBusiness, Date createDate, Date updateDate, int status) {
+        String imageName = fileService.uploadFile(image);
+        Branch branch = new Branch();
+        branch.setAddress(address);
+        branch.setOpenHour(openHour);
+        branch.setCloseHour(closeHour);
+        branch.setAttentionDays(attentionDays);
+        branch.setImage(imageName);
+        branch.setIdZone(idZone);
+        branch.setIdLocation(idLocation);
+        branch.setIdBusiness(idBusiness);
+        branch.setCreateDate(createDate);
+        branch.setUpdateDate(updateDate);
+        branch.setStatus(status);
+
         Branch branchFound = branchRepository.getReferenceById(branchId);
         branchFound.setAddress(branch.getAddress());
         branchFound.setOpenHour(branch.getOpenHour());

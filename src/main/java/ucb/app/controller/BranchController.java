@@ -69,8 +69,22 @@ public class BranchController {
     }
 
     @PutMapping(path = "/{branchId}")
-    public ResponseEntity<BranchDto> putBranch(@PathVariable("branchId") Integer branchId, @RequestBody Branch branch) {
-        BranchDto response = branchService.updateDto(branchId, branch);
+    public ResponseEntity<BranchDto> putBranch(
+            @PathVariable("branchId") Integer branchId,
+            @RequestParam(value = "address") String address,
+            @RequestParam(value = "openHour") @DateTimeFormat(pattern = "HH:mm:ss") Date openHour,
+            @RequestParam(value = "closeHour") @DateTimeFormat(pattern = "HH:mm:ss") Date closeHour,
+            @RequestParam(value = "attentionDays") String attentionDays,
+            @RequestParam(value = "image") MultipartFile image,
+            @RequestParam(value = "idZone") int idZone,
+            @RequestParam(value = "idLocation") int idLocation,
+            @RequestParam(value = "idBusiness") int idBusiness,
+            @RequestParam(value = "createDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date createDate,
+            @RequestParam(value = "updateDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date updateDate,
+            @RequestParam(value = "status") int status) {
+        BranchDto response = branchService.updateDto(branchId, address, openHour, closeHour, attentionDays, image,
+                idZone,
+                idLocation, idBusiness, createDate, updateDate, status);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
