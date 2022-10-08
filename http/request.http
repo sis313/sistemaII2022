@@ -190,6 +190,26 @@ GET http://localhost:8080/api/business/?userId=1
 Content-Type: application/json
 
 
+##### READ A BUSINESS BY STATUS ----- GROUP 2 -----
+GET http://localhost:8080/api/business/status=1
+Content-Type: application/json
+
+
+##### READ A BUSINESS BY NAME ----- GROUP 3 -----
+GET http://localhost:8080/api/business/name/name1
+Content-Type: application/json
+
+
+##### READ A BUSINESS BY TYPE ----- GROUP 3 -----
+GET http://localhost:8080/api/business/Type/type1
+Content-Type: application/json
+
+
+##### READ A BUSINESS BY NAME AND TYPE ----- GROUP 3 -----
+GET http://localhost:8080/api/business/filter/type1/name1
+Content-Type: application/json
+
+
 ##### CREATE A BUSINESS
 POST http://localhost:8080/api/business
 Content-Type: application/json
@@ -355,6 +375,16 @@ Content-Type: application/json
 
 ##### READ COMMENTS BY BUSINESS ID
 GET http://localhost:8080/api/comment/?businessId=1
+Content-Type: application/json
+
+
+##### READ COMMENTS BY USER ID ----- GRUPO 3 -----
+GET http://localhost:8080/api/comment/user/1
+Content-Type: application/json
+
+
+##### READ COMMENTS BY ID AND USER ID ----- GRUPO 3 -----
+GET http://localhost:8080/api/comment/IdAndUser/1/1
 Content-Type: application/json
 
 

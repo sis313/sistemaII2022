@@ -33,6 +33,18 @@ public class CommentService {
                 .collect(Collectors.toList());
     }
 
+    // GRUPO 3 ROUTE
+    public List<CommentDto> findByUserIdDto(Integer userId) {
+        return commentRepository.findByIdUser(userId).stream().map(this::commentToCommentDto)
+                .collect(Collectors.toList());
+    }
+
+    // GRUPO 3 ROUTE
+    public List<CommentDto> findByUserIdAndCommentIdDto(Integer userId, Integer commentId) {
+        return commentRepository.findByIdUserAndIdComment(userId, commentId).stream().map(this::commentToCommentDto)
+                .collect(Collectors.toList());
+    }
+
     public CommentDto saveDto(Comment comment) {
         Comment response = commentRepository.save(comment);
         return commentToCommentDto(response);

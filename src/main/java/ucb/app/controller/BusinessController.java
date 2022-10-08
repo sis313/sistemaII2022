@@ -48,6 +48,35 @@ public class BusinessController {
         return new ResponseEntity<>(businesses, HttpStatus.OK);
     }
 
+    // GROUP 2 ROUTE
+    @GetMapping(path = "/status={status}")
+    public ResponseEntity<List<BusinessDto>> getBusinessByStatus(@PathVariable("status") Integer status) {
+        List<BusinessDto> businesses = businessService.findByStatusDto(status);
+        return new ResponseEntity<>(businesses, HttpStatus.OK);
+    }
+
+    // GROUP 3 ROUTE
+    @GetMapping(path = "/name/{name}")
+    public ResponseEntity<List<BusinessDto>> getBusinessByName(@PathVariable("name") String name) {
+        List<BusinessDto> businesses = businessService.findByNameDto(name);
+        return new ResponseEntity<>(businesses, HttpStatus.OK);
+    }
+
+    // GROUP 3 ROUTE
+    @GetMapping(path = "/Type/{name}")
+    public ResponseEntity<List<BusinessDto>> getBusinessByType(@PathVariable("name") String name) {
+        List<BusinessDto> businesses = businessService.findByTypeDto(name);
+        return new ResponseEntity<>(businesses, HttpStatus.OK);
+    }
+
+    // GROUP 3 ROUTE
+    @GetMapping(path = "/filter/{type_name}/{business_name}")
+    public ResponseEntity<List<BusinessDto>> getBusinessByNameAndType(
+            @PathVariable("business_name") String business_name, @PathVariable("type_name") String type_name) {
+        List<BusinessDto> businesses = businessService.findByNameAndTypeDto(business_name, type_name);
+        return new ResponseEntity<>(businesses, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<BusinessDto> postBusiness(@RequestBody Business business) {
         BusinessDto response = businessService.saveDto(business);

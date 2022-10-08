@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -30,6 +32,10 @@ import javax.persistence.TemporalType;
         @NamedQuery(name = "Business.findByCreateDate", query = "SELECT b FROM Business b WHERE b.createDate = :createDate"),
         @NamedQuery(name = "Business.findByUpdateDate", query = "SELECT b FROM Business b WHERE b.updateDate = :updateDate"),
         @NamedQuery(name = "Business.findByStatus", query = "SELECT b FROM Business b WHERE b.status = :status") })
+
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "Business.findByType", query = "SELECT b.* FROM business AS b, type_business AS t WHERE b.id_type_business = t.id_type_business AND t.name = :type", resultClass = Business.class),
+        @NamedNativeQuery(name = "Business.findByNameAndType", query = "SELECT b.* FROM business AS b, type_business AS t WHERE b.id_type_business = t.id_type_business AND b.name = :name AND t.name = :type", resultClass = Business.class) })
 public class Business implements Serializable {
 
     private static final long serialVersionUID = 1L;

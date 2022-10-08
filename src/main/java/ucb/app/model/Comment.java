@@ -23,7 +23,8 @@ import javax.persistence.Table;
         @NamedQuery(name = "Comment.findByMessage", query = "SELECT c FROM Comment c WHERE c.message = :message"),
         @NamedQuery(name = "Comment.findByIdUser", query = "SELECT c FROM Comment c WHERE c.idUser = :idUser"),
         @NamedQuery(name = "Comment.findByIdBusiness", query = "SELECT c FROM Comment c WHERE c.idBusiness = :idBusiness"),
-        @NamedQuery(name = "Comment.findByStatus", query = "SELECT c FROM Comment c WHERE c.status = :status") })
+        @NamedQuery(name = "Comment.findByStatus", query = "SELECT c FROM Comment c WHERE c.status = :status"),
+        @NamedQuery(name = "Comment.findByIdUserAndIdComment", query = "SELECT c FROM Comment c WHERE c.idUser = :idUser AND c.idComment = :idComment") })
 public class Comment implements Serializable {
 
     private static final long serialVersionUID = 1L;

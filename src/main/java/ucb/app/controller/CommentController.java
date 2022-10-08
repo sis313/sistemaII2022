@@ -47,6 +47,21 @@ public class CommentController {
         return new ResponseEntity<>(comments, HttpStatus.OK);
     }
 
+    // GRUPO 3 ROUTE
+    @GetMapping(path = "/user/{id}")
+    public ResponseEntity<List<CommentDto>> getCommentsByUserId(@PathVariable("id") Integer id) {
+        List<CommentDto> comments = commentService.findByUserIdDto(id);
+        return new ResponseEntity<>(comments, HttpStatus.OK);
+    }
+
+    // GRUPO 3 ROUTE
+    @GetMapping(path = "/IdAndUser/{id_user}/{id_comment}")
+    public ResponseEntity<List<CommentDto>> getCommentsByUserIdAndCommentId(@PathVariable("id_user") Integer id_user,
+            @PathVariable("id_comment") Integer id_comment) {
+        List<CommentDto> comments = commentService.findByUserIdAndCommentIdDto(id_user, id_comment);
+        return new ResponseEntity<>(comments, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<CommentDto> postComment(@RequestBody Comment comment) {
         CommentDto response = commentService.saveDto(comment);

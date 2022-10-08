@@ -33,6 +33,30 @@ public class BusinessService {
                 .collect(Collectors.toList());
     }
 
+    // GROUP 2 ROUTE
+    public List<BusinessDto> findByStatusDto(Integer status) {
+        return businessRepository.findByStatus(status).stream().map(this::businessToBusinessDto)
+                .collect(Collectors.toList());
+    }
+
+    // GROUP 3 ROUTE
+    public List<BusinessDto> findByNameDto(String name) {
+        return businessRepository.findByName(name).stream().map(this::businessToBusinessDto)
+                .collect(Collectors.toList());
+    }
+
+    // GROUP 3 ROUTE
+    public List<BusinessDto> findByTypeDto(String type) {
+        return businessRepository.findByType(type).stream().map(this::businessToBusinessDto)
+                .collect(Collectors.toList());
+    }
+
+    // GROUP 3 ROUTE
+    public List<BusinessDto> findByNameAndTypeDto(String name, String type) {
+        return businessRepository.findByNameAndType(name, type).stream().map(this::businessToBusinessDto)
+                .collect(Collectors.toList());
+    }
+
     public BusinessDto saveDto(Business business) {
         Business response = businessRepository.save(business);
         return businessToBusinessDto(response);
