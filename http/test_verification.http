@@ -35,3 +35,6 @@ Content-Type: application/json
   "username": "Mire",
   "password": "mire"
 }
+
+###
+GET http://localhost:8081/v1/api/user
