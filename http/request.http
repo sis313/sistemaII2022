@@ -465,3 +465,26 @@ Content-Type: application/json
 ##### DELETE A RATING BY ID
 DELETE http://localhost:8080/api/rating/1
 Content-Type: application/json
+
+
+
+
+
+
+
+
+
+
+# --------------------------------- CUSTOM
+##### READ COUNTBUSINESSES ----- GRUPO 2 -----
+GET http://localhost:8080/api/custom/countBusiness
+Content-Type: application/json
+
+##### READ BUSINESSZONE BY ZONE ID ----- GRUPO 2 -----
+GET http://localhost:8080/api/custom/bussinesZone/1
+Content-Type: application/json
+
+
+
+
+

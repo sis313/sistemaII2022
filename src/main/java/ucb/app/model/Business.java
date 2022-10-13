@@ -12,9 +12,15 @@ import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SqlResultSetMapping;
+import javax.persistence.ConstructorResult;
+import javax.persistence.ColumnResult;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import ucb.app.dto.BusinessCountDto;
+import ucb.app.dto.BusinessZoneDto;
 
 /**
  *
@@ -36,6 +42,16 @@ import javax.persistence.TemporalType;
 @NamedNativeQueries({
         @NamedNativeQuery(name = "Business.findByType", query = "SELECT b.* FROM business AS b, type_business AS t WHERE b.id_type_business = t.id_type_business AND t.name = :type", resultClass = Business.class),
         @NamedNativeQuery(name = "Business.findByNameAndType", query = "SELECT b.* FROM business AS b, type_business AS t WHERE b.id_type_business = t.id_type_business AND b.name = :name AND t.name = :type", resultClass = Business.class) })
+
+@SqlResultSetMapping(name = "BusinessCount", classes = @ConstructorResult(targetClass = BusinessCountDto.class, columns = {
+        @ColumnResult(name = "name", type = String.class),
+        @ColumnResult(name = "numberBusiness", type = Integer.class),
+        @ColumnResult(name = "idZone", type = Integer.class) }))
+
+@SqlResultSetMapping(name = "BusinessZone", classes = @ConstructorResult(targetClass = BusinessZoneDto.class, columns = {
+        @ColumnResult(name = "name", type = String.class),
+        @ColumnResult(name = "id_business", type = Integer.class) }))
+
 public class Business implements Serializable {
 
     private static final long serialVersionUID = 1L;
