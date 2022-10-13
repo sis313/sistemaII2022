@@ -11,7 +11,10 @@ import java.util.UUID;
 @javax.persistence.Entity
 @javax.persistence.Table(name = "verification_token", schema = "service_maps", catalog = "")
 public class VerificationTokenEntity {
-    private static final int EXPIRATION = 60 * 1;
+    //2 horas
+    //private static final int EXPIRATION = 60 * 2;
+    //5 minutos
+    private static final int EXPIRATION = 5;
     @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     @javax.persistence.Id
     @javax.persistence.Column(name = "id_verification_token")
