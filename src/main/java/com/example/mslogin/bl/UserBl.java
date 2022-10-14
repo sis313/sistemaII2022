@@ -53,6 +53,11 @@ public class UserBl {
     }
 
 
+    public UserEntity updateUser(UserEntity userEntity) {
+        UserEntity user = userRepository.findUserByID(userEntity.getIdUser());
+        user.setIdTypeUser(userEntity.getIdTypeUser());
+        user.setUpdateDate(new Date(System.currentTimeMillis()));
 
-
+        return userRepository.save(user);
+    }
 }

@@ -35,6 +35,17 @@ public class UserAPI {
         return new ResponseEntity(user, HttpStatus.OK);
     }
 
+    @PutMapping(path = "" , consumes = "application/json", produces = "application/json")
+    public ResponseEntity<UserEntity> updateRolUser(@RequestBody UserEntity userEntity){
+        LOGGER.info("updateRolUser from UserAPI");
+        UserEntity user = userBl.updateUser(userEntity);
+
+        if(user==null){
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity(user, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Optional<UserEntity>> getUserById(@PathVariable Integer id){
         LOGGER.info("Invocando al servicio REST para obtener un usuario");
@@ -42,6 +53,7 @@ public class UserAPI {
         LOGGER.info("DATABASE-SUCCESS: Consulta exitosa para obtener un usuario {}", user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<List<UserEntity>> getUsers(){
         LOGGER.info("Invocando al servicio REST para obtener todos los usuarios");
