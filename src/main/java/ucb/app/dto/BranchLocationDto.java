@@ -16,10 +16,11 @@ public class BranchLocationDto {
     private Date updateDate;
     private int status;
     private LocationDto locationDto;
+    private String businessName;
 
     public BranchLocationDto(Integer idBranch, String address, Date openHour, Date closeHour, String attentionDays,
             String image, int idZone, int idLocation, int idBusiness, Date createDate, Date updateDate, int status,
-            LocationDto locationDto) {
+            LocationDto locationDto, String businessName) {
         this.idBranch = idBranch;
         this.address = address;
         this.openHour = openHour;
@@ -33,6 +34,7 @@ public class BranchLocationDto {
         this.updateDate = updateDate;
         this.status = status;
         this.locationDto = locationDto;
+        this.businessName = businessName;
     }
 
     public Integer getIdBranch() {
@@ -139,11 +141,20 @@ public class BranchLocationDto {
         this.locationDto = locationDto;
     }
 
+    public String getBusinessName() {
+        return businessName;
+    }
+
+    public void setBusinessName(String businessName) {
+        this.businessName = businessName;
+    }
+
     @Override
     public String toString() {
         return "BranchLocationDto [idBranch=" + idBranch + ", address=" + address + ", openHour=" + openHour
                 + ", closeHour=" + closeHour + ", attentionDays=" + attentionDays + ", image=" + image + ", idZone="
                 + idZone + ", idLocation=" + idLocation + ", idBusiness=" + idBusiness + ", createDate=" + createDate
-                + ", updateDate=" + updateDate + ", status=" + status + ", locationDto=" + locationDto + "]";
+                + ", updateDate=" + updateDate + ", status=" + status + ", locationDto=" + locationDto
+                + ", businessName=" + businessName + "]";
     }
 }

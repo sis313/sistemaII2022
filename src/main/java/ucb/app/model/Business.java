@@ -2,9 +2,13 @@ package ucb.app.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,12 +16,15 @@ import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.ConstructorResult;
 import javax.persistence.ColumnResult;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import ucb.app.dto.BusinessCountDto;
 import ucb.app.dto.BusinessZoneDto;
@@ -83,6 +90,12 @@ public class Business implements Serializable {
     @Basic(optional = false)
     @Column(name = "status")
     private int status;
+
+    // CODE CHANGE - START
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idBusiness", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Branch> branchList;
+    // CODE CHANGE - STOP
 
     public Business() {
     }
@@ -166,6 +179,16 @@ public class Business implements Serializable {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    // CODE CHANGE - START
+    public List<Branch> getBranchList() {
+        return branchList;
+    }
+
+    public void setBranchList(List<Branch> branchList) {
+        this.branchList = branchList;
+    }
+    // CODE CHANGE - STOP
 
     @Override
     public int hashCode() {

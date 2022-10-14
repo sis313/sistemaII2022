@@ -116,7 +116,8 @@ public class BranchService {
                 branch.getCloseHour(), branch.getAttentionDays(), branch.getImage(), branch.getIdZone(),
                 branch.getIdLocation(), branch.getIdBusiness(), branch.getCreateDate(), branch.getUpdateDate(),
                 branch.getStatus(), new LocationDto(branch.getLocation().getIdLocation(),
-                        branch.getLocation().getLatitude(), branch.getLocation().getLongitude()));
+                        branch.getLocation().getLatitude(), branch.getLocation().getLongitude()),
+                branch.getBusiness().getName());
         return branchLocationDto;
     }
 }

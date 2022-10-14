@@ -89,6 +89,11 @@ public class Branch implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JsonBackReference
     private Location location;
+
+    @JoinColumn(name = "id_business", referencedColumnName = "id_business", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Business business;
     // CODE CHANGE - STOP
 
     public Branch() {
@@ -216,6 +221,14 @@ public class Branch implements Serializable {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public Business getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(Business business) {
+        this.business = business;
     }
     // CODE CHANGE - STOP
 
