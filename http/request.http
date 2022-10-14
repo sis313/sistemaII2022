@@ -305,6 +305,11 @@ GET http://localhost:8080/api/branch
 Content-Type: application/json
 
 
+##### READ ALL BRANCHES WITH LOCATION ----- GRUPO 3 -----
+GET http://localhost:8080/api/branch/location
+Content-Type: application/json
+
+
 ##### READ A BRANCH BY ID
 GET http://localhost:8080/api/branch/1
 Content-Type: application/json

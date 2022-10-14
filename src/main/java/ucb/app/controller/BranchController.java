@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import ucb.app.dto.BranchDto;
+import ucb.app.dto.BranchLocationDto;
 import ucb.app.service.BranchService;
 
 @RestController
@@ -34,6 +35,12 @@ public class BranchController {
     public ResponseEntity<List<BranchDto>> getBranches() {
         List<BranchDto> branches = branchService.findAllDto();
         return new ResponseEntity<>(branches, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/location")
+    public ResponseEntity<List<BranchLocationDto>> getBranchesWithLocation() {
+        List<BranchLocationDto> branchesWithLocation = branchService.findAllWithLocationDto();
+        return new ResponseEntity<>(branchesWithLocation, HttpStatus.OK);
     }
 
     @GetMapping(path = "/{branchId}")

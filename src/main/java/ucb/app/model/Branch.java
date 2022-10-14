@@ -5,14 +5,19 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 /**
  *
@@ -78,6 +83,13 @@ public class Branch implements Serializable {
     @Basic(optional = false)
     @Column(name = "status")
     private int status;
+
+    // CODE CHANGE - START
+    @JoinColumn(name = "id_location", referencedColumnName = "id_location", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Location location;
+    // CODE CHANGE - STOP
 
     public Branch() {
     }
@@ -196,6 +208,16 @@ public class Branch implements Serializable {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    // CODE CHANGE - START
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+    // CODE CHANGE - STOP
 
     @Override
     public int hashCode() {

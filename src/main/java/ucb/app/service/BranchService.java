@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import ucb.app.dto.BranchDto;
+import ucb.app.dto.BranchLocationDto;
+import ucb.app.dto.LocationDto;
 import ucb.app.model.Branch;
 import ucb.app.repository.BranchRepository;
 
@@ -25,6 +27,10 @@ public class BranchService {
 
     public List<BranchDto> findAllDto() {
         return branchRepository.findAll().stream().map(this::branchToBranchDto).collect(Collectors.toList());
+    }
+
+    public List<BranchLocationDto> findAllWithLocationDto() {
+        return branchRepository.findAll().stream().map(this::branchToBranchLocationDto).collect(Collectors.toList());
     }
 
     public BranchDto findByIdDto(Integer branchId) throws Exception {
@@ -102,5 +108,15 @@ public class BranchService {
                 branch.getIdLocation(), branch.getIdBusiness(), branch.getCreateDate(), branch.getUpdateDate(),
                 branch.getStatus());
         return branchDto;
+    }
+
+    private BranchLocationDto branchToBranchLocationDto(Branch branch) {
+        BranchLocationDto branchLocationDto = new BranchLocationDto(branch.getIdBranch(), branch.getAddress(),
+                branch.getOpenHour(),
+                branch.getCloseHour(), branch.getAttentionDays(), branch.getImage(), branch.getIdZone(),
+                branch.getIdLocation(), branch.getIdBusiness(), branch.getCreateDate(), branch.getUpdateDate(),
+                branch.getStatus(), new LocationDto(branch.getLocation().getIdLocation(),
+                        branch.getLocation().getLatitude(), branch.getLocation().getLongitude()));
+        return branchLocationDto;
     }
 }
