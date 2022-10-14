@@ -1,0 +1,34 @@
+# --------------------------------- MUNICIPALITIES
+##### READ ALL MUNICIPALITIESES
+GET http://localhost:8080/api/municipalities
+Content-Type: application/json
+
+
+##### READ A MUNICIPALITIES BY ID
+GET http://localhost:8080/api/municipalities/1
+Content-Type: application/json
+
+
+##### CREATE A MUNICIPALITIES
+POST http://localhost:8080/api/municipalities
+Content-Type: application/json
+
+{
+    "name": "Municipality 1",
+    "idCity": 1
+}
+
+
+##### UPDATE A MUNICIPALITIES BY ID
+PUT http://localhost:8080/api/municipalities/1
+Content-Type: application/json
+
+{
+    "name": "Municipality 1 update",
+    "idCity": 1
+}
+
+
+##### DELETE A MUNICIPALITIES BY ID
+DELETE http://localhost:8080/api/municipalities/1
+Content-Type: application/json

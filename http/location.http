@@ -1,0 +1,34 @@
+# --------------------------------- LOCATION
+##### READ ALL LOCATIONS
+GET http://localhost:8080/api/location
+Content-Type: application/json
+
+
+##### READ A LOCATION BY ID
+GET http://localhost:8080/api/location/1
+Content-Type: application/json
+
+
+##### CREATE A LOCATION
+POST http://localhost:8080/api/location
+Content-Type: application/json
+
+{
+    "latitude": 41.71727401,
+    "longitude": 72.00898606
+}
+
+
+##### UPDATE A LOCATION BY ID
+PUT http://localhost:8080/api/location/1
+Content-Type: application/json
+
+{
+    "latitude": 41.71727411,
+    "longitude": 72.00898611
+}
+
+
+##### DELETE A LOCATION BY ID
+DELETE http://localhost:8080/api/location/1
+Content-Type: application/json

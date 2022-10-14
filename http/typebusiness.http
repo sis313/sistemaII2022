@@ -1,0 +1,32 @@
+# --------------------------------- TYPE BUSINESS
+##### READ ALL TYPE BUSINESSES
+GET http://localhost:8080/api/typeBusiness
+Content-Type: application/json
+
+
+##### READ A TYPE BUSINESS BY ID
+GET http://localhost:8080/api/typeBusiness/1
+Content-Type: application/json
+
+
+##### CREATE A TYPE BUSINESS
+POST http://localhost:8080/api/typeBusiness
+Content-Type: application/json
+
+{
+    "name": "Type business 1"
+}
+
+
+##### UPDATE A TYPE BUSINESS BY ID
+PUT http://localhost:8080/api/typeBusiness/1
+Content-Type: application/json
+
+{
+    "name": "Type business 1 update"
+}
+
+
+##### DELETE A TYPE BUSINESS BY ID
+DELETE http://localhost:8080/api/typeBusiness/1
+Content-Type: application/json

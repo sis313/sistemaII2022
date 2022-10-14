@@ -1,0 +1,43 @@
+# --------------------------------- RATING
+##### READ ALL RATINGS
+GET http://localhost:8080/api/rating
+Content-Type: application/json
+
+
+##### READ A RATING BY ID
+GET http://localhost:8080/api/rating/1
+Content-Type: application/json
+
+
+##### READ AVERAGE RATING BY BRANCH ID
+GET http://localhost:8080/api/rating/?branchId=1
+Content-Type: application/json
+
+
+##### CREATE A RATING
+POST http://localhost:8080/api/rating
+Content-Type: application/json
+
+{
+    "score": 1,
+    "favoriteStatus": true,
+    "idBranch":1,
+    "idUser":1
+}
+
+
+##### UPDATE A RATING BY ID
+PUT http://localhost:8080/api/rating/1
+Content-Type: application/json
+
+{
+    "score": 5,
+    "favoriteStatus": true,
+    "idBranch":1,
+    "idUser":1
+}
+
+
+##### DELETE A RATING BY ID
+DELETE http://localhost:8080/api/rating/1
+Content-Type: application/json

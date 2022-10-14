@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
+import ucb.app.dto.BranchRatingCountDto;
 import ucb.app.dto.BusinessCountDto;
 import ucb.app.dto.BusinessZoneDto;
 
@@ -37,4 +38,14 @@ public class CUSTOMService {
                 "BusinessZone").setParameter(1, zoneId).getResultList();
         return businessZoneDtos;
     }
+
+    @Transactional
+    public List<BranchRatingCountDto> findBranchRatingCountDto() {
+        @SuppressWarnings("unchecked")
+        List<BranchRatingCountDto> branchRatingCountDtos = (List<BranchRatingCountDto>) entityManager.createNativeQuery(
+                "SELECT b.id_branch AS idBranch, avg(a.score) AS averageScore, count(a.id_rating) AS countIdRating FROM rating a JOIN branch b ON a.id_branch = b.id_branch GROUP BY b.id_branch;",
+                "BranchRatingCount").getResultList();
+        return branchRatingCountDtos;
+    }
+
 }

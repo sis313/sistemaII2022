@@ -1,0 +1,32 @@
+# --------------------------------- CITY
+##### READ ALL CITIES
+GET http://localhost:8080/api/city
+Content-Type: application/json
+
+
+##### READ A CITY BY ID
+GET http://localhost:8080/api/city/1
+Content-Type: application/json
+
+
+##### CREATE A CITY
+POST http://localhost:8080/api/city
+Content-Type: application/json
+
+{
+    "name": "La Paz"
+}
+
+
+##### UPDATE A CITY BY ID
+PUT http://localhost:8080/api/city/1
+Content-Type: application/json
+
+{
+    "name": "La Paz update"
+}
+
+
+##### DELETE A CITY BY ID
+DELETE http://localhost:8080/api/city/1
+Content-Type: application/json

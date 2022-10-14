@@ -1,6 +1,7 @@
 package ucb.app.dto;
 
 import java.util.Date;
+import java.math.BigDecimal;
 
 public class BranchLocationDto {
     private Integer idBranch;
@@ -10,17 +11,18 @@ public class BranchLocationDto {
     private String attentionDays;
     private String image;
     private int idZone;
-    private int idLocation;
     private int idBusiness;
     private Date createDate;
     private Date updateDate;
     private int status;
-    private LocationDto locationDto;
+
+    private BigDecimal latitude;
+    private BigDecimal longitude;
     private String businessName;
 
     public BranchLocationDto(Integer idBranch, String address, Date openHour, Date closeHour, String attentionDays,
-            String image, int idZone, int idLocation, int idBusiness, Date createDate, Date updateDate, int status,
-            LocationDto locationDto, String businessName) {
+            String image, int idZone, int idBusiness, Date createDate, Date updateDate, int status, BigDecimal latitude,
+            BigDecimal longitude, String businessName) {
         this.idBranch = idBranch;
         this.address = address;
         this.openHour = openHour;
@@ -28,12 +30,12 @@ public class BranchLocationDto {
         this.attentionDays = attentionDays;
         this.image = image;
         this.idZone = idZone;
-        this.idLocation = idLocation;
         this.idBusiness = idBusiness;
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.status = status;
-        this.locationDto = locationDto;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.businessName = businessName;
     }
 
@@ -93,14 +95,6 @@ public class BranchLocationDto {
         this.idZone = idZone;
     }
 
-    public int getIdLocation() {
-        return idLocation;
-    }
-
-    public void setIdLocation(int idLocation) {
-        this.idLocation = idLocation;
-    }
-
     public int getIdBusiness() {
         return idBusiness;
     }
@@ -133,12 +127,20 @@ public class BranchLocationDto {
         this.status = status;
     }
 
-    public LocationDto getLocationDto() {
-        return locationDto;
+    public BigDecimal getLatitude() {
+        return latitude;
     }
 
-    public void setLocationDto(LocationDto locationDto) {
-        this.locationDto = locationDto;
+    public void setLatitude(BigDecimal latitude) {
+        this.latitude = latitude;
+    }
+
+    public BigDecimal getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(BigDecimal longitude) {
+        this.longitude = longitude;
     }
 
     public String getBusinessName() {
@@ -153,8 +155,8 @@ public class BranchLocationDto {
     public String toString() {
         return "BranchLocationDto [idBranch=" + idBranch + ", address=" + address + ", openHour=" + openHour
                 + ", closeHour=" + closeHour + ", attentionDays=" + attentionDays + ", image=" + image + ", idZone="
-                + idZone + ", idLocation=" + idLocation + ", idBusiness=" + idBusiness + ", createDate=" + createDate
-                + ", updateDate=" + updateDate + ", status=" + status + ", locationDto=" + locationDto
-                + ", businessName=" + businessName + "]";
+                + idZone + ", idBusiness=" + idBusiness + ", createDate=" + createDate + ", updateDate=" + updateDate
+                + ", status=" + status + ", latitude=" + latitude + ", longitude=" + longitude + ", businessName="
+                + businessName + "]";
     }
 }

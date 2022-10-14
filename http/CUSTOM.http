@@ -1,0 +1,14 @@
+# --------------------------------- CUSTOM
+##### READ COUNT BUSINESSES ----- GROUP 2 -----
+GET http://localhost:8080/api/custom/countBusiness
+Content-Type: application/json
+
+
+##### READ BUSINESS ZONE BY ZONE ID ----- GROUP 2 -----
+GET http://localhost:8080/api/custom/bussinesZone/1
+Content-Type: application/json
+
+
+##### READ BRANCH RATING COUNT ----- GROUP 5 -----
+GET http://localhost:8080/api/custom/branchRatingCount
+Content-Type: application/json

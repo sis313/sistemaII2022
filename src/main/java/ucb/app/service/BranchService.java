@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import ucb.app.dto.BranchDto;
 import ucb.app.dto.BranchLocationDto;
-import ucb.app.dto.LocationDto;
 import ucb.app.model.Branch;
 import ucb.app.repository.BranchRepository;
 
@@ -114,10 +113,10 @@ public class BranchService {
         BranchLocationDto branchLocationDto = new BranchLocationDto(branch.getIdBranch(), branch.getAddress(),
                 branch.getOpenHour(),
                 branch.getCloseHour(), branch.getAttentionDays(), branch.getImage(), branch.getIdZone(),
-                branch.getIdLocation(), branch.getIdBusiness(), branch.getCreateDate(), branch.getUpdateDate(),
-                branch.getStatus(), new LocationDto(branch.getLocation().getIdLocation(),
-                        branch.getLocation().getLatitude(), branch.getLocation().getLongitude()),
+                branch.getIdBusiness(), branch.getCreateDate(), branch.getUpdateDate(),
+                branch.getStatus(), branch.getLocation().getLatitude(), branch.getLocation().getLatitude(),
                 branch.getBusiness().getName());
         return branchLocationDto;
     }
+
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.service.CUSTOMService;
+import ucb.app.dto.BranchRatingCountDto;
 import ucb.app.dto.BusinessCountDto;
 import ucb.app.dto.BusinessZoneDto;
 
@@ -35,4 +36,11 @@ public class CUSTOMController {
         List<BusinessZoneDto> businessZones = customService.findBusinessByZoneDto(zoneId);
         return new ResponseEntity<>(businessZones, HttpStatus.OK);
     }
+
+    @GetMapping(path = "/branchRatingCount")
+    public ResponseEntity<List<BranchRatingCountDto>> getBranchRatingCount() {
+        List<BranchRatingCountDto> branchRatingCountDtos = customService.findBranchRatingCountDto();
+        return new ResponseEntity<>(branchRatingCountDtos, HttpStatus.OK);
+    }
+
 }

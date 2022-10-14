@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.SqlResultSetMapping;
+import javax.persistence.ConstructorResult;
+import javax.persistence.ColumnResult;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -18,6 +21,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import ucb.app.dto.BranchRatingCountDto;
 
 /**
  *
@@ -39,6 +44,12 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
         @NamedQuery(name = "Branch.findByCreateDate", query = "SELECT b FROM Branch b WHERE b.createDate = :createDate"),
         @NamedQuery(name = "Branch.findByUpdateDate", query = "SELECT b FROM Branch b WHERE b.updateDate = :updateDate"),
         @NamedQuery(name = "Branch.findByStatus", query = "SELECT b FROM Branch b WHERE b.status = :status") })
+
+@SqlResultSetMapping(name = "BranchRatingCount", classes = @ConstructorResult(targetClass = BranchRatingCountDto.class, columns = {
+        @ColumnResult(name = "idBranch", type = Integer.class),
+        @ColumnResult(name = "averageScore", type = Double.class),
+        @ColumnResult(name = "countIdRating", type = Integer.class) }))
+
 public class Branch implements Serializable {
 
     private static final long serialVersionUID = 1L;

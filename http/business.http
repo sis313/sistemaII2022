@@ -1,0 +1,69 @@
+# --------------------------------- BUSINESS
+##### READ ALL BUSINESSES
+GET http://localhost:8080/api/business
+Content-Type: application/json
+
+
+##### READ A BUSINESS BY ID
+GET http://localhost:8080/api/business/1
+Content-Type: application/json
+
+
+##### READ A BUSINESS BY USER ID
+GET http://localhost:8080/api/business/?userId=1
+Content-Type: application/json
+
+
+##### READ A BUSINESS BY STATUS ----- GROUP 2 -----
+GET http://localhost:8080/api/business/status=1
+Content-Type: application/json
+
+
+##### READ A BUSINESS BY NAME ----- GROUP 3 -----
+GET http://localhost:8080/api/business/name/name1
+Content-Type: application/json
+
+
+##### READ A BUSINESS BY TYPE ----- GROUP 3 -----
+GET http://localhost:8080/api/business/Type/type1
+Content-Type: application/json
+
+
+##### READ A BUSINESS BY NAME AND TYPE ----- GROUP 3 -----
+GET http://localhost:8080/api/business/filter/type1/name1
+Content-Type: application/json
+
+
+##### CREATE A BUSINESS
+POST http://localhost:8080/api/business
+Content-Type: application/json
+
+{
+  "name": "business name",
+  "description": "business description",
+  "idTypeBusiness": 1,
+  "idUser": 1,
+  "createDate": "2008-01-02",
+  "updateDate": "2008-01-02",
+  "status": 1
+}
+
+
+##### UPDATE A BUSINESS BY ID
+PUT http://localhost:8080/api/business/1
+Content-Type: application/json
+
+{
+  "name": "business name update",
+  "description": "business description update",
+  "idTypeBusiness": 1,
+  "idUser": 1,
+  "createDate": "2008-01-02",
+  "updateDate": "2008-01-02",
+  "status": 1
+}
+
+
+##### DELETE A BUSINESS BY ID
+DELETE http://localhost:8080/api/business/1
+Content-Type: application/json
