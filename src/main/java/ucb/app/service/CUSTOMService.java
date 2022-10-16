@@ -48,4 +48,20 @@ public class CUSTOMService {
         return branchRatingCountDtos;
     }
 
+    @Transactional
+    public Integer updateBusinessStatusDto(Integer status, Integer idUser) {
+        Integer countUpdate = entityManager
+                .createNativeQuery("UPDATE business SET business.status = :status WHERE business.id_user = :idUser ;")
+                .setParameter("status", status).setParameter("idUser", idUser).executeUpdate();
+        return countUpdate;
+    }
+
+    @Transactional
+    public Integer updateBranchStatusDto(Integer status, Integer idUser) {
+        Integer countUpdate = entityManager
+                .createNativeQuery(
+                        "UPDATE business, branch SET branch.status = :status WHERE business.id_business = branch.id_business AND business.id_user = :idUser ;")
+                .setParameter("status", status).setParameter("idUser", idUser).executeUpdate();
+        return countUpdate;
+    }
 }
