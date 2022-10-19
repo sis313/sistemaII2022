@@ -239,4 +239,9 @@ ALTER TABLE zone ADD CONSTRAINT zone_municipalities FOREIGN KEY zone_municipalit
 
 INSERT Into type_user (name) VALUES ('ADMIN');
 INSERT Into type_user (name) VALUES ('USER');
+
+INSERT Into roles (name) VALUES ('USER');
+INSERT Into roles (name) VALUES ('ADMIN');
+
+-- End of file.
 -- End of file.

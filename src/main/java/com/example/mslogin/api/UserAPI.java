@@ -3,6 +3,7 @@ package com.example.mslogin.api;
 import com.example.mslogin.bl.UserBl;
 import com.example.mslogin.dao.UserRepository;
 import com.example.mslogin.dto.UserEntity;
+import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -62,4 +63,9 @@ public class UserAPI {
         return new ResponseEntity<>(userList, HttpStatus.OK);
     }
 
+    @GetMapping(path = "/username")
+    public ResponseEntity<UserEntity> getUser(@RequestParam String username){
+        UserEntity user = userRepository.findUserByUser(username);
+        return new ResponseEntity<UserEntity>(user,HttpStatus.OK);
+    }
 }

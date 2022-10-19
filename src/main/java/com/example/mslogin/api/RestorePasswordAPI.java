@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
-@RestController
 @CrossOrigin(origins = "*")
+@RestController
 public class RestorePasswordAPI {
     private RestorePasswordBl restorePasswordBl;
     private UserEntity userEntity;
@@ -24,7 +24,7 @@ public class RestorePasswordAPI {
 
     @PostMapping(path = "/recover", consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> sendEmail(@RequestBody UserEntity userEntity) {
-        LOGGER.info("sendEmail from RestorePasswordAPI");
+        LOGGER.info("sendEmail from RestorePasswordAPI , {}" , userEntity.getEmail());
         int res = restorePasswordBl.sendMailToRestorePass(userEntity.getEmail());
 
         if(res>0){
