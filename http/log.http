@@ -1,0 +1,21 @@
+# --------------------------------- LOG
+##### READ ALL LOGS
+GET http://localhost:8080/api/log
+Content-Type: application/json
+
+
+##### READ A LOG BY ID
+GET http://localhost:8080/api/log/1
+Content-Type: application/json
+
+
+##### CREATE A LOG
+POST http://localhost:8080/api/log
+Content-Type: application/json
+
+{
+    "date": "2022-01-01",
+    "idBusiness": 1,
+    "idBranch": 1,
+    "idUser": 1
+}

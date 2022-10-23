@@ -12,3 +12,18 @@ Content-Type: application/json
 ##### READ BRANCH RATING COUNT ----- GROUP 5 -----
 GET http://localhost:8080/api/custom/branchRatingCount
 Content-Type: application/json
+
+
+##### READ LOG GLOBAL COUNT ----- GROUP 5 -----
+GET http://localhost:8080/api/custom/logGlobalCount
+Content-Type: application/json
+
+
+##### READ LOG ANUAL COUNT ----- GROUP 5 -----
+GET http://localhost:8080/api/custom/logAnualCount
+Content-Type: application/json
+
+
+##### READ LOG SEMESTER COUNT ----- GROUP 5 -----
+GET http://localhost:8080/api/custom/logSemesterCount
+Content-Type: application/json

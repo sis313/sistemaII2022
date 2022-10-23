@@ -142,6 +142,15 @@ CREATE TABLE zone (
     id_municipalities int NOT NULL,
     CONSTRAINT zone_pk PRIMARY KEY (id_zone)
 );
+-- Table: log
+CREATE TABLE log (
+    id_log int NOT NULL AUTO_INCREMENT,
+    date date NOT NULL,
+    id_business int NOT NULL,
+    id_branch int NOT NULL,
+    id_user int NOT NULL,
+    CONSTRAINT log_pk PRIMARY KEY (id_log)
+);
 -- foreign keys
 -- Reference: booking_product (table: booking)
 ALTER TABLE booking

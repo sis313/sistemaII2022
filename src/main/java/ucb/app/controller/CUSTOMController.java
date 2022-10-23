@@ -14,6 +14,9 @@ import ucb.app.service.CUSTOMService;
 import ucb.app.dto.BranchRatingCountDto;
 import ucb.app.dto.BusinessCountDto;
 import ucb.app.dto.BusinessZoneDto;
+import ucb.app.dto.LogAnualCountDto;
+import ucb.app.dto.LogGlobalCountDto;
+import ucb.app.dto.LogSemesterCountDto;
 
 @RestController
 @RequestMapping("api/custom")
@@ -43,4 +46,21 @@ public class CUSTOMController {
         return new ResponseEntity<>(branchRatingCountDtos, HttpStatus.OK);
     }
 
+    @GetMapping(path = "/logGlobalCount")
+    public ResponseEntity<List<LogGlobalCountDto>> getLogGlobalCount() {
+        List<LogGlobalCountDto> logGlobalCountDtos = customService.findLogGlobalCountDto();
+        return new ResponseEntity<>(logGlobalCountDtos, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/logAnualCount")
+    public ResponseEntity<List<LogAnualCountDto>> getLogAnualCount() {
+        List<LogAnualCountDto> logAnualCountDtos = customService.findLogAnualCountDto();
+        return new ResponseEntity<>(logAnualCountDtos, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/logSemesterCount")
+    public ResponseEntity<List<LogSemesterCountDto>> getLogSemesterCount() {
+        List<LogSemesterCountDto> logSemesterCountDtos = customService.findLogSemesterCountDto();
+        return new ResponseEntity<>(logSemesterCountDtos, HttpStatus.OK);
+    }
 }

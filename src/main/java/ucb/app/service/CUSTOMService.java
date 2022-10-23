@@ -11,6 +11,9 @@ import javax.transaction.Transactional;
 import ucb.app.dto.BranchRatingCountDto;
 import ucb.app.dto.BusinessCountDto;
 import ucb.app.dto.BusinessZoneDto;
+import ucb.app.dto.LogAnualCountDto;
+import ucb.app.dto.LogGlobalCountDto;
+import ucb.app.dto.LogSemesterCountDto;
 
 @Service
 public class CUSTOMService {
@@ -63,5 +66,32 @@ public class CUSTOMService {
                         "UPDATE business, branch SET branch.status = :status WHERE business.id_business = branch.id_business AND business.id_user = :idUser ;")
                 .setParameter("status", status).setParameter("idUser", idUser).executeUpdate();
         return countUpdate;
+    }
+
+    @Transactional
+    public List<LogGlobalCountDto> findLogGlobalCountDto() {
+        @SuppressWarnings("unchecked")
+        List<LogGlobalCountDto> logGlobalDtos = (List<LogGlobalCountDto>) entityManager.createNativeQuery(
+                "SELECT a.id_branch AS idBranch, a.id_business AS idBusiness, count(a.id_log) AS count FROM log a GROUP BY a.id_branch ORDER BY  count(a.id_log) DESC;",
+                "LogGlobalCount").getResultList();
+        return logGlobalDtos;
+    }
+
+    @Transactional
+    public List<LogAnualCountDto> findLogAnualCountDto() {
+        @SuppressWarnings("unchecked")
+        List<LogAnualCountDto> logAnualCountDtos = (List<LogAnualCountDto>) entityManager.createNativeQuery(
+                "SELECT a.id_branch AS idBranch, a.id_business AS idBusiness,YEAR(a.date) AS year, count(a.id_log) AS count FROM log a GROUP BY a.id_branch, YEAR(a.date) ORDER BY YEAR(a.date),a.id_branch;",
+                "LogAnualCount").getResultList();
+        return logAnualCountDtos;
+    }
+
+    @Transactional
+    public List<LogSemesterCountDto> findLogSemesterCountDto() {
+        @SuppressWarnings("unchecked")
+        List<LogSemesterCountDto> logSemesterDtos = (List<LogSemesterCountDto>) entityManager.createNativeQuery(
+                "SELECT a.id_branch AS idBranch, a.id_business AS idBusiness, YEAR(a.date) AS year, count(a.id_log) as count, IF(MONTH(a.date) < 7, 1, 2) AS semester,YEAR(a.date) AS yearSemeter FROM log a GROUP BY a.id_branch, YEAR(a.date), semester ORDER BY YEAR(a.date),semester,a.id_branch;",
+                "LogSemesterCount").getResultList();
+        return logSemesterDtos;
     }
 }
