@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.sql.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -74,6 +75,11 @@ public class UserBl {
         Integer countUpdateaaa = customService.updateBranchStatusDto(status ? 1 : 0, userId);
         UserEntity response = userRepository.save(userFound);
         return response;
+    }
+
+    public List<UserEntity> findUserByTypeAndStatus(Integer tipo, Integer status) {
+        List<UserEntity> users = userRepository.findAllByTypeAndStatus(tipo, status);
+        return users;
     }
     // CODE CHANGE - START
 }

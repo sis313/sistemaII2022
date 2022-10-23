@@ -66,5 +66,12 @@ public class UserAPI {
         UserEntity response = userBl.deleteByIdDto(userId);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/type={typeUser}/status={status}")
+    public ResponseEntity<List<UserEntity>> findUserByTypeAndStatus(@PathVariable("typeUser") Integer tipo,
+            @PathVariable("status") Integer status) {
+        List<UserEntity> response = userBl.findUserByTypeAndStatus(tipo, status);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
     // CODE CHANGE - STOP
 }
