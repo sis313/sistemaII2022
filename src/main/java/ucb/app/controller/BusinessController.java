@@ -78,15 +78,15 @@ public class BusinessController {
     }
 
     @PostMapping
-    public ResponseEntity<BusinessDto> postBusiness(@RequestBody Business business) {
-        BusinessDto response = businessService.saveDto(business);
+    public ResponseEntity<BusinessDto> postBusiness(@RequestBody BusinessDto businessDto) {
+        BusinessDto response = businessService.saveDto(businessDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping(path = "/{businessId}")
     public ResponseEntity<BusinessDto> putBusiness(@PathVariable("businessId") Integer businessId,
-            @RequestBody Business business) {
-        BusinessDto response = businessService.updateDto(businessId, business);
+            @RequestBody BusinessDto businessDto) {
+        BusinessDto response = businessService.updateDto(businessId, businessDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

@@ -57,19 +57,23 @@ public class BusinessService {
                 .collect(Collectors.toList());
     }
 
-    public BusinessDto saveDto(Business business) {
+    public BusinessDto saveDto(BusinessDto businessDto) {
+        Business business = new Business(businessDto.getIdBusiness(), businessDto.getName(),
+                businessDto.getDescription(),
+                businessDto.getIdTypeBusiness(), businessDto.getIdUser(), businessDto.getCreateDate(),
+                businessDto.getCreateDate(), businessDto.getStatus());
         Business response = businessRepository.save(business);
         return businessToBusinessDto(response);
     }
 
-    public BusinessDto updateDto(Integer businessId, Business business) {
+    public BusinessDto updateDto(Integer businessId, BusinessDto businessDto) {
         Business businessFound = businessRepository.getReferenceById(businessId);
-        businessFound.setName(business.getName());
-        businessFound.setDescription(business.getDescription());
-        businessFound.setIdTypeBusiness(business.getIdTypeBusiness());
-        businessFound.setCreateDate(business.getCreateDate());
-        businessFound.setUpdateDate(business.getUpdateDate());
-        businessFound.setIdUser(business.getIdUser());
+        businessFound.setName(businessDto.getName());
+        businessFound.setDescription(businessDto.getDescription());
+        businessFound.setIdTypeBusiness(businessDto.getIdTypeBusiness());
+        businessFound.setCreateDate(businessDto.getCreateDate());
+        businessFound.setUpdateDate(businessDto.getUpdateDate());
+        businessFound.setIdUser(businessDto.getIdUser());
         Business response = businessRepository.save(businessFound);
         return businessToBusinessDto(response);
     }
