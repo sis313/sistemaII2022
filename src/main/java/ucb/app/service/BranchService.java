@@ -43,7 +43,7 @@ public class BranchService {
     }
 
     public BranchDto saveDto(String address, Date openHour, Date closeHour, String attentionDays, MultipartFile image,
-            int idZone, int idLocation, int idBusiness, Date createDate, Date updateDate, int status) {
+            int idZone, int idLocation, int idBusiness, int status) {
         String imageName = fileService.uploadFile(image);
         Branch branch = new Branch();
         branch.setAddress(address);
@@ -54,8 +54,8 @@ public class BranchService {
         branch.setIdZone(idZone);
         branch.setIdLocation(idLocation);
         branch.setIdBusiness(idBusiness);
-        branch.setCreateDate(createDate);
-        branch.setUpdateDate(updateDate);
+        // branch.setCreateDate(createDate);
+        // branch.setUpdateDate(updateDate);
         branch.setStatus(status);
         Branch response = branchRepository.save(branch);
         return branchToBranchDto(response);
@@ -63,7 +63,7 @@ public class BranchService {
 
     public BranchDto updateDto(Integer branchId, String address, Date openHour, Date closeHour, String attentionDays,
             MultipartFile image,
-            int idZone, int idLocation, int idBusiness, Date createDate, Date updateDate, int status) {
+            int idZone, int idLocation, int idBusiness, int status) {
         String imageName = fileService.uploadFile(image);
         Branch branch = new Branch();
         branch.setAddress(address);
@@ -74,8 +74,8 @@ public class BranchService {
         branch.setIdZone(idZone);
         branch.setIdLocation(idLocation);
         branch.setIdBusiness(idBusiness);
-        branch.setCreateDate(createDate);
-        branch.setUpdateDate(updateDate);
+        // branch.setCreateDate(createDate);
+        // branch.setUpdateDate(updateDate);
         branch.setStatus(status);
 
         Branch branchFound = branchRepository.getReferenceById(branchId);
@@ -87,8 +87,8 @@ public class BranchService {
         branchFound.setIdZone(branch.getIdZone());
         branchFound.setIdLocation(branch.getIdLocation());
         branchFound.setIdBusiness(branch.getIdBusiness());
-        branchFound.setCreateDate(branch.getCreateDate());
-        branchFound.setUpdateDate(branch.getUpdateDate());
+        // branchFound.setCreateDate(branch.getCreateDate());
+        // branchFound.setUpdateDate(branch.getUpdateDate());
         branchFound.setStatus(branch.getStatus());
         Branch response = branchRepository.save(branchFound);
         return branchToBranchDto(response);

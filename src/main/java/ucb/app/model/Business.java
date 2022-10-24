@@ -24,6 +24,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import ucb.app.dto.BusinessCountDto;
@@ -79,12 +82,14 @@ public class Business implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_user")
     private int idUser;
+    @CreationTimestamp
     @Basic(optional = false)
-    @Column(name = "create_date")
+    @Column(name = "create_date", updatable = false)
     @Temporal(TemporalType.DATE)
     private Date createDate;
+    @UpdateTimestamp
     @Basic(optional = false)
-    @Column(name = "update_date")
+    @Column(name = "update_date", updatable = true)
     @Temporal(TemporalType.DATE)
     private Date updateDate;
     @Basic(optional = false)
@@ -111,8 +116,8 @@ public class Business implements Serializable {
         this.description = description;
         this.idTypeBusiness = idTypeBusiness;
         this.idUser = idUser;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
+        // this.createDate = createDate;
+        // this.updateDate = updateDate;
         this.status = status;
     }
 

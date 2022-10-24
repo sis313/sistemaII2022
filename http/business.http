@@ -43,8 +43,6 @@ Content-Type: application/json
   "description": "business description",
   "idTypeBusiness": 1,
   "idUser": 1,
-  "createDate": "2008-01-02",
-  "updateDate": "2008-01-02",
   "status": 1
 }
 
@@ -58,8 +56,6 @@ Content-Type: application/json
   "description": "business description update",
   "idTypeBusiness": 1,
   "idUser": 1,
-  "createDate": "2008-01-02",
-  "updateDate": "2008-01-02",
   "status": 1
 }
 

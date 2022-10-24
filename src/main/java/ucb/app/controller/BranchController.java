@@ -65,11 +65,9 @@ public class BranchController {
             @RequestParam(value = "idZone") int idZone,
             @RequestParam(value = "idLocation") int idLocation,
             @RequestParam(value = "idBusiness") int idBusiness,
-            @RequestParam(value = "createDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date createDate,
-            @RequestParam(value = "updateDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date updateDate,
             @RequestParam(value = "status") int status) {
         BranchDto response = branchService.saveDto(address, openHour, closeHour, attentionDays, image, idZone,
-                idLocation, idBusiness, createDate, updateDate, status);
+                idLocation, idBusiness, status);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -84,12 +82,10 @@ public class BranchController {
             @RequestParam(value = "idZone") int idZone,
             @RequestParam(value = "idLocation") int idLocation,
             @RequestParam(value = "idBusiness") int idBusiness,
-            @RequestParam(value = "createDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date createDate,
-            @RequestParam(value = "updateDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date updateDate,
             @RequestParam(value = "status") int status) {
         BranchDto response = branchService.updateDto(branchId, address, openHour, closeHour, attentionDays, image,
                 idZone,
-                idLocation, idBusiness, createDate, updateDate, status);
+                idLocation, idBusiness, status);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

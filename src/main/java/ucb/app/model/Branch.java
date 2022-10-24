@@ -20,6 +20,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import ucb.app.dto.BranchRatingCountDto;
@@ -83,12 +86,14 @@ public class Branch implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_business")
     private int idBusiness;
+    @CreationTimestamp
     @Basic(optional = false)
-    @Column(name = "create_date")
+    @Column(name = "create_date", updatable = false)
     @Temporal(TemporalType.DATE)
     private Date createDate;
     @Basic(optional = false)
-    @Column(name = "update_date")
+    @UpdateTimestamp
+    @Column(name = "update_date", updatable = true)
     @Temporal(TemporalType.DATE)
     private Date updateDate;
     @Basic(optional = false)

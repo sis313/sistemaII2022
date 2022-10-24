@@ -27,8 +27,6 @@ Content-Type: multipart/form-data
     "idZone": 1,
     "idLocation": 1,
     "idBusiness": 1,
-    "createDate": "2022-01-01",
-    "updateDate": "2022-01-01",
     "status": 1
 }
 
@@ -46,8 +44,6 @@ Content-Type: multipart/form-data
     "idZone": 1,
     "idLocation": 1,
     "idBusiness": 1,
-    "createDate": "2022-01-01",
-    "updateDate": "2022-01-01",
     "status": 1
 }
 
