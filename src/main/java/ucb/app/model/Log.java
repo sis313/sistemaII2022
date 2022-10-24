@@ -15,7 +15,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import ucb.app.dto.LogAnualCountDto;
+import ucb.app.dto.LogDayCountDto;
 import ucb.app.dto.LogGlobalCountDto;
+import ucb.app.dto.LogMonthCountDto;
+import ucb.app.dto.LogQuarterCountDto;
 import ucb.app.dto.LogSemesterCountDto;
 
 import javax.persistence.SqlResultSetMapping;
@@ -54,6 +57,26 @@ import javax.persistence.ColumnResult;
         @ColumnResult(name = "count", type = Integer.class),
         @ColumnResult(name = "semester", type = Integer.class),
         @ColumnResult(name = "yearSemeter", type = Integer.class) }))
+
+@SqlResultSetMapping(name = "LogQuarterCount", classes = @ConstructorResult(targetClass = LogQuarterCountDto.class, columns = {
+        @ColumnResult(name = "idBusiness", type = Integer.class),
+        @ColumnResult(name = "idBranch", type = Integer.class),
+        @ColumnResult(name = "year", type = Integer.class),
+        @ColumnResult(name = "quarter", type = Integer.class),
+        @ColumnResult(name = "count", type = Integer.class) }))
+
+@SqlResultSetMapping(name = "LogMonthCount", classes = @ConstructorResult(targetClass = LogMonthCountDto.class, columns = {
+        @ColumnResult(name = "idBusiness", type = Integer.class),
+        @ColumnResult(name = "idBranch", type = Integer.class),
+        @ColumnResult(name = "year", type = Integer.class),
+        @ColumnResult(name = "month", type = Integer.class),
+        @ColumnResult(name = "count", type = Integer.class) }))
+
+@SqlResultSetMapping(name = "LogDayCount", classes = @ConstructorResult(targetClass = LogDayCountDto.class, columns = {
+        @ColumnResult(name = "idBusiness", type = Integer.class),
+        @ColumnResult(name = "idBranch", type = Integer.class),
+        @ColumnResult(name = "date", type = Date.class),
+        @ColumnResult(name = "count", type = Integer.class) }))
 
 public class Log implements Serializable {
 

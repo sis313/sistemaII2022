@@ -27,3 +27,18 @@ Content-Type: application/json
 ##### READ LOG SEMESTER COUNT ----- GROUP 5 -----
 GET http://localhost:8080/api/custom/logSemesterCount
 Content-Type: application/json
+
+
+##### READ LOG QUARTER COUNT ----- GROUP 5 -----
+GET http://localhost:8080/api/custom/logQuarterCount
+Content-Type: application/json
+
+
+##### READ LOG MONTH COUNT ----- GROUP 5 -----
+GET http://localhost:8080/api/custom/logMonthCount
+Content-Type: application/json
+
+
+##### READ LOG DAY COUNT ----- GROUP 5 -----
+GET http://localhost:8080/api/custom/logDayCount
+Content-Type: application/json

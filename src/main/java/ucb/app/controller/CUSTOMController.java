@@ -15,7 +15,10 @@ import ucb.app.dto.BranchRatingCountDto;
 import ucb.app.dto.BusinessCountDto;
 import ucb.app.dto.BusinessZoneDto;
 import ucb.app.dto.LogAnualCountDto;
+import ucb.app.dto.LogDayCountDto;
 import ucb.app.dto.LogGlobalCountDto;
+import ucb.app.dto.LogMonthCountDto;
+import ucb.app.dto.LogQuarterCountDto;
 import ucb.app.dto.LogSemesterCountDto;
 
 @RestController
@@ -62,5 +65,23 @@ public class CUSTOMController {
     public ResponseEntity<List<LogSemesterCountDto>> getLogSemesterCount() {
         List<LogSemesterCountDto> logSemesterCountDtos = customService.findLogSemesterCountDto();
         return new ResponseEntity<>(logSemesterCountDtos, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/logQuarterCount")
+    public ResponseEntity<List<LogQuarterCountDto>> getLogQuarterCount() {
+        List<LogQuarterCountDto> logQuarterCountDtos = customService.findLogQuarterCountDto();
+        return new ResponseEntity<>(logQuarterCountDtos, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/logMonthCount")
+    public ResponseEntity<List<LogMonthCountDto>> getLogMonthCount() {
+        List<LogMonthCountDto> logMonthCountDtos = customService.findLogMonthCountDto();
+        return new ResponseEntity<>(logMonthCountDtos, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/logDayCount")
+    public ResponseEntity<List<LogDayCountDto>> getLogDayCount() {
+        List<LogDayCountDto> logDayCountDtos = customService.findLogDayCountDto();
+        return new ResponseEntity<>(logDayCountDtos, HttpStatus.OK);
     }
 }

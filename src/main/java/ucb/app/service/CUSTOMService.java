@@ -12,7 +12,10 @@ import ucb.app.dto.BranchRatingCountDto;
 import ucb.app.dto.BusinessCountDto;
 import ucb.app.dto.BusinessZoneDto;
 import ucb.app.dto.LogAnualCountDto;
+import ucb.app.dto.LogDayCountDto;
 import ucb.app.dto.LogGlobalCountDto;
+import ucb.app.dto.LogMonthCountDto;
+import ucb.app.dto.LogQuarterCountDto;
 import ucb.app.dto.LogSemesterCountDto;
 
 @Service
@@ -89,9 +92,36 @@ public class CUSTOMService {
     @Transactional
     public List<LogSemesterCountDto> findLogSemesterCountDto() {
         @SuppressWarnings("unchecked")
-        List<LogSemesterCountDto> logSemesterDtos = (List<LogSemesterCountDto>) entityManager.createNativeQuery(
+        List<LogSemesterCountDto> logSemesterCountDtos = (List<LogSemesterCountDto>) entityManager.createNativeQuery(
                 "SELECT a.id_branch AS idBranch, a.id_business AS idBusiness, YEAR(a.date) AS year, count(a.id_log) as count, IF(MONTH(a.date) < 7, 1, 2) AS semester,YEAR(a.date) AS yearSemeter FROM log a GROUP BY a.id_branch, YEAR(a.date), semester ORDER BY YEAR(a.date),semester,a.id_branch;",
                 "LogSemesterCount").getResultList();
-        return logSemesterDtos;
+        return logSemesterCountDtos;
+    }
+
+    @Transactional
+    public List<LogQuarterCountDto> findLogQuarterCountDto() {
+        @SuppressWarnings("unchecked")
+        List<LogQuarterCountDto> logQuarterCountDtos = (List<LogQuarterCountDto>) entityManager.createNativeQuery(
+                "SELECT a.id_branch AS idBranch, a.id_business AS idBusiness, YEAR(a.date) AS year, quarter(a.date) AS quarter,count(a.id_log) AS count FROM log a GROUP BY a.id_branch, YEAR(a.date), quarter(a.date) ORDER BY YEAR(a.date),quarter(a.date),a.id_branch;",
+                "LogQuarterCount").getResultList();
+        return logQuarterCountDtos;
+    }
+
+    @Transactional
+    public List<LogMonthCountDto> findLogMonthCountDto() {
+        @SuppressWarnings("unchecked")
+        List<LogMonthCountDto> logMonthCountDtos = (List<LogMonthCountDto>) entityManager.createNativeQuery(
+                "SELECT a.id_branch AS idBranch, a.id_business AS idBusiness, YEAR(a.date) AS year, MONTH(a.date) AS month, count(a.id_log) AS count FROM log a GROUP BY a.id_branch, YEAR(a.date), MONTH(a.date) ORDER BY YEAR(a.date),MONTH(a.date),a.id_branch;",
+                "LogMonthCount").getResultList();
+        return logMonthCountDtos;
+    }
+
+    @Transactional
+    public List<LogDayCountDto> findLogDayCountDto() {
+        @SuppressWarnings("unchecked")
+        List<LogDayCountDto> logDayCountDtos = (List<LogDayCountDto>) entityManager.createNativeQuery(
+                "SELECT a.id_branch AS idBranch, a.id_business AS idBusiness, date(a.date) AS date, count(a.id_log) AS count FROM log a GROUP BY a.id_branch, date(a.date) ORDER BY date(a.date),a.id_branch;",
+                "LogDayCount").getResultList();
+        return logDayCountDtos;
     }
 }
