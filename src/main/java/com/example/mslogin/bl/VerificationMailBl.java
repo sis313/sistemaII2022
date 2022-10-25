@@ -49,7 +49,7 @@ public class VerificationMailBl {
         if(token != null && (token.getExpiryDate().getTime() - cal.getTime().getTime())>=0)
         {
             UserEntity user = userRepository.findUserByID(token.getIdUser());
-            user.setStatus("Active");
+            user.setStatus(1);
             userRepository.save(user);
             LOGGER.info("confirmUserAccount from VerificationMailBl-if");
             return user.getIdUser();

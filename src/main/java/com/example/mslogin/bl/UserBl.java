@@ -48,7 +48,7 @@ public class UserBl {
         user.setRoles(roles);
         user.setCreateDate(new Date(System.currentTimeMillis()));
         user.setUpdateDate(new Date(System.currentTimeMillis()));
-        user.setStatus("Pending");
+        user.setStatus(0);
         UserEntity newUser = userRepository.save(user);
         verificationMailBl.createToken(newUser);
         LOGGER.info("User saved");
@@ -68,7 +68,7 @@ public class UserBl {
         UserEntity user = userRepository.findUserByID(userEntity.getIdUser());
         user.setIdTypeUser(userEntity.getIdTypeUser());
         user.setUpdateDate(new Date(System.currentTimeMillis()));
-
+        user.setRoles(userEntity.getRoles().stream().map((role) -> roleRepository.findByName(role.getName())).collect(java.util.stream.Collectors.toList()));
         return userRepository.save(user);
     }
 }

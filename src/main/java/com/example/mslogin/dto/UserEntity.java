@@ -38,7 +38,7 @@ public class UserEntity {
     private Date updateDate;
     @javax.persistence.Basic
     @javax.persistence.Column(name = "status")
-    private String status;
+    private Integer status;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -114,11 +114,11 @@ public class UserEntity {
         this.updateDate = updateDate;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
