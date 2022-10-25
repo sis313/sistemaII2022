@@ -2,10 +2,10 @@
 DELETE http://localhost:8080/v1/api/user/1
 
 
-### READ ALL USERS
+### READ ALL USERS ----- GROUP 2 -----
 GET http://localhost:8080/v1/api/user
 
 
-### Obtener lista de dueños de un negocio con estado activo
-GET http://localhost:8080/v1/api/user/type=1/status=1
+### GET USERS BY TYPE AND STATUS ----- GROUP 2 -----
+GET http://localhost:8080/v1/api/user/type=3/status=1
 Content-Type: application/json

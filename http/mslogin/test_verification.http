@@ -1,0 +1,40 @@
+###
+POST http://localhost:8080/v1/api/user/publico/register
+Content-Type: application/json
+
+{
+  "name": "Mireya Huanca",
+  "email": "mire11@gmail.com",
+  "nickname": "Mire",
+  "password": "mire",
+  "idTypeUser": 1
+}
+
+###
+GET http://localhost:8080/v1/api/user/2
+###
+GET http://localhost:8080/confirm-account?token=25ec7d69-92b1-4dd5-b94f-af91cb2631fb
+
+###
+GET http://localhost:8080/resend
+Content-Type: application/json
+
+{
+  "name": "Test1",
+  "email": "sv.kokonoe@gmail.com",
+  "nickname": "test_si",
+  "password": "test123",
+  "idTypeUser": 1
+}
+
+###
+POST http://localhost:8080/auth/signin
+Content-Type: application/json
+
+{
+  "username": "Mire",
+  "password": "mire"
+}
+
+###
+GET http://localhost:8080/v1/api/user
