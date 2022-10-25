@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.dto.CommentDto;
-import ucb.app.model.Comment;
 import ucb.app.service.CommentService;
 
 @RestController
@@ -63,15 +62,15 @@ public class CommentController {
     }
 
     @PostMapping
-    public ResponseEntity<CommentDto> postComment(@RequestBody Comment comment) {
-        CommentDto response = commentService.saveDto(comment);
+    public ResponseEntity<CommentDto> postComment(@RequestBody CommentDto commentDto) {
+        CommentDto response = commentService.saveDto(commentDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping(path = "/{commentId}")
     public ResponseEntity<CommentDto> putComment(@PathVariable("commentId") Integer commentId,
-            @RequestBody Comment comment) {
-        CommentDto response = commentService.updateDto(commentId, comment);
+            @RequestBody CommentDto commentDto) {
+        CommentDto response = commentService.updateDto(commentId, commentDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

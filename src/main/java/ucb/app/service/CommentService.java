@@ -45,16 +45,18 @@ public class CommentService {
                 .collect(Collectors.toList());
     }
 
-    public CommentDto saveDto(Comment comment) {
+    public CommentDto saveDto(CommentDto commentDto) {
+        Comment comment = new Comment(commentDto.getIdComment(), commentDto.getMessage(), commentDto.getIdUser(),
+                commentDto.getIdBusiness(), commentDto.getStatus());
         Comment response = commentRepository.save(comment);
         return commentToCommentDto(response);
     }
 
-    public CommentDto updateDto(Integer commentId, Comment comment) {
+    public CommentDto updateDto(Integer commentId, CommentDto commentDto) {
         Comment commentFound = commentRepository.getReferenceById(commentId);
-        commentFound.setMessage(comment.getMessage());
-        commentFound.setIdUser(comment.getIdUser());
-        commentFound.setIdBusiness(comment.getIdBusiness());
+        commentFound.setMessage(commentDto.getMessage());
+        commentFound.setIdUser(commentDto.getIdUser());
+        commentFound.setIdBusiness(commentDto.getIdBusiness());
         Comment response = commentRepository.save(commentFound);
         return commentToCommentDto(response);
     }

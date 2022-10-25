@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.dto.CityDto;
-import ucb.app.model.City;
 import ucb.app.service.CityService;
 
 @RestController
@@ -41,14 +40,14 @@ public class CityController {
     }
 
     @PostMapping
-    public ResponseEntity<CityDto> postCity(@RequestBody City city) {
-        CityDto response = cityService.saveDto(city);
+    public ResponseEntity<CityDto> postCity(@RequestBody CityDto cityDto) {
+        CityDto response = cityService.saveDto(cityDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping(path = "/{cityId}")
-    public ResponseEntity<CityDto> putCity(@PathVariable("cityId") Integer cityId, @RequestBody City city) {
-        CityDto response = cityService.updateDto(cityId, city);
+    public ResponseEntity<CityDto> putCity(@PathVariable("cityId") Integer cityId, @RequestBody CityDto cityDto) {
+        CityDto response = cityService.updateDto(cityId, cityDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

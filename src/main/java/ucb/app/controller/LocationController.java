@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.dto.LocationDto;
-import ucb.app.model.Location;
 import ucb.app.service.LocationService;
 
 @RestController
@@ -42,15 +41,15 @@ public class LocationController {
     }
 
     @PostMapping
-    public ResponseEntity<LocationDto> postLocation(@RequestBody Location location) {
-        LocationDto response = locationService.saveDto(location);
+    public ResponseEntity<LocationDto> postLocation(@RequestBody LocationDto locationDto) {
+        LocationDto response = locationService.saveDto(locationDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping(path = "/{locationId}")
     public ResponseEntity<LocationDto> putLocation(@PathVariable("locationId") Integer locationId,
-            @RequestBody Location location) {
-        LocationDto response = locationService.updateDto(locationId, location);
+            @RequestBody LocationDto locationDto) {
+        LocationDto response = locationService.updateDto(locationId, locationDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

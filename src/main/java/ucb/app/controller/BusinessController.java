@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.dto.BusinessDto;
-import ucb.app.model.Business;
 import ucb.app.service.BusinessService;
 
 @RestController
