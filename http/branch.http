@@ -54,5 +54,5 @@ Content-Type: application/json
 
 
 ##### READ ALL BRANCHES WITH LOCATION ----- GROUP 3 -----
-GET http://localhost:8080/api/branch/location
+GET https://serviceprojectspring.herokuapp.com/api/branch/location
 Content-Type: application/json
