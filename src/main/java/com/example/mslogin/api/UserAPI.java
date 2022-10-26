@@ -30,10 +30,15 @@ public class UserAPI {
 
 
     @PostMapping(path = "/publico/register" , consumes = "application/json", produces = "application/json")
-    public ResponseEntity<UserEntity> addUser(@RequestBody UserEntity userEntity){
+    public ResponseEntity<String> addUser(@RequestBody UserEntity userEntity){
         LOGGER.info("addUser from UserAPI");
         UserEntity user = userBl.saveUser(userEntity);
-        return new ResponseEntity(user, HttpStatus.OK);
+        if(user == null){
+            return new ResponseEntity<>("Error. The email entered does have an associated account.", HttpStatus.PRECONDITION_FAILED);
+        }
+        else {
+            return new ResponseEntity<>("User added successfully.", HttpStatus.OK);
+        }
     }
 
     @PutMapping(path = "" , consumes = "application/json", produces = "application/json")
