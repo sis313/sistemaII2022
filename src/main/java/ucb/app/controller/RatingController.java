@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.dto.RatingAverageDto;
 import ucb.app.dto.RatingDto;
-import ucb.app.model.Rating;
 import ucb.app.service.RatingService;
 
 @RestController
@@ -49,14 +48,15 @@ public class RatingController {
     }
 
     @PostMapping
-    public ResponseEntity<RatingDto> postRating(@RequestBody Rating rating) {
-        RatingDto response = ratingService.saveDto(rating);
+    public ResponseEntity<RatingDto> postRating(@RequestBody RatingDto ratingDto) {
+        RatingDto response = ratingService.saveDto(ratingDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping(path = "/{ratingId}")
-    public ResponseEntity<RatingDto> putRating(@PathVariable("ratingId") Integer ratingId, @RequestBody Rating rating) {
-        RatingDto response = ratingService.updateDto(ratingId, rating);
+    public ResponseEntity<RatingDto> putRating(@PathVariable("ratingId") Integer ratingId,
+            @RequestBody RatingDto ratingDto) {
+        RatingDto response = ratingService.updateDto(ratingId, ratingDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

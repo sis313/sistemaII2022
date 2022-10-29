@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.dto.LogDto;
-import ucb.app.model.Log;
 import ucb.app.service.LogService;
 
 @RestController
@@ -37,8 +36,8 @@ public class LogController {
     }
 
     @PostMapping
-    public ResponseEntity<LogDto> postLog(@RequestBody Log log) {
-        LogDto response = logService.saveDto(log);
+    public ResponseEntity<LogDto> postLog(@RequestBody LogDto logDto) {
+        LogDto response = logService.saveDto(logDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

@@ -35,17 +35,19 @@ public class RatingService {
         return ratingAverageDto;
     }
 
-    public RatingDto saveDto(Rating rating) {
+    public RatingDto saveDto(RatingDto ratingDto) {
+        Rating rating = new Rating(ratingDto.getIdRating(), ratingDto.getScore(), ratingDto.isFavoriteStatus(),
+                ratingDto.getIdBranch(), ratingDto.getIdUser());
         Rating response = ratingRepository.save(rating);
         return ratingToRatingDto(response);
     }
 
-    public RatingDto updateDto(Integer ratingId, Rating rating) {
+    public RatingDto updateDto(Integer ratingId, RatingDto ratingDto) {
         Rating ratingFound = ratingRepository.getReferenceById(ratingId);
-        ratingFound.setScore(rating.getScore());
-        ratingFound.setFavoriteStatus(rating.getFavoriteStatus());
-        ratingFound.setIdBranch(rating.getIdBranch());
-        ratingFound.setIdUser(rating.getIdUser());
+        ratingFound.setScore(ratingDto.getScore());
+        ratingFound.setFavoriteStatus(ratingDto.isFavoriteStatus());
+        ratingFound.setIdBranch(ratingDto.getIdBranch());
+        ratingFound.setIdUser(ratingDto.getIdUser());
         Rating response = ratingRepository.save(ratingFound);
         return ratingToRatingDto(response);
     }

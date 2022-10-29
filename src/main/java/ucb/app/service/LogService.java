@@ -28,7 +28,9 @@ public class LogService {
                 .orElseThrow(() -> new Exception("Could not find city"));
     }
 
-    public LogDto saveDto(Log log) {
+    public LogDto saveDto(LogDto logDto) {
+        Log log = new Log(logDto.getIdLog(), logDto.getDate(), logDto.getIdBusiness(), logDto.getIdBranch(),
+                logDto.getIdUser());
         Log response = logRepository.save(log);
         return logToLogDto(response);
     }
