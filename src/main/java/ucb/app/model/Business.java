@@ -12,6 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
@@ -27,6 +29,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import ucb.app.dto.BusinessCountDto;
@@ -100,6 +103,11 @@ public class Business implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idBusiness", fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Branch> branchList;
+
+    @JoinColumn(name = "id_type_business", referencedColumnName = "id_type_business", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonBackReference
+    private TypeBusiness typeBusiness;
     // CODE CHANGE - STOP
 
     public Business() {
@@ -192,6 +200,14 @@ public class Business implements Serializable {
 
     public void setBranchList(List<Branch> branchList) {
         this.branchList = branchList;
+    }
+
+    public TypeBusiness getTypeBusiness() {
+        return typeBusiness;
+    }
+
+    public void setLocation(TypeBusiness typeBusiness) {
+        this.typeBusiness = typeBusiness;
     }
     // CODE CHANGE - STOP
 
