@@ -4,13 +4,17 @@ import java.util.Date;
 
 public class LogDayCountDto {
     private Integer idBusiness;
+    private String name;
     private Integer idBranch;
+    private String address;
     private Date date;
     private Integer count;
 
-    public LogDayCountDto(Integer idBusiness, Integer idBranch, Date date, Integer count) {
+    public LogDayCountDto(Integer idBusiness, String name, Integer idBranch, String address, Date date, Integer count) {
         this.idBusiness = idBusiness;
+        this.name = name;
         this.idBranch = idBranch;
+        this.address = address;
         this.date = date;
         this.count = count;
     }
@@ -23,12 +27,28 @@ public class LogDayCountDto {
         this.idBusiness = idBusiness;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Integer getIdBranch() {
         return idBranch;
     }
 
     public void setIdBranch(Integer idBranch) {
         this.idBranch = idBranch;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Date getDate() {
@@ -49,7 +69,7 @@ public class LogDayCountDto {
 
     @Override
     public String toString() {
-        return "LogDayCountDto [idBusiness=" + idBusiness + ", idBranch=" + idBranch + ", date=" + date + ", count="
-                + count + "]";
+        return "LogDayCountDto [idBusiness=" + idBusiness + ", name=" + name + ", idBranch=" + idBranch + ", address="
+                + address + ", date=" + date + ", count=" + count + "]";
     }
 }

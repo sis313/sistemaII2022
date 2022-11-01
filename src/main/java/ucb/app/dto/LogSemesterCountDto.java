@@ -2,16 +2,20 @@ package ucb.app.dto;
 
 public class LogSemesterCountDto {
     private Integer idBusiness;
+    private String name;
     private Integer idBranch;
+    private String address;
     private Integer year;
     private Integer count;
     private Integer semester;
     private Integer yearSemeter;
 
-    public LogSemesterCountDto(Integer idBusiness, Integer idBranch, Integer year, Integer count, Integer semester,
-            Integer yearSemeter) {
+    public LogSemesterCountDto(Integer idBusiness, String name, Integer idBranch, String address, Integer year,
+            Integer count, Integer semester, Integer yearSemeter) {
         this.idBusiness = idBusiness;
+        this.name = name;
         this.idBranch = idBranch;
+        this.address = address;
         this.year = year;
         this.count = count;
         this.semester = semester;
@@ -26,12 +30,28 @@ public class LogSemesterCountDto {
         this.idBusiness = idBusiness;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Integer getIdBranch() {
         return idBranch;
     }
 
     public void setIdBranch(Integer idBranch) {
         this.idBranch = idBranch;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Integer getYear() {
@@ -68,7 +88,8 @@ public class LogSemesterCountDto {
 
     @Override
     public String toString() {
-        return "LogSemesterCountDto [idBusiness=" + idBusiness + ", idBranch=" + idBranch + ", year=" + year
-                + ", count=" + count + ", semester=" + semester + ", yearSemeter=" + yearSemeter + "]";
+        return "LogSemesterCountDto [idBusiness=" + idBusiness + ", name=" + name + ", idBranch=" + idBranch
+                + ", address=" + address + ", year=" + year + ", count=" + count + ", semester=" + semester
+                + ", yearSemeter=" + yearSemeter + "]";
     }
 }

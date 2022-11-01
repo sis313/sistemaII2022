@@ -1,14 +1,37 @@
 package ucb.app.dto;
 
 public class BranchRatingCountDto {
+    private Integer idBusiness;
+    private String name;
     private Integer idBranch;
+    private String address;
     private Double averageScore;
     private Integer countIdRating;
 
-    public BranchRatingCountDto(Integer idBranch, Double averageScore, Integer countIdRating) {
+    public BranchRatingCountDto(Integer idBusiness, String name, Integer idBranch, String address, Double averageScore,
+            Integer countIdRating) {
+        this.idBusiness = idBusiness;
+        this.name = name;
         this.idBranch = idBranch;
+        this.address = address;
         this.averageScore = averageScore;
         this.countIdRating = countIdRating;
+    }
+
+    public Integer getIdBusiness() {
+        return idBusiness;
+    }
+
+    public void setIdBusiness(Integer idBusiness) {
+        this.idBusiness = idBusiness;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getIdBranch() {
@@ -17,6 +40,14 @@ public class BranchRatingCountDto {
 
     public void setIdBranch(Integer idBranch) {
         this.idBranch = idBranch;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Double getAverageScore() {
@@ -37,7 +68,7 @@ public class BranchRatingCountDto {
 
     @Override
     public String toString() {
-        return "BranchRatingCountDto [idBranch=" + idBranch + ", averageScore=" + averageScore + ", countIdRating="
-                + countIdRating + "]";
+        return "BranchRatingCountDto [idBusiness=" + idBusiness + ", name=" + name + ", idBranch=" + idBranch
+                + ", address=" + address + ", averageScore=" + averageScore + ", countIdRating=" + countIdRating + "]";
     }
 }

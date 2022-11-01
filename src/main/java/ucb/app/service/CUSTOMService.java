@@ -49,7 +49,7 @@ public class CUSTOMService {
     public List<BranchRatingCountDto> findBranchRatingCountDto() {
         @SuppressWarnings("unchecked")
         List<BranchRatingCountDto> branchRatingCountDtos = (List<BranchRatingCountDto>) entityManager.createNativeQuery(
-                "SELECT b.id_branch AS idBranch, avg(a.score) AS averageScore, count(a.id_rating) AS countIdRating FROM rating a JOIN branch b ON a.id_branch = b.id_branch GROUP BY b.id_branch;",
+                "SELECT c.id_business AS idBusiness, c.name AS name, b.id_branch AS idBranch, b.address AS address, AVG(a.score) AS averageScore, COUNT(a.id_rating) AS countIdRating FROM rating a JOIN branch b ON a.id_branch = b.id_branch JOIN business c ON b.id_business = c.id_business GROUP BY b.id_branch;",
                 "BranchRatingCount").getResultList();
         return branchRatingCountDtos;
     }
@@ -75,7 +75,7 @@ public class CUSTOMService {
     public List<LogGlobalCountDto> findLogGlobalCountDto() {
         @SuppressWarnings("unchecked")
         List<LogGlobalCountDto> logGlobalDtos = (List<LogGlobalCountDto>) entityManager.createNativeQuery(
-                "SELECT a.id_branch AS idBranch, a.id_business AS idBusiness, count(a.id_log) AS count FROM log a GROUP BY a.id_branch ORDER BY  count(a.id_log) DESC;",
+                "SELECT c.id_business AS idBusiness, c.name AS name, b.id_branch AS idBranch, b.address AS address, COUNT(a.id_log) AS count FROM log a JOIN branch b ON a.id_branch = b.id_branch JOIN business c ON b.id_business = c.id_business GROUP BY b.id_branch ORDER BY COUNT(a.id_log) DESC;",
                 "LogGlobalCount").getResultList();
         return logGlobalDtos;
     }
@@ -84,7 +84,7 @@ public class CUSTOMService {
     public List<LogAnualCountDto> findLogAnualCountDto() {
         @SuppressWarnings("unchecked")
         List<LogAnualCountDto> logAnualCountDtos = (List<LogAnualCountDto>) entityManager.createNativeQuery(
-                "SELECT a.id_branch AS idBranch, a.id_business AS idBusiness,YEAR(a.date) AS year, count(a.id_log) AS count FROM log a GROUP BY a.id_branch, YEAR(a.date) ORDER BY YEAR(a.date),a.id_branch;",
+                "SELECT c.id_business AS idBusiness, c.name AS name, b.id_branch AS idBranch, b.address AS address, YEAR(a.date) AS year, COUNT(a.id_log) AS count FROM log a JOIN branch b ON a.id_branch = b.id_branch JOIN business c ON b.id_business = c.id_business GROUP BY b.id_branch, YEAR(a.date) ORDER BY YEAR(a.date), b.id_branch;",
                 "LogAnualCount").getResultList();
         return logAnualCountDtos;
     }
@@ -93,7 +93,7 @@ public class CUSTOMService {
     public List<LogSemesterCountDto> findLogSemesterCountDto() {
         @SuppressWarnings("unchecked")
         List<LogSemesterCountDto> logSemesterCountDtos = (List<LogSemesterCountDto>) entityManager.createNativeQuery(
-                "SELECT a.id_branch AS idBranch, a.id_business AS idBusiness, YEAR(a.date) AS year, count(a.id_log) as count, IF(MONTH(a.date) < 7, 1, 2) AS semester,YEAR(a.date) AS yearSemeter FROM log a GROUP BY a.id_branch, YEAR(a.date), semester ORDER BY YEAR(a.date),semester,a.id_branch;",
+                "SELECT c.id_business AS idBusiness, c.name AS name, b.id_branch AS idBranch, b.address AS address, YEAR(a.date) AS year, COUNT(a.id_log) AS count, IF(MONTH(a.date) < 7,1,2) AS semester, YEAR(a.date) AS yearSemeter FROM log a JOIN branch b ON a.id_branch = b.id_branch JOIN business c ON b.id_business = c.id_business GROUP BY b.id_branch, YEAR(a.date), semester ORDER BY YEAR(a.date), semester, b.id_branch;",
                 "LogSemesterCount").getResultList();
         return logSemesterCountDtos;
     }
@@ -102,7 +102,7 @@ public class CUSTOMService {
     public List<LogQuarterCountDto> findLogQuarterCountDto() {
         @SuppressWarnings("unchecked")
         List<LogQuarterCountDto> logQuarterCountDtos = (List<LogQuarterCountDto>) entityManager.createNativeQuery(
-                "SELECT a.id_branch AS idBranch, a.id_business AS idBusiness, YEAR(a.date) AS year, quarter(a.date) AS quarter,count(a.id_log) AS count FROM log a GROUP BY a.id_branch, YEAR(a.date), quarter(a.date) ORDER BY YEAR(a.date),quarter(a.date),a.id_branch;",
+                "SELECT c.id_business AS idBusiness, c.name AS name, b.id_branch AS idBranch, b.address AS address, YEAR(a.date) AS year, quarter(a.date) AS quarter, COUNT(a.id_log) AS count FROM log a JOIN branch b ON a.id_branch = b.id_branch JOIN business c ON b.id_business = c.id_business GROUP BY b.id_branch, YEAR(a.date), quarter(a.date) ORDER BY YEAR(a.date), quarter(a.date), b.id_branch;",
                 "LogQuarterCount").getResultList();
         return logQuarterCountDtos;
     }
@@ -111,7 +111,7 @@ public class CUSTOMService {
     public List<LogMonthCountDto> findLogMonthCountDto() {
         @SuppressWarnings("unchecked")
         List<LogMonthCountDto> logMonthCountDtos = (List<LogMonthCountDto>) entityManager.createNativeQuery(
-                "SELECT a.id_branch AS idBranch, a.id_business AS idBusiness, YEAR(a.date) AS year, MONTH(a.date) AS month, count(a.id_log) AS count FROM log a GROUP BY a.id_branch, YEAR(a.date), MONTH(a.date) ORDER BY YEAR(a.date),MONTH(a.date),a.id_branch;",
+                "SELECT c.id_business AS idBusiness, c.name AS name, b.id_branch AS idBranch, b.address AS address, YEAR(a.date) AS year, MONTH(a.date) AS month, COUNT(a.id_log) AS count FROM log a JOIN branch b ON a.id_branch = b.id_branch JOIN business c ON b.id_business = c.id_business GROUP BY b.id_branch, YEAR(a.date), MONTH(a.date) ORDER BY YEAR(a.date), MONTH(a.date), b.id_branch;",
                 "LogMonthCount").getResultList();
         return logMonthCountDtos;
     }
@@ -120,7 +120,7 @@ public class CUSTOMService {
     public List<LogDayCountDto> findLogDayCountDto() {
         @SuppressWarnings("unchecked")
         List<LogDayCountDto> logDayCountDtos = (List<LogDayCountDto>) entityManager.createNativeQuery(
-                "SELECT a.id_branch AS idBranch, a.id_business AS idBusiness, date(a.date) AS date, count(a.id_log) AS count FROM log a GROUP BY a.id_branch, date(a.date) ORDER BY date(a.date),a.id_branch;",
+                "SELECT c.id_business AS idBusiness, c.name AS name, b.id_branch AS idBranch, b.address AS address, DATE(a.date) AS date, COUNT(a.id_log) AS count FROM log a JOIN branch b ON a.id_branch = b.id_branch JOIN business c ON b.id_business = c.id_business GROUP BY b.id_branch, DATE(a.date) ORDER BY DATE(a.date), b.id_branch;",
                 "LogDayCount").getResultList();
         return logDayCountDtos;
     }

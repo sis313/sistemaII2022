@@ -49,7 +49,10 @@ import ucb.app.dto.BranchRatingCountDto;
         @NamedQuery(name = "Branch.findByStatus", query = "SELECT b FROM Branch b WHERE b.status = :status") })
 
 @SqlResultSetMapping(name = "BranchRatingCount", classes = @ConstructorResult(targetClass = BranchRatingCountDto.class, columns = {
+        @ColumnResult(name = "idBusiness", type = Integer.class),
+        @ColumnResult(name = "name", type = String.class),
         @ColumnResult(name = "idBranch", type = Integer.class),
+        @ColumnResult(name = "address", type = String.class),
         @ColumnResult(name = "averageScore", type = Double.class),
         @ColumnResult(name = "countIdRating", type = Integer.class) }))
 

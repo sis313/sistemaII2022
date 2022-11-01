@@ -41,18 +41,24 @@ import javax.persistence.ColumnResult;
 
 @SqlResultSetMapping(name = "LogGlobalCount", classes = @ConstructorResult(targetClass = LogGlobalCountDto.class, columns = {
         @ColumnResult(name = "idBusiness", type = Integer.class),
+        @ColumnResult(name = "name", type = String.class),
         @ColumnResult(name = "idBranch", type = Integer.class),
+        @ColumnResult(name = "address", type = String.class),
         @ColumnResult(name = "count", type = Integer.class) }))
 
 @SqlResultSetMapping(name = "LogAnualCount", classes = @ConstructorResult(targetClass = LogAnualCountDto.class, columns = {
         @ColumnResult(name = "idBusiness", type = Integer.class),
+        @ColumnResult(name = "name", type = String.class),
         @ColumnResult(name = "idBranch", type = Integer.class),
+        @ColumnResult(name = "address", type = String.class),
         @ColumnResult(name = "year", type = Integer.class),
         @ColumnResult(name = "count", type = Integer.class) }))
 
 @SqlResultSetMapping(name = "LogSemesterCount", classes = @ConstructorResult(targetClass = LogSemesterCountDto.class, columns = {
         @ColumnResult(name = "idBusiness", type = Integer.class),
+        @ColumnResult(name = "name", type = String.class),
         @ColumnResult(name = "idBranch", type = Integer.class),
+        @ColumnResult(name = "address", type = String.class),
         @ColumnResult(name = "year", type = Integer.class),
         @ColumnResult(name = "count", type = Integer.class),
         @ColumnResult(name = "semester", type = Integer.class),
@@ -60,21 +66,27 @@ import javax.persistence.ColumnResult;
 
 @SqlResultSetMapping(name = "LogQuarterCount", classes = @ConstructorResult(targetClass = LogQuarterCountDto.class, columns = {
         @ColumnResult(name = "idBusiness", type = Integer.class),
+        @ColumnResult(name = "name", type = String.class),
         @ColumnResult(name = "idBranch", type = Integer.class),
+        @ColumnResult(name = "address", type = String.class),
         @ColumnResult(name = "year", type = Integer.class),
         @ColumnResult(name = "quarter", type = Integer.class),
         @ColumnResult(name = "count", type = Integer.class) }))
 
 @SqlResultSetMapping(name = "LogMonthCount", classes = @ConstructorResult(targetClass = LogMonthCountDto.class, columns = {
         @ColumnResult(name = "idBusiness", type = Integer.class),
+        @ColumnResult(name = "name", type = String.class),
         @ColumnResult(name = "idBranch", type = Integer.class),
+        @ColumnResult(name = "address", type = String.class),
         @ColumnResult(name = "year", type = Integer.class),
         @ColumnResult(name = "month", type = Integer.class),
         @ColumnResult(name = "count", type = Integer.class) }))
 
 @SqlResultSetMapping(name = "LogDayCount", classes = @ConstructorResult(targetClass = LogDayCountDto.class, columns = {
         @ColumnResult(name = "idBusiness", type = Integer.class),
+        @ColumnResult(name = "name", type = String.class),
         @ColumnResult(name = "idBranch", type = Integer.class),
+        @ColumnResult(name = "address", type = String.class),
         @ColumnResult(name = "date", type = Date.class),
         @ColumnResult(name = "count", type = Integer.class) }))
 
