@@ -42,3 +42,8 @@ Content-Type: application/json
 ##### READ LOG DAY COUNT ----- GROUP 5 -----
 GET http://localhost:8080/api/custom/logDayCount
 Content-Type: application/json
+
+
+##### READ LOG ANUAL COUNT ----- GROUP 5 -----
+GET http://localhost:8080/api/custom/logAnualCount/userId/1
+Content-Type: application/json

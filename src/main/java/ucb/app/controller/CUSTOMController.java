@@ -84,4 +84,10 @@ public class CUSTOMController {
         List<LogDayCountDto> logDayCountDtos = customService.findLogDayCountDto();
         return new ResponseEntity<>(logDayCountDtos, HttpStatus.OK);
     }
+
+    @GetMapping(path = "/logAnualCount/userId/{userId}")
+    public ResponseEntity<List<LogAnualCountDto>> getLogAnualCountByUserId(@PathVariable("userId") Integer userId) {
+        List<LogAnualCountDto> logAnualCountDtos = customService.findLogAnualCountByUserIdDto(userId);
+        return new ResponseEntity<>(logAnualCountDtos, HttpStatus.OK);
+    }
 }

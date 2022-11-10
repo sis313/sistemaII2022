@@ -124,4 +124,13 @@ public class CUSTOMService {
                 "LogDayCount").getResultList();
         return logDayCountDtos;
     }
+
+    @Transactional
+    public List<LogAnualCountDto> findLogAnualCountByUserIdDto(Integer idUser) {
+        @SuppressWarnings("unchecked")
+        List<LogAnualCountDto> logAnualCountDtos = (List<LogAnualCountDto>) entityManager.createNativeQuery(
+                "SELECT c.id_business AS idBusiness, c.name AS name, b.id_branch AS idBranch, b.address AS address, YEAR(a.date) AS year, COUNT(a.id_log) AS count FROM log a JOIN branch b ON a.id_branch = b.id_branch JOIN business c ON b.id_business = c.id_business WHERE a.id_user = :idUser GROUP BY b.id_branch, YEAR(a.date) ORDER BY YEAR(a.date), b.id_branch;",
+                "LogAnualCount").setParameter("idUser", idUser).getResultList();
+        return logAnualCountDtos;
+    }
 }
