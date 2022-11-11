@@ -164,12 +164,22 @@ CREATE TABLE verification_token (
                                     CONSTRAINT verification_token_pk PRIMARY KEY (id_verification_token)
 );
 
+
 -- Table: zone
 CREATE TABLE zone (
                       id_zone int NOT NULL AUTO_INCREMENT,
                       name varchar(100) NOT NULL,
                       id_municipalities int NOT NULL,
                       CONSTRAINT zone_pk PRIMARY KEY (id_zone)
+);
+
+-- Table: refresh_token
+CREATE TABLE refresh_token (
+                               id_refresh_token int NOT NULL AUTO_INCREMENT,
+                               token varchar(300) NOT NULL,
+                               expiry_date timestamp NOT NULL,
+                               id_user int NOT NULL,
+                               CONSTRAINT refresh_token_pk PRIMARY KEY (id_refresh_token)
 );
 
 -- foreign keys
@@ -236,6 +246,10 @@ ALTER TABLE verification_token ADD CONSTRAINT verification_token_user FOREIGN KE
 -- Reference: zone_municipalities (table: zone)
 ALTER TABLE zone ADD CONSTRAINT zone_municipalities FOREIGN KEY zone_municipalities (id_municipalities)
     REFERENCES municipalities (id_municipalities);
+
+-- Reference: refresh_token_user (table: refresh_token)
+ALTER TABLE refresh_token ADD CONSTRAINT refresh_token_user FOREIGN KEY refresh_token_user (id_user)
+    REFERENCES user (id_user);
 
 INSERT Into type_user (name) VALUES ('ADMIN');
 INSERT Into type_user (name) VALUES ('USER');

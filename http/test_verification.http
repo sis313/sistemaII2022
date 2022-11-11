@@ -11,9 +11,22 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8081/v1/api/user/2
+POST http://localhost:8081/v1/api/user/publico/register
+Content-Type: application/json
+
+{
+  "name": "Suu Valda",
+  "email": "susan.valda@ucb.edu.bo",
+  "nickname": "isuuki",
+  "password": "tuki",
+  "idTypeUser": 1
+}
+
 ###
-GET http://localhost:80/confirm-account?token=25ec7d69-92b1-4dd5-b94f-af91cb2631fb
+GET http://localhost:8081/v1/api/user/2
+
+###
+GET http://localhost:8081/confirm-account?token=a1d6cd46-6af8-4c3a-8472-8bb7a855d997
 
 ###
 GET http://localhost:80/resend
@@ -34,6 +47,23 @@ Content-Type: application/json
 {
   "username": "Mire",
   "password": "mire"
+}
+
+###
+POST http://localhost:8081/auth/signin
+Content-Type: application/json
+
+{
+"username": "isuuki",
+"password": "tuki"
+}
+
+###
+POST http://localhost:8081/auth/refreshtoken
+Content-Type: application/json
+
+{
+  "refreshToken": "608ef696-ab3d-410d-a8e0-eeec9c87e7fc"
 }
 
 ###
