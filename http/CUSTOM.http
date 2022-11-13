@@ -44,6 +44,11 @@ GET http://localhost:8080/api/custom/logDayCount
 Content-Type: application/json
 
 
-##### READ LOG ANUAL COUNT ----- GROUP 5 -----
+##### READ LOG ANUAL COUNT BY USER ID ----- GROUP 2 -----
 GET http://localhost:8080/api/custom/logAnualCount/userId/1
+Content-Type: application/json
+
+
+##### READ BUSINESS COUNT ACTIVE BRANCH ----- GROUP 2 -----
+GET http://localhost:8080/api/custom/businessBranchActiveCount
 Content-Type: application/json

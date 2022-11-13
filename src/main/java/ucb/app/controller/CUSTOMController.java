@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.service.CUSTOMService;
 import ucb.app.dto.BranchRatingCountDto;
+import ucb.app.dto.BusinessBranchActiveCountDto;
 import ucb.app.dto.BusinessCountDto;
 import ucb.app.dto.BusinessZoneDto;
 import ucb.app.dto.LogAnualCountDto;
@@ -89,5 +90,12 @@ public class CUSTOMController {
     public ResponseEntity<List<LogAnualCountDto>> getLogAnualCountByUserId(@PathVariable("userId") Integer userId) {
         List<LogAnualCountDto> logAnualCountDtos = customService.findLogAnualCountByUserIdDto(userId);
         return new ResponseEntity<>(logAnualCountDtos, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/businessBranchActiveCount")
+    public ResponseEntity<List<BusinessBranchActiveCountDto>> getBusinessBranchActiveCount() {
+        List<BusinessBranchActiveCountDto> businessBranchActiveCountDtos = customService
+                .findBusinessBranchActiveCountDto();
+        return new ResponseEntity<>(businessBranchActiveCountDtos, HttpStatus.OK);
     }
 }

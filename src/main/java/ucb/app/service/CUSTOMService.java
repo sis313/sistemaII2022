@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import ucb.app.dto.BranchRatingCountDto;
+import ucb.app.dto.BusinessBranchActiveCountDto;
 import ucb.app.dto.BusinessCountDto;
 import ucb.app.dto.BusinessZoneDto;
 import ucb.app.dto.LogAnualCountDto;
@@ -132,5 +133,16 @@ public class CUSTOMService {
                 "SELECT c.id_business AS idBusiness, c.name AS name, b.id_branch AS idBranch, b.address AS address, YEAR(a.date) AS year, COUNT(a.id_log) AS count FROM log a JOIN branch b ON a.id_branch = b.id_branch JOIN business c ON b.id_business = c.id_business WHERE a.id_user = :idUser GROUP BY b.id_branch, YEAR(a.date) ORDER BY YEAR(a.date), b.id_branch;",
                 "LogAnualCount").setParameter("idUser", idUser).getResultList();
         return logAnualCountDtos;
+    }
+
+    @Transactional
+    public List<BusinessBranchActiveCountDto> findBusinessBranchActiveCountDto() {
+        @SuppressWarnings("unchecked")
+        List<BusinessBranchActiveCountDto> businessBranchActiveCountDtos = (List<BusinessBranchActiveCountDto>) entityManager
+                .createNativeQuery(
+                        "SELECT bu.id_business AS idBusiness, bu.name AS name, bu.description AS description, bu.id_type_business AS idTypeBusiness, bu.id_user AS idUser, bu.create_date AS createDate, bu.update_date AS updateDate, bu.status AS status, COUNT(bu.id_business) AS activeBranchCount FROM business AS bu, branch AS br WHERE bu.id_business = br.id_business AND br.status = 1 GROUP BY bu.id_business;",
+                        "BusinessBranchActiveCount")
+                .getResultList();
+        return businessBranchActiveCountDtos;
     }
 }

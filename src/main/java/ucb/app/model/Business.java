@@ -32,6 +32,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import ucb.app.dto.BusinessBranchActiveCountDto;
 import ucb.app.dto.BusinessCountDto;
 import ucb.app.dto.BusinessZoneDto;
 
@@ -64,6 +65,17 @@ import ucb.app.dto.BusinessZoneDto;
 @SqlResultSetMapping(name = "BusinessZone", classes = @ConstructorResult(targetClass = BusinessZoneDto.class, columns = {
         @ColumnResult(name = "name", type = String.class),
         @ColumnResult(name = "id_business", type = Integer.class) }))
+
+@SqlResultSetMapping(name = "BusinessBranchActiveCount", classes = @ConstructorResult(targetClass = BusinessBranchActiveCountDto.class, columns = {
+        @ColumnResult(name = "idBusiness", type = Integer.class),
+        @ColumnResult(name = "name", type = String.class),
+        @ColumnResult(name = "description", type = String.class),
+        @ColumnResult(name = "idTypeBusiness", type = Integer.class),
+        @ColumnResult(name = "idUser", type = Integer.class),
+        @ColumnResult(name = "createDate", type = Date.class),
+        @ColumnResult(name = "updateDate", type = Date.class),
+        @ColumnResult(name = "status", type = Integer.class),
+        @ColumnResult(name = "activeBranchCount", type = Integer.class) }))
 
 public class Business implements Serializable {
 
