@@ -21,6 +21,7 @@ import ucb.app.dto.LogGlobalCountDto;
 import ucb.app.dto.LogMonthCountDto;
 import ucb.app.dto.LogQuarterCountDto;
 import ucb.app.dto.LogSemesterCountDto;
+import ucb.app.dto.RatingAverageDto;
 
 @RestController
 @RequestMapping("api/custom")
@@ -97,5 +98,13 @@ public class CUSTOMController {
         List<BusinessBranchActiveCountDto> businessBranchActiveCountDtos = customService
                 .findBusinessBranchActiveCountDto();
         return new ResponseEntity<>(businessBranchActiveCountDtos, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/businessRatingCount/businessId/{businessId}")
+    public ResponseEntity<RatingAverageDto> getBusinessRatingCountByBusinessId(
+            @PathVariable("businessId") Integer businessId) {
+        RatingAverageDto ratingAverageDto = customService
+                .findBusinessRatingAverageDto(businessId);
+        return new ResponseEntity<>(ratingAverageDto, HttpStatus.OK);
     }
 }

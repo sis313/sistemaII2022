@@ -35,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import ucb.app.dto.BusinessBranchActiveCountDto;
 import ucb.app.dto.BusinessCountDto;
 import ucb.app.dto.BusinessZoneDto;
+import ucb.app.dto.RatingAverageDto;
 
 /**
  *
@@ -76,6 +77,9 @@ import ucb.app.dto.BusinessZoneDto;
         @ColumnResult(name = "updateDate", type = Date.class),
         @ColumnResult(name = "status", type = Integer.class),
         @ColumnResult(name = "activeBranchCount", type = Integer.class) }))
+
+@SqlResultSetMapping(name = "BusinessRatingCount", classes = @ConstructorResult(targetClass = RatingAverageDto.class, columns = {
+        @ColumnResult(name = "averageScore", type = Integer.class) }))
 
 public class Business implements Serializable {
 

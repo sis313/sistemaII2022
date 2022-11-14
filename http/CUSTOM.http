@@ -52,3 +52,8 @@ Content-Type: application/json
 ##### READ BUSINESS COUNT ACTIVE BRANCH ----- GROUP 2 -----
 GET http://localhost:8080/api/custom/businessBranchActiveCount
 Content-Type: application/json
+
+
+##### READ BUSINESS RATING COUNT BY BUSINESS ID ----- GROUP 1 -----
+GET http://localhost:8080/api/custom/businessRatingCount/businessId/1
+Content-Type: application/json
