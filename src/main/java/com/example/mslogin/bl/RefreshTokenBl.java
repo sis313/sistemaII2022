@@ -3,6 +3,7 @@ package com.example.mslogin.bl;
 import com.example.mslogin.dao.RefreshTokenRepository;
 import com.example.mslogin.dao.UserRepository;
 import com.example.mslogin.dto.RefreshTokenEntity;
+import com.example.mslogin.dto.UserEntity;
 import com.example.mslogin.jwt.RefreshTokenException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -54,7 +55,8 @@ public class RefreshTokenBl {
     }
 
     @Transactional
-    public int deleteByUserId(Integer userId) {
-        return refreshTokenRepository.deleteByUserEntity(userRepository.findById(userId).get());
+    public int deleteByUsername(String username) {
+        UserEntity user = userRepository.findUserByUser(username);
+        return refreshTokenRepository.deleteByUserEntity(userRepository.findById(user.getIdUser()).get());
     }
 }

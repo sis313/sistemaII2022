@@ -42,6 +42,7 @@ public class AuthController {
                         login.getPassword()));
         LOGGER.info("111");
         SecurityContextHolder.getContext().setAuthentication(authentication);
+
         LOGGER.info("333");
         String jwt = tokenProvider.generateToken(authentication);
         RefreshTokenEntity refreshToken = refreshTokenBl.createRefreshToken(login.getUsername());
@@ -61,5 +62,11 @@ public class AuthController {
                 })
                 .orElseThrow(() -> new RefreshTokenException(requestRefreshToken,
                         "Refresh token is not in database!"));
+    }
+
+    @PostMapping("/signout")
+    public ResponseEntity<?> logoutUser(@RequestParam String username) {
+        refreshTokenBl.deleteByUsername(username);
+        return ResponseEntity.ok("Log out successful!");
     }
 }

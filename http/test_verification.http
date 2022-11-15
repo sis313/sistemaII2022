@@ -26,7 +26,7 @@ Content-Type: application/json
 GET http://localhost:8081/v1/api/user/2
 
 ###
-GET http://localhost:8081/confirm-account?token=a1d6cd46-6af8-4c3a-8472-8bb7a855d997
+GET http://localhost:8081/confirm-account?token=5cb3faa9-48db-4ab2-ab91-e7d43bd46a09
 
 ###
 GET http://localhost:80/resend
@@ -63,8 +63,12 @@ POST http://localhost:8081/auth/refreshtoken
 Content-Type: application/json
 
 {
-  "refreshToken": "608ef696-ab3d-410d-a8e0-eeec9c87e7fc"
+  "refreshToken": "664c911a-c371-4785-a18b-d2dd19efc6ec"
 }
+
+###
+POST http://localhost:8081/auth/signout?username=isuuki
+
 
 ###
 GET http://localhost:8081/v1/api/user
