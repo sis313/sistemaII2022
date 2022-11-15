@@ -31,6 +31,23 @@ Content-Type: multipart/form-data
 }
 
 
+##### CREATE A BRANCH JSON
+POST http://localhost:8080/api/branch/json
+Content-Type: application/json
+
+{
+    "address": "branch address",
+    "openHour": "0000-00-00T10:01:01",
+    "closeHour": "0000-00-00T10:01:01",
+    "attentionDays": "Monday",
+    "image": "aW1hZ2UgZmlsZQ==",
+    "idZone": 1,
+    "idLocation": 1,
+    "idBusiness": 1,
+    "status": 1
+}
+
+
 ##### UPDATE A BRANCH BY ID
 PUT http://localhost:8080/api/branch/1
 Content-Type: multipart/form-data
@@ -39,6 +56,23 @@ Content-Type: multipart/form-data
     "address": "branch address update",
     "openHour": "2022-01-01T10:01:01",
     "closeHour": "2022-01-01T10:01:01",
+    "attentionDays": "Monday",
+    "image": "aW1hZ2UgZmlsZQ==",
+    "idZone": 1,
+    "idLocation": 1,
+    "idBusiness": 1,
+    "status": 1
+}
+
+
+##### UPDATE A BRANCH BY ID JSON
+PUT http://localhost:8080/api/branch/json/10
+Content-Type: application/json
+
+{
+    "address": "branch address update",
+    "openHour": "0000-00-00T10:01:01",
+    "closeHour": "0000-00-00T10:01:01",
     "attentionDays": "Monday",
     "image": "aW1hZ2UgZmlsZQ==",
     "idZone": 1,
