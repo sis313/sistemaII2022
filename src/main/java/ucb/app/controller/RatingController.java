@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.dto.RatingAverageDto;
+import ucb.app.dto.RatingDetailDto;
 import ucb.app.dto.RatingDto;
 import ucb.app.service.RatingService;
 
@@ -32,6 +33,12 @@ public class RatingController {
     @GetMapping
     public ResponseEntity<List<RatingDto>> getRatings() {
         List<RatingDto> ratings = ratingService.findAllDto();
+        return new ResponseEntity<>(ratings, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/detail")
+    public ResponseEntity<List<RatingDetailDto>> getRatingDetails() {
+        List<RatingDetailDto> ratings = ratingService.findAllDetailDto();
         return new ResponseEntity<>(ratings, HttpStatus.OK);
     }
 

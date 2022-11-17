@@ -1,12 +1,12 @@
 ###
-POST http://localhost:8080/v1/api/user/publico/register
+POST https://serviceprojectspring.herokuapp.com/v1/api/user/publico/register
 Content-Type: application/json
 
 {
-  "name": "Mireya Huanca",
-  "email": "mire11@gmail.com",
-  "nickname": "Mire",
-  "password": "mire",
+  "name": "Mireya Huancaa",
+  "email": "mire11asdfsdfa@gmail.com",
+  "nickname": "Miresdfsdfa",
+  "password": "miresdfsdfa",
   "idTypeUser": 1
 }
 
@@ -37,4 +37,4 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/v1/api/user
+GET https://serviceprojectspring.herokuapp.com/v1/api/user

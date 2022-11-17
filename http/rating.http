@@ -4,6 +4,11 @@ GET http://localhost:8080/api/rating
 Content-Type: application/json
 
 
+##### READ ALL RATINGS
+GET http://localhost:8080/api/rating/detail
+Content-Type: application/json
+
+
 ##### READ A RATING BY ID
 GET http://localhost:8080/api/rating/1
 Content-Type: application/json

@@ -6,7 +6,9 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ucb.app.dto.BranchDto;
 import ucb.app.dto.RatingAverageDto;
+import ucb.app.dto.RatingDetailDto;
 import ucb.app.dto.RatingDto;
 import ucb.app.model.Rating;
 import ucb.app.repository.RatingRepository;
@@ -22,6 +24,10 @@ public class RatingService {
 
     public List<RatingDto> findAllDto() {
         return ratingRepository.findAll().stream().map(this::ratingToRatingDto).collect(Collectors.toList());
+    }
+
+    public List<RatingDetailDto> findAllDetailDto() {
+        return ratingRepository.findAll().stream().map(this::ratingToRatingDetailDto).collect(Collectors.toList());
     }
 
     public RatingDto findByIdDto(Integer ratingId) throws Exception {
@@ -61,5 +67,12 @@ public class RatingService {
         RatingDto ratingDto = new RatingDto(rating.getIdRating(), rating.getScore(), rating.getFavoriteStatus(),
                 rating.getIdBranch(), rating.getIdUser());
         return ratingDto;
+    }
+
+    private RatingDetailDto ratingToRatingDetailDto(Rating rating) {
+        RatingDetailDto ratingDetailDto = new RatingDetailDto(rating.getIdRating(), rating.getScore(),
+                rating.getFavoriteStatus(), rating.getIdBranch(), rating.getBranch().getBusiness().getName(),
+                rating.getIdUser());
+        return ratingDetailDto;
     }
 }

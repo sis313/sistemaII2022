@@ -2,7 +2,10 @@ package ucb.app.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,6 +19,7 @@ import javax.persistence.ColumnResult;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,6 +28,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import ucb.app.dto.BranchRatingCountDto;
 
@@ -113,6 +118,10 @@ public class Branch implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JsonBackReference
     private Business business;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idBranch", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Rating> ratingList;
     // CODE CHANGE - STOP
 
     public Branch() {
@@ -248,6 +257,14 @@ public class Branch implements Serializable {
 
     public void setBusiness(Business business) {
         this.business = business;
+    }
+
+    public List<Rating> getRatingList() {
+        return ratingList;
+    }
+
+    public void setRatingList(List<Rating> ratingList) {
+        this.ratingList = ratingList;
     }
     // CODE CHANGE - STOP
 

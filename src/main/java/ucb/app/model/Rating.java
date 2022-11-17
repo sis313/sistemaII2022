@@ -4,12 +4,17 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 /**
  *
@@ -45,6 +50,13 @@ public class Rating implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_user")
     private int idUser;
+
+    // CODE CHANGE - START
+    @JoinColumn(name = "id_branch", referencedColumnName = "id_branch", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Branch branch;
+    // CODE CHANGE - STOP
 
     public Rating() {
     }
@@ -100,6 +112,16 @@ public class Rating implements Serializable {
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
+
+    // CODE CHANGE - START
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
+    }
+    // CODE CHANGE - STOP
 
     @Override
     public int hashCode() {
