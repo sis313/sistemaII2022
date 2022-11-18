@@ -1,59 +1,81 @@
-# --------------------------------- CUSTOM
-##### READ COUNT BUSINESSES ----- GROUP 2 -----
+# --------------------------------- CUSTOM GROUP 1
+
+
+##### LEER EL PROMEDIO DE RATING DE NEGOCIO POR ID: ----- GROUP 1 ----- esta ruta devuelve el promedio de rating asociado a un negocio y devuelve un objeto personalizado.
+GET http://localhost:8080/api/custom/businessRatingCount/businessId/1
+Content-Type: application/json
+
+
+# --------------------------------- CUSTOM GROUP 2
+
+
+##### LEER CONTEO DE NEGOCIOS: ----- GROUP 2 ----- esta ruta hacer el conteo de negecios de una misama zona y devuelve una lista de objetos perzonalizados.
 GET http://localhost:8080/api/custom/countBusiness
 Content-Type: application/json
 
 
-##### READ BUSINESS ZONE BY ZONE ID ----- GROUP 2 -----
+##### LEER NOMBRE DE NEGOCIOS POR ID DE ZONA: ----- GROUP 2 ----- esta ruta muestrar como lista el nombre de los negocios asociados a una zona.
 GET http://localhost:8080/api/custom/bussinesZone/1
 Content-Type: application/json
 
 
-##### READ BRANCH RATING COUNT ----- GROUP 5 -----
-GET http://localhost:8080/api/custom/branchRatingCount
-Content-Type: application/json
-
-
-##### READ LOG GLOBAL COUNT ----- GROUP 5 -----
-GET http://localhost:8080/api/custom/logGlobalCount
-Content-Type: application/json
-
-
-##### READ LOG ANUAL COUNT ----- GROUP 5 -----
-GET http://localhost:8080/api/custom/logAnualCount
-Content-Type: application/json
-
-
-##### READ LOG SEMESTER COUNT ----- GROUP 5 -----
-GET http://localhost:8080/api/custom/logSemesterCount
-Content-Type: application/json
-
-
-##### READ LOG QUARTER COUNT ----- GROUP 5 -----
-GET http://localhost:8080/api/custom/logQuarterCount
-Content-Type: application/json
-
-
-##### READ LOG MONTH COUNT ----- GROUP 5 -----
-GET http://localhost:8080/api/custom/logMonthCount
-Content-Type: application/json
-
-
-##### READ LOG DAY COUNT ----- GROUP 5 -----
-GET http://localhost:8080/api/custom/logDayCount
-Content-Type: application/json
-
-
-##### READ LOG ANUAL COUNT BY USER ID ----- GROUP 2 -----
+##### LEER CONTEO DE LOGS ANUAL POR ID DE USUARIO: ----- GROUP 2 ----- esta ruta devuelve el conteo de logs por negocio de forma anual asociado a un usuario y devuelve una lista de objetos perzonalizados.
 GET http://localhost:8080/api/custom/logAnualCount/userId/1
 Content-Type: application/json
 
 
-##### READ BUSINESS COUNT ACTIVE BRANCH ----- GROUP 2 -----
+##### LEER NEGOCIOS AGREGANDO EL CONTEO DE SUCURSALES ACTIVAS: ----- GROUP 2 ----- esta ruta devuelve los negocios agregando el conteo de sucursales activas y devuelve una lista de objetos perzonalizados.
 GET http://localhost:8080/api/custom/businessBranchActiveCount
 Content-Type: application/json
 
 
-##### READ BUSINESS RATING COUNT BY BUSINESS ID ----- GROUP 1 -----
-GET http://localhost:8080/api/custom/businessRatingCount/businessId/1
+
+# --------------------------------- CUSTOM GROUP 3
+
+
+
+
+# --------------------------------- CUSTOM GROUP 4
+
+
+
+
+# --------------------------------- CUSTOM GROUP 5
+
+
+##### LEER EL PROMEDIO DE RATING POR SUCURSAL: ----- GROUP 5 ----- esta ruta muestra como el promedio de califiacion de las sucursales y devuelve una lista de objetos perzonalizados.
+GET http://localhost:8080/api/custom/branchRatingCount
 Content-Type: application/json
+
+
+##### LEER CONTEO DE LOGS GLOBAL: ----- GROUP 5 ----- esta ruta devuelve el conteo de logs por negocio de forma global y devuelve una lista de objetos perzonalizados.
+GET http://localhost:8080/api/custom/logGlobalCount
+Content-Type: application/json
+
+
+##### LEER CONTEO DE LOGS ANUAL: ----- GROUP 5 ----- esta ruta devuelve el conteo de logs por negocio de forma anual y devuelve una lista de objetos perzonalizados.
+GET http://localhost:8080/api/custom/logAnualCount
+Content-Type: application/json
+
+
+##### LEER CONTEO DE LOGS SEMESTRAL: ----- GROUP 5 ----- esta ruta devuelve el conteo de logs por negocio de forma semestral y devuelve una lista de objetos perzonalizados.
+GET http://localhost:8080/api/custom/logSemesterCount
+Content-Type: application/json
+
+
+##### LEER CONTEO DE LOGS TRIMESTRAL: ----- GROUP 5 ----- esta ruta devuelve el conteo de logs por negocio de forma trimestral y devuelve una lista de objetos perzonalizados.
+GET http://localhost:8080/api/custom/logQuarterCount
+Content-Type: application/json
+
+
+##### LEER CONTEO DE LOGS MENSUAL: ----- GROUP 5 ----- esta ruta devuelve el conteo de logs por negocio de forma mensual y devuelve una lista de objetos perzonalizados.
+GET http://localhost:8080/api/custom/logMonthCount
+Content-Type: application/json
+
+
+##### LEER CONTEO DE LOGS DIARIOS: ----- GROUP 5 ----- esta ruta devuelve el conteo de logs por negocio de forma diaria y devuelve una lista de objetos perzonalizados.
+GET http://localhost:8080/api/custom/logDayCount
+Content-Type: application/json
+
+
+

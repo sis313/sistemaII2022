@@ -1,20 +1,17 @@
-# --------------------------------- BRANCH
-##### READ ALL BRANCHES
+# --------------------------------- BRANCH CRUD
+
+
+##### LEER TODAS LAS SUCURSALES: esta ruta devuelve todas las sucursales en forma de lista.
 GET http://localhost:8080/api/branch
 Content-Type: application/json
 
 
-##### READ A BRANCH BY ID
+##### LEER UNA SUCURSAL POR ID: esta ruta devuelve la sucursal asociada al id.
 GET http://localhost:8080/api/branch/1
 Content-Type: application/json
 
 
-##### READ ALL BRANCHES BY BUSINESS ID
-GET http://localhost:8080/api/branch/?businessId=1
-Content-Type: application/json
-
-
-##### CREATE A BRANCH
+##### CREAR UNA SUCURSAL: esta ruta crea una sucursal con datos en formato "multipart/form-data". Es necesario pasar la imagen dentro dentro del cuerpo de datos para guardarlo y hacerlo publico a traves de un url.
 POST http://localhost:8080/api/branch
 Content-Type: multipart/form-data
 
@@ -31,7 +28,7 @@ Content-Type: multipart/form-data
 }
 
 
-##### CREATE A BRANCH JSON
+##### CREAR UNA SUCURSAL: esta ruta crea una sucursal con datos en formato "json". No es requerido pasar la imagen y se recomienda utilizar como imagen un url.
 POST http://localhost:8080/api/branch/json
 Content-Type: application/json
 
@@ -48,7 +45,7 @@ Content-Type: application/json
 }
 
 
-##### UPDATE A BRANCH BY ID
+##### ACTUALIZAR UNA SUCURSAL POR ID: esta ruta actualza una sucursal con datos en formato "multipart/form-data" asociada al id.
 PUT http://localhost:8080/api/branch/1
 Content-Type: multipart/form-data
 
@@ -65,7 +62,7 @@ Content-Type: multipart/form-data
 }
 
 
-##### UPDATE A BRANCH BY ID JSON
+##### ACTUALIZAR UNA SUCURSAL POR ID: esta ruta actualza una sucursal con datos en formato "json" correspondiente al id. No es requerido pasar la imagen y se recomienda utilizar como imagen un url.
 PUT http://localhost:8080/api/branch/json/1
 Content-Type: application/json
 
@@ -82,11 +79,19 @@ Content-Type: application/json
 }
 
 
-##### DELETE A BRANCH BY ID
+##### BORRAR UNA SUCURSAL POR ID: esta ruta borrar de forma logica una sucursal asociada al id. Esta ruta conmuta entre 0 y 1 es estado logico de la sucural.
 DELETE http://localhost:8080/api/branch/1
 Content-Type: application/json
 
 
-##### READ ALL BRANCHES WITH LOCATION ----- GROUP 3 -----
+# --------------------------------- BRANCH CRUD BY GROUP
+
+
+##### LEER TODAS LAS SUCURSALES POR ID DE NEGOCIO: ----- GRUPO 5 ----- esta ruta devuelve todas las sucursales en forma de lista asociadas a un negocio.
+GET http://localhost:8080/api/branch/?businessId=1
+Content-Type: application/json
+
+
+##### LEER TODAS LAS SUCURSALES AGREGANDO UBICACION: ----- GRUPO 3 ----- esta ruta devuelve todas las sucursales en forma de lista agregando la unicacion de coordenadas.
 GET http://localhost:8080/api/branch/location
 Content-Type: application/json

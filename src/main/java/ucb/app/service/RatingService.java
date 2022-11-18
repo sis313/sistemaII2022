@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ucb.app.dto.BranchDto;
 import ucb.app.dto.RatingAverageDto;
 import ucb.app.dto.RatingDetailDto;
 import ucb.app.dto.RatingDto;
