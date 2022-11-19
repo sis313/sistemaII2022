@@ -1,15 +1,17 @@
-# --------------------------------- MUNICIPALITIES
-##### READ ALL MUNICIPALITIESES
+# --------------------------------- MUNICIPALITIES CRUD
+
+
+##### LEER TODOS LOS MUNICIPIOS: esta ruta devuelve todos los municipios en forma de lista.
 GET http://localhost:8080/api/municipalities
 Content-Type: application/json
 
 
-##### READ A MUNICIPALITIES BY ID
+##### LEER UN MUNICIPIO POR ID: esta ruta devuelve el municipio asociada al id.
 GET http://localhost:8080/api/municipalities/1
 Content-Type: application/json
 
 
-##### CREATE A MUNICIPALITIES
+##### CREAR UN MUNICIPIO: esta ruta crea un municipio con datos en formato "json".
 POST http://localhost:8080/api/municipalities
 Content-Type: application/json
 
@@ -19,7 +21,7 @@ Content-Type: application/json
 }
 
 
-##### UPDATE A MUNICIPALITIES BY ID
+##### ACTUALIZAR UN MUNICIPIO POR ID: esta ruta actualza un municipio con datos en formato "json" asociada al id.
 PUT http://localhost:8080/api/municipalities/1
 Content-Type: application/json
 
@@ -29,6 +31,6 @@ Content-Type: application/json
 }
 
 
-##### DELETE A MUNICIPALITIES BY ID
+##### BORRAR UN MUNICIPIO POR ID: esta ruta borra un municipio asociada al id.
 DELETE http://localhost:8080/api/municipalities/1
 Content-Type: application/json

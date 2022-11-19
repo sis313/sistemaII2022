@@ -1,18 +1,17 @@
-# --------------------------------- USER
-##### DELETE A USER BY ID CASCATING DELETE TO BUSINESS AND BRANCH ----- GROUP 2 -----
-DELETE http://localhost:8080/v1/api/user/1
+# --------------------------------- USER CRUD
 
 
-### READ ALL USERS ----- GROUP 2 -----
+##### LEER TODOS LOS USUARIO: esta ruta devuelve todos los usuarios en forma de lista.
 GET http://localhost:8080/v1/api/user
 
 
-### GET USERS BY TYPE AND STATUS ----- GROUP 2 -----
+# --------------------------------- USER BY GROUP
+
+
+##### BORRAR UN USUARIO POR ID ACTUALIZANDO LOS NEGOCIOS Y SUCURSALES: ----- GROUP 2 ----- esta ruta borra un usuario asociado al id. Actualzia el estado logico de los negocios y sucursales asociado a 0 o 1.
+DELETE http://localhost:8080/v1/api/user/1
+
+
+##### LEER USUARIOS POR TIPO Y ESTATUS: ----- GROUP 2 ----- esta ruta devuelve los usuarios por tipo y estatus.
 GET http://localhost:8080/v1/api/user/type=3/status=1
 Content-Type: application/json
-
-
-
-
-
-

@@ -31,6 +31,6 @@ Content-Type: application/json
 }
 
 
-##### BORRAR UNA UBICACION POR ID: esta ruta borrar una ubicacion asociada al id.
+##### BORRAR UNA UBICACION POR ID: esta ruta borra una ubicacion asociada al id.
 DELETE http://localhost:8080/api/location/1
 Content-Type: application/json

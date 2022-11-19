@@ -1,4 +1,6 @@
-# --------------------------------- LOG
+# --------------------------------- LOG CRUD
+
+
 ##### LEER TODOS LOS LOGS: esta ruta devuelve todos los logs en forma de lista.
 GET http://localhost:8080/api/log
 Content-Type: application/json
