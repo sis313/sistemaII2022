@@ -73,7 +73,7 @@ public class VerificationMailBl {
             mailMessage.setTo(currentUser.getEmail());
             mailMessage.setSubject("Complete Registration!");
             mailMessage.setText("To confirm your account, please click here : "
-                    + "http://localhost:80/confirm-account?token=" + currentToken.getToken());
+                    + "http://localhost:8080/confirm-account?token=" + currentToken.getToken());
 
             emailSenderService.sendEmail(mailMessage);
             LOGGER.info("resendMail from VerificationMailBl-if");

@@ -23,7 +23,7 @@ import static ucb.app.mslogin.bl.UserBl.LOGGER;
  * @Override
  * public UserDetails loadUserByUsername(String s) throws
  * UsernameNotFoundException{
- * com.example.mslogin.dto.UserEntity appUser =
+ * ucb.app.mslogin.dto.UserEntity appUser =
  * userRepository.findByUsername(s).orElseThrow(() -> new
  * UsernameNotFoundException("No existe el usuario"));
  * LOGGER.info(appUser.getNickname());
