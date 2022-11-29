@@ -63,7 +63,7 @@ POST http://localhost:8081/auth/refreshtoken
 Content-Type: application/json
 
 {
-  "refreshToken": "664c911a-c371-4785-a18b-d2dd19efc6ec"
+  "refreshToken":  "60141ac7-5515-40de-a5e2-af7b9e0836ce"
 }
 
 ###
@@ -72,3 +72,17 @@ POST http://localhost:8081/auth/signout?username=isuuki
 
 ###
 GET http://localhost:8081/v1/api/user
+
+###
+GET http://localhost:8081/v1/api/user
+
+<> 2022-11-16T211241.401.json
+
+###
+POST http://localhost:8081/auth/signin
+Content-Type: application/json
+
+{
+  "username": "ari",
+  "password": "123456789"
+}

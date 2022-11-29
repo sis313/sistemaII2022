@@ -1,9 +1,11 @@
 package com.example.mslogin.api;
 
 import com.example.mslogin.bl.RefreshTokenBl;
+import com.example.mslogin.bl.UserBl;
 import com.example.mslogin.dto.LoginDto;
 import com.example.mslogin.dto.RefreshTokenEntity;
 import com.example.mslogin.dto.RefreshTokenRequest;
+import com.example.mslogin.dto.UserEntity;
 import com.example.mslogin.jwt.JwtProvider;
 import com.example.mslogin.jwt.JwtResponse;
 import com.example.mslogin.jwt.RefreshTokenException;
@@ -31,7 +33,8 @@ public class AuthController {
     AuthenticationManager authenticationManager;
     @Autowired
     JwtProvider tokenProvider;
-
+    @Autowired
+    UserBl userBl;
     @Autowired
     RefreshTokenBl refreshTokenBl;
     @PostMapping("/signin")
@@ -40,13 +43,12 @@ public class AuthController {
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(login.getUsername(),
                         login.getPassword()));
-        LOGGER.info("111");
         SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        LOGGER.info("333");
         String jwt = tokenProvider.generateToken(authentication);
         RefreshTokenEntity refreshToken = refreshTokenBl.createRefreshToken(login.getUsername());
-        return  ResponseEntity.ok(new JwtResponse(jwt, refreshToken.getToken()));
+        UserEntity userEntity = userBl.findByUsername(login.getUsername()).orElseThrow();
+        return  ResponseEntity.ok(new JwtResponse(jwt, refreshToken.getToken(),
+                userEntity.getIdUser(),userEntity.getName(),userEntity.getEmail()));
     }
 
     @PostMapping("/refreshtoken")
