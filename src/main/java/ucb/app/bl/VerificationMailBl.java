@@ -36,7 +36,7 @@ public class VerificationMailBl {
         mailMessage.setTo(userEntity.getEmail());
         mailMessage.setSubject("Complete Registration!");
         mailMessage.setText("To confirm your account, please click here : "
-                +"http://localhost:80/confirm-account?token="+newToken.getToken());
+                +"http://localhost:8081/confirm-account?token="+newToken.getToken());
 
         emailSenderService.sendEmail(mailMessage);
         LOGGER.info("createToken from VerificationMailBl");
