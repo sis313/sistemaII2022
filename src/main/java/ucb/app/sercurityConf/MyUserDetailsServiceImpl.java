@@ -1,10 +1,10 @@
-package com.example.mslogin.sercurityConf;
+package ucb.app.sercurityConf;
 
 
-import com.example.mslogin.api.AuthController;
-import com.example.mslogin.dao.UserRepository;
-import com.example.mslogin.dao.entityMapper.UserMapper;
-import com.example.mslogin.dto.UserEntity;
+import ucb.app.api.AuthController;
+import ucb.app.dao.UserRepository;
+import ucb.app.dao.entityMapper.UserMapper;
+import ucb.app.dto.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

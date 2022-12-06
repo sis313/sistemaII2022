@@ -1,8 +1,8 @@
-package com.example.mslogin.bl;
+package ucb.app.bl;
 
-import com.example.mslogin.dao.UserRepository;
-import com.example.mslogin.dao.VerificationTokenRepository;
-import com.example.mslogin.dto.UserEntity;
+import ucb.app.dao.UserRepository;
+import ucb.app.dao.VerificationTokenRepository;
+import ucb.app.dto.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.mail.SimpleMailMessage;

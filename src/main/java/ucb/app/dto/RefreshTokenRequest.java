@@ -1,4 +1,4 @@
-package com.example.mslogin.dto;
+package ucb.app.dto;
 import javax.validation.constraints.NotBlank;
 public class RefreshTokenRequest {
     @NotBlank

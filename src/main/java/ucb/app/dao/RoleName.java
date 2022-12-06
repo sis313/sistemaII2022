@@ -1,4 +1,4 @@
-package com.example.mslogin.dao;
+package ucb.app.dao;
 
 public enum RoleName {
     USER,ADMIN,OWNER

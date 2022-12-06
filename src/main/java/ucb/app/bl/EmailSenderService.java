@@ -1,6 +1,5 @@
-package com.example.mslogin.bl;
+package ucb.app.bl;
 
-import com.example.mslogin.dao.VerificationTokenRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

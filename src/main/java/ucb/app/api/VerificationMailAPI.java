@@ -1,8 +1,7 @@
-package com.example.mslogin.api;
+package ucb.app.api;
 
-import com.example.mslogin.bl.UserBl;
-import com.example.mslogin.bl.VerificationMailBl;
-import com.example.mslogin.dto.UserEntity;
+import ucb.app.bl.VerificationMailBl;
+import ucb.app.dto.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

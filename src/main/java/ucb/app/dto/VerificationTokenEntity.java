@@ -1,8 +1,7 @@
-package com.example.mslogin.dto;
+package ucb.app.dto;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;

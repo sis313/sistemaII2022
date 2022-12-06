@@ -1,6 +1,6 @@
-package com.example.mslogin.dao;
+package ucb.app.dao;
 
-import com.example.mslogin.dto.TypeUserEntity;
+import ucb.app.dto.TypeUserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

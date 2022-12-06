@@ -1,6 +1,6 @@
-package com.example.mslogin.dto;
+package ucb.app.dto;
 
-import com.example.mslogin.dao.RoleName;
+import ucb.app.dao.RoleName;
 
 import javax.persistence.*;
 

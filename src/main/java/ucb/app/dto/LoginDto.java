@@ -1,4 +1,4 @@
-package com.example.mslogin.dto;
+package ucb.app.dto;
 
 public class LoginDto {
     private  String username;

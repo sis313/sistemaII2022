@@ -1,7 +1,6 @@
-package com.example.mslogin.dto;
+package ucb.app.dto;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.Objects;
 

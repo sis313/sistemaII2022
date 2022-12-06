@@ -1,11 +1,9 @@
-package com.example.mslogin.jwt;
-import com.example.mslogin.dao.UserPrincipal;
+package ucb.app.jwt;
+import ucb.app.dao.UserPrincipal;
 import io.jsonwebtoken.*;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Component;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;

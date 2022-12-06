@@ -1,17 +1,5 @@
-package com.example.mslogin.sercurityConf;
+package ucb.app.sercurityConf;
 
-
-import com.example.mslogin.dao.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.example.mslogin.bl.UserBl.LOGGER;
 
 /*@Service
 public class UserDetailsServiceImpl implements UserDetailsServiceImpl {

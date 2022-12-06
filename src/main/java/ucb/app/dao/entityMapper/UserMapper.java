@@ -1,12 +1,11 @@
-package com.example.mslogin.dao.entityMapper;
-import com.example.mslogin.api.AuthController;
-import com.example.mslogin.dao.UserPrincipal;
-import com.example.mslogin.dto.UserEntity;
+package ucb.app.dao.entityMapper;
+import ucb.app.api.AuthController;
+import ucb.app.dao.UserPrincipal;
+import ucb.app.dto.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 public class UserMapper {
     private static Logger LOGGER = LoggerFactory.getLogger(AuthController.class);

@@ -1,11 +1,10 @@
-package com.example.mslogin.bl;
+package ucb.app.bl;
 
-import com.example.mslogin.dao.RefreshTokenRepository;
-import com.example.mslogin.dao.UserRepository;
-import com.example.mslogin.dto.RefreshTokenEntity;
-import com.example.mslogin.dto.UserEntity;
-import com.example.mslogin.jwt.RefreshTokenException;
-import org.springframework.beans.factory.annotation.Autowired;
+import ucb.app.dao.RefreshTokenRepository;
+import ucb.app.dao.UserRepository;
+import ucb.app.dto.RefreshTokenEntity;
+import ucb.app.dto.UserEntity;
+import ucb.app.jwt.RefreshTokenException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

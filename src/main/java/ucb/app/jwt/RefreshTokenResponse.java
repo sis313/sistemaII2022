@@ -1,4 +1,4 @@
-package com.example.mslogin.jwt;
+package ucb.app.jwt;
 
 public class RefreshTokenResponse {
     private String accessToken;

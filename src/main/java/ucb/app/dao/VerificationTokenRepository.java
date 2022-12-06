@@ -1,7 +1,6 @@
-package com.example.mslogin.dao;
+package ucb.app.dao;
 
-import com.example.mslogin.dto.UserEntity;
-import com.example.mslogin.dto.VerificationTokenEntity;
+import ucb.app.dto.VerificationTokenEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

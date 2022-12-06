@@ -1,9 +1,8 @@
-package com.example.mslogin.api;
+package ucb.app.api;
 
-import com.example.mslogin.bl.UserBl;
-import com.example.mslogin.dao.UserRepository;
-import com.example.mslogin.dto.UserEntity;
-import org.apache.catalina.User;
+import ucb.app.bl.UserBl;
+import ucb.app.dao.UserRepository;
+import ucb.app.dto.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

@@ -1,9 +1,8 @@
-package com.example.mslogin.dao;
+package ucb.app.dao;
 
-import com.example.mslogin.dto.UserEntity;
+import ucb.app.dto.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
