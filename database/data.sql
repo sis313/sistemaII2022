@@ -37,9 +37,9 @@ INSERT Into type_user (name) VALUES ('USER');
 INSERT Into type_user (name) VALUES ('ADMIN');
 
 -- Table: roles
-INSERT Into roles (name) VALUES ('ADMIN');
-INSERT Into roles (name) VALUES ('USER');
 INSERT Into roles (name) VALUES ('OWNER');
+INSERT Into roles (name) VALUES ('USER');
+INSERT Into roles (name) VALUES ('ADMIN');
 
 -- Table: user
 INSERT INTO user (name, email, nickname, password, id_type_user, create_date, update_date, status) VALUES ("Carlos", "Carlos@email.com", "CarlosNickname", "carlospassword", 3, "2022-01-01", "2022-01-01", 1);

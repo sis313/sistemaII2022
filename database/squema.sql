@@ -151,6 +151,16 @@ CREATE TABLE log (
     id_user int NOT NULL,
     CONSTRAINT log_pk PRIMARY KEY (id_log)
 );
+
+-- Table: refresh_token
+CREATE TABLE refresh_token (
+    id_refresh_token int NOT NULL AUTO_INCREMENT,
+    token varchar(300) NOT NULL,
+    expiry_date timestamp NOT NULL,
+    id_user int NOT NULL,
+    CONSTRAINT refresh_token_pk PRIMARY KEY (id_refresh_token)
+);
+
 -- foreign keys
 -- Reference: booking_product (table: booking)
 ALTER TABLE booking
@@ -200,4 +210,7 @@ ADD CONSTRAINT verification_token_user FOREIGN KEY verification_token_user (id_u
 -- Reference: zone_municipalities (table: zone)
 ALTER TABLE zone
 ADD CONSTRAINT zone_municipalities FOREIGN KEY zone_municipalities (id_municipalities) REFERENCES municipalities (id_municipalities);
+-- Reference: refresh_token_user (table: refresh_token)
+ALTER TABLE refresh_token
+ADD CONSTRAINT refresh_token_user FOREIGN KEY refresh_token_user (id_user) REFERENCES user (id_user);
 -- End of file.
