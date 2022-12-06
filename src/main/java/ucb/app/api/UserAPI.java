@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -58,7 +59,7 @@ public class UserAPI {
         LOGGER.info("DATABASE-SUCCESS: Consulta exitosa para obtener un usuario {}", user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
-
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<List<UserEntity>> getUsers(){
         LOGGER.info("Invocando al servicio REST para obtener todos los usuarios");

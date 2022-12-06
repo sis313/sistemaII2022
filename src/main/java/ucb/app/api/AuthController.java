@@ -1,5 +1,6 @@
 package ucb.app.api;
 
+<<<<<<< HEAD:src/main/java/ucb/app/api/AuthController.java
 import ucb.app.bl.RefreshTokenBl;
 import ucb.app.dto.LoginDto;
 import ucb.app.dto.RefreshTokenEntity;
@@ -8,6 +9,18 @@ import ucb.app.jwt.JwtProvider;
 import ucb.app.jwt.JwtResponse;
 import ucb.app.jwt.RefreshTokenException;
 import ucb.app.jwt.RefreshTokenResponse;
+=======
+import com.example.mslogin.bl.RefreshTokenBl;
+import com.example.mslogin.bl.UserBl;
+import com.example.mslogin.dto.LoginDto;
+import com.example.mslogin.dto.RefreshTokenEntity;
+import com.example.mslogin.dto.RefreshTokenRequest;
+import com.example.mslogin.dto.UserEntity;
+import com.example.mslogin.jwt.JwtProvider;
+import com.example.mslogin.jwt.JwtResponse;
+import com.example.mslogin.jwt.RefreshTokenException;
+import com.example.mslogin.jwt.RefreshTokenResponse;
+>>>>>>> 895c3986942292ee687e2f59247c9eb0386bba02:src/main/java/com/example/mslogin/api/AuthController.java
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +44,8 @@ public class AuthController {
     AuthenticationManager authenticationManager;
     @Autowired
     JwtProvider tokenProvider;
-
+    @Autowired
+    UserBl userBl;
     @Autowired
     RefreshTokenBl refreshTokenBl;
     @PostMapping("/signin")
@@ -40,13 +54,12 @@ public class AuthController {
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(login.getUsername(),
                         login.getPassword()));
-        LOGGER.info("111");
         SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        LOGGER.info("333");
         String jwt = tokenProvider.generateToken(authentication);
         RefreshTokenEntity refreshToken = refreshTokenBl.createRefreshToken(login.getUsername());
-        return  ResponseEntity.ok(new JwtResponse(jwt, refreshToken.getToken()));
+        UserEntity userEntity = userBl.findByUsername(login.getUsername()).orElseThrow();
+        return  ResponseEntity.ok(new JwtResponse(jwt, refreshToken.getToken(),
+                userEntity.getIdUser(),userEntity.getName(),userEntity.getEmail()));
     }
 
     @PostMapping("/refreshtoken")
