@@ -23,7 +23,6 @@ public class UserAPI {
     Logger LOGGER = LoggerFactory.getLogger(UserAPI.class);
 
     public UserAPI(UserBl userBl, UserRepository userRepository) {
-
         this.userBl = userBl;
         this.userRepository = userRepository;
     }

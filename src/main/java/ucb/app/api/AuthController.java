@@ -1,26 +1,15 @@
 package ucb.app.api;
 
-<<<<<<< HEAD:src/main/java/ucb/app/api/AuthController.java
 import ucb.app.bl.RefreshTokenBl;
 import ucb.app.dto.LoginDto;
 import ucb.app.dto.RefreshTokenEntity;
 import ucb.app.dto.RefreshTokenRequest;
+import ucb.app.bl.UserBl;
+import ucb.app.dto.UserEntity;
 import ucb.app.jwt.JwtProvider;
 import ucb.app.jwt.JwtResponse;
 import ucb.app.jwt.RefreshTokenException;
 import ucb.app.jwt.RefreshTokenResponse;
-=======
-import com.example.mslogin.bl.RefreshTokenBl;
-import com.example.mslogin.bl.UserBl;
-import com.example.mslogin.dto.LoginDto;
-import com.example.mslogin.dto.RefreshTokenEntity;
-import com.example.mslogin.dto.RefreshTokenRequest;
-import com.example.mslogin.dto.UserEntity;
-import com.example.mslogin.jwt.JwtProvider;
-import com.example.mslogin.jwt.JwtResponse;
-import com.example.mslogin.jwt.RefreshTokenException;
-import com.example.mslogin.jwt.RefreshTokenResponse;
->>>>>>> 895c3986942292ee687e2f59247c9eb0386bba02:src/main/java/com/example/mslogin/api/AuthController.java
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
