@@ -1,0 +1,437 @@
+
+
+# --------------------------------- CITY
+##### READ ALL CITIES
+GET http://localhost:8080/api/city
+Content-Type: application/json
+
+
+##### READ A CITY BY ID
+GET http://localhost:8080/api/city/1
+Content-Type: application/json
+
+
+##### CREATE A CITY
+POST http://localhost:8080/api/city
+Content-Type: application/json
+
+{
+    "name": "La Paz"
+}
+
+
+##### UPDATE A CITY BY ID
+PUT http://localhost:8080/api/city/1
+Content-Type: application/json
+
+{
+    "name": "La Paz update"
+}
+
+
+##### DELETE A CITY BY ID
+DELETE http://localhost:8080/api/city/1
+Content-Type: application/json
+
+
+
+
+
+
+
+
+
+
+# --------------------------------- MUNICIPALITIES
+##### READ ALL MUNICIPALITIESES
+GET http://localhost:8080/api/municipalities
+Content-Type: application/json
+
+
+##### READ A MUNICIPALITIES BY ID
+GET http://localhost:8080/api/municipalities/1
+Content-Type: application/json
+
+
+##### CREATE A MUNICIPALITIES
+POST http://localhost:8080/api/municipalities
+Content-Type: application/json
+
+{
+    "name": "Municipality 1",
+    "idCity": 1
+}
+
+
+##### UPDATE A MUNICIPALITIES BY ID
+PUT http://localhost:8080/api/municipalities/1
+Content-Type: application/json
+
+{
+    "name": "Municipality 1 update",
+    "idCity": 1
+}
+
+
+##### DELETE A MUNICIPALITIES BY ID
+DELETE http://localhost:8080/api/municipalities/1
+Content-Type: application/json
+
+
+
+
+
+
+
+
+
+# --------------------------------- ZONE
+##### READ ALL ZONES
+GET http://localhost:8080/api/zone
+Content-Type: application/json
+
+
+##### READ A ZONE BY ID
+GET http://localhost:8080/api/zone/1
+Content-Type: application/json
+
+
+##### CREATE A ZONE
+POST http://localhost:8080/api/zone
+Content-Type: application/json
+
+{
+    "name": "Zone 1",
+    "idMunicipalities": 1
+}
+
+
+##### UPDATE A ZONE BY ID
+PUT http://localhost:8080/api/zone/1
+Content-Type: application/json
+
+{
+    "name": "Zone 1 update",
+    "idMunicipalities": 1
+}
+
+
+##### DELETE A ZONE BY ID
+DELETE http://localhost:8080/api/zone/1
+Content-Type: application/json
+
+
+
+
+
+
+
+
+
+
+
+
+
+# --------------------------------- TYPE BUSINESS
+##### READ ALL TYPE BUSINESSES
+GET http://localhost:8080/api/typeBusiness
+Content-Type: application/json
+
+
+##### READ A TYPE BUSINESS BY ID
+GET http://localhost:8080/api/typeBusiness/1
+Content-Type: application/json
+
+
+##### CREATE A TYPE BUSINESS
+POST http://localhost:8080/api/typeBusiness
+Content-Type: application/json
+
+{
+    "name": "Type business 1"
+}
+
+
+##### UPDATE A TYPE BUSINESS BY ID
+PUT http://localhost:8080/api/typeBusiness/1
+Content-Type: application/json
+
+{
+    "name": "Type business 1 update"
+}
+
+
+##### DELETE A TYPE BUSINESS BY ID
+DELETE http://localhost:8080/api/typeBusiness/1
+Content-Type: application/json
+
+
+
+
+
+
+
+
+
+
+# --------------------------------- BUSINESS
+##### READ ALL BUSINESSES
+GET http://localhost:8080/api/business
+Content-Type: application/json
+
+
+##### READ A BUSINESS BY ID
+GET http://localhost:8080/api/business/1
+Content-Type: application/json
+
+
+##### READ A BUSINESS BY USER ID
+GET http://localhost:8080/api/business/?userId=1
+Content-Type: application/json
+
+
+##### CREATE A BUSINESS
+POST http://localhost:8080/api/business
+Content-Type: application/json
+
+{
+  "name": "business name",
+  "description": "business description",
+  "idTypeBusiness": 1,
+  "idUser": 1,
+  "createDate": "2008-01-02",
+  "updateDate": "2008-01-02",
+  "status": 1
+}
+
+
+##### UPDATE A BUSINESS BY ID
+PUT http://localhost:8080/api/business/1
+Content-Type: application/json
+
+{
+  "name": "business name update",
+  "description": "business description update",
+  "idTypeBusiness": 1,
+  "idUser": 1,
+  "createDate": "2008-01-02",
+  "updateDate": "2008-01-02",
+  "status": 1
+}
+
+
+##### DELETE A BUSINESS BY ID
+DELETE http://localhost:8080/api/business/1
+Content-Type: application/json
+
+
+
+
+
+
+
+
+
+# --------------------------------- LOCATION
+##### READ ALL LOCATIONS
+GET http://localhost:8080/api/location
+Content-Type: application/json
+
+
+##### READ A LOCATION BY ID
+GET http://localhost:8080/api/location/1
+Content-Type: application/json
+
+
+##### CREATE A LOCATION
+POST http://localhost:8080/api/location
+Content-Type: application/json
+
+{
+    "latitude": 41.71727401,
+    "longitude": 72.00898606
+}
+
+
+##### UPDATE A LOCATION BY ID
+PUT http://localhost:8080/api/location/1
+Content-Type: application/json
+
+{
+    "latitude": 41.71727411,
+    "longitude": 72.00898611
+}
+
+
+##### DELETE A LOCATION BY ID
+DELETE http://localhost:8080/api/location/1
+Content-Type: application/json
+
+
+
+
+
+
+
+
+
+
+
+
+
+# --------------------------------- BRANCH
+##### READ ALL BRANCHES
+GET http://localhost:8080/api/branch
+Content-Type: application/json
+
+
+##### READ A BRANCH BY ID
+GET http://localhost:8080/api/branch/1
+Content-Type: application/json
+
+
+##### READ ALL BRANCHES BY BUSINESS ID
+GET http://localhost:8080/api/branch/?businessId=1
+Content-Type: application/json
+
+
+##### CREATE A BRANCH
+POST http://localhost:8080/api/branch
+Content-Type: application/json
+
+{
+    "address": "branch address",
+    "openHour": "2022-01-01T10:01:01",
+    "closeHour": "2022-01-01T10:01:01",
+    "attentionDays": "Monday",
+    "image": "aW1hZ2UgZmlsZQ==",
+    "idZone": 1,
+    "idLocation": 1,
+    "idBusiness": 1,
+    "createDate": "2022-01-01",
+    "updateDate": "2022-01-01",
+    "status": 1
+}
+
+
+##### UPDATE A BRANCH BY ID
+PUT http://localhost:8080/api/branch/1
+Content-Type: application/json
+
+{
+    "address": "branch address update",
+    "openHour": "2022-01-01T10:01:01",
+    "closeHour": "2022-01-01T10:01:01",
+    "attentionDays": "Monday",
+    "image": "aW1hZ2UgZmlsZQ==",
+    "idZone": 1,
+    "idLocation": 1,
+    "idBusiness": 1,
+    "createDate": "2022-01-01",
+    "updateDate": "2022-01-01",
+    "status": 1
+}
+
+
+##### DELETE A BRANCH BY ID
+DELETE http://localhost:8080/api/branch/1
+Content-Type: application/json
+
+
+
+
+
+
+# --------------------------------- COMMENT
+##### READ ALL COMMENTS
+GET http://localhost:8080/api/comment
+Content-Type: application/json
+
+
+##### READ A COMMENT BY ID
+GET http://localhost:8080/api/comment/1
+Content-Type: application/json
+
+
+##### READ COMMENTS BY BUSINESS ID
+GET http://localhost:8080/api/comment/?businessId=1
+Content-Type: application/json
+
+
+##### CREATE A COMMENT
+POST http://localhost:8080/api/comment
+Content-Type: application/json
+
+{
+    "message": "message 1",
+    "idUser": 1,
+    "idBusiness": 1,
+    "status": 1
+}
+
+
+##### UPDATE A COMMENT BY ID
+PUT http://localhost:8080/api/comment/1
+Content-Type: application/json
+
+{
+    "message": "message 1 update",
+    "idUser": 1,
+    "idBusiness": 1,
+    "status": 1
+}
+
+
+##### DELETE A COMMENT BY ID
+DELETE http://localhost:8080/api/comment/1
+Content-Type: application/json
+
+
+
+
+
+
+
+# --------------------------------- RATING
+##### READ ALL RATINGS
+GET http://localhost:8080/api/rating
+Content-Type: application/json
+
+
+##### READ A RATING BY ID
+GET http://localhost:8080/api/rating/1
+Content-Type: application/json
+
+
+##### READ AVERAGE RATING BY BRANCH ID
+GET http://localhost:8080/api/rating/?branchId=1
+Content-Type: application/json
+
+
+##### CREATE A RATING
+POST http://localhost:8080/api/rating
+Content-Type: application/json
+
+{
+    "score": 1,
+    "favoriteStatus": true,
+    "idBranch":1,
+    "idUser":1
+}
+
+
+##### UPDATE A RATING BY ID
+PUT http://localhost:8080/api/rating/1
+Content-Type: application/json
+
+{
+    "score": 5,
+    "favoriteStatus": true,
+    "idBranch":1,
+    "idUser":1
+}
+
+
+##### DELETE A RATING BY ID
+DELETE http://localhost:8080/api/rating/1
+Content-Type: application/json
