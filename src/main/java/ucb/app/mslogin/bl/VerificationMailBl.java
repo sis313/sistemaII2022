@@ -36,7 +36,7 @@ public class VerificationMailBl {
         mailMessage.setTo(userEntity.getEmail());
         mailMessage.setSubject("Complete Registration!");
         mailMessage.setText("To confirm your account, please click here : "
-                + "http://localhost:80/confirm-account?token=" + newToken.getToken());
+                + "https://sistema2022.uc.r.appspot.com/confirm-account?token=" + newToken.getToken());
 
         emailSenderService.sendEmail(mailMessage);
         LOGGER.info("createToken from VerificationMailBl");
@@ -73,7 +73,7 @@ public class VerificationMailBl {
             mailMessage.setTo(currentUser.getEmail());
             mailMessage.setSubject("Complete Registration!");
             mailMessage.setText("To confirm your account, please click here : "
-                    + "http://localhost:8080/confirm-account?token=" + currentToken.getToken());
+                    + "https://sistema2022.uc.r.appspot.com/confirm-account?token=" + currentToken.getToken());
 
             emailSenderService.sendEmail(mailMessage);
             LOGGER.info("resendMail from VerificationMailBl-if");

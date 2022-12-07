@@ -1,6 +1,5 @@
 package ucb.app.mslogin.api;
 
-import ucb.app.mslogin.bl.UserBl;
 import ucb.app.mslogin.bl.VerificationMailBl;
 import ucb.app.mslogin.dto.UserEntity;
 import org.slf4j.Logger;
@@ -26,10 +25,10 @@ public class VerificationMailAPI {
         int res = verificationMailBl.confirmUserAccount(confirmationToken);
         if (res < 0) {
             ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
-                    .location(URI.create("localhost:4200/error-verificacion")).build();
+                    .location(URI.create("https://shell-spa-beta.vercel.app/dev4#/error-verificacion")).build();
         }
         return ResponseEntity.status(HttpStatus.FOUND)
-                .location(URI.create("http://localhost:4200/verificacion-exitosa")).build();
+                .location(URI.create("https://shell-spa-beta.vercel.app/dev4#/verificacion-exitosa")).build();
     }
 
     @RequestMapping(value = "/resend", method = { RequestMethod.GET, RequestMethod.POST })
