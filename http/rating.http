@@ -1,0 +1,50 @@
+# --------------------------------- RATING CRUD
+
+
+##### LEER TODOS LOS RATING: esta ruta devuelve todos los rating en forma de lista.
+GET http://localhost:8080/api/rating
+Content-Type: application/json
+
+
+##### READ ALL RATINGS WITH DETAIL
+GET http://localhost:8080/api/rating/detail
+Content-Type: application/json
+
+
+##### LEER UN RATING POR ID: esta ruta devuelve el rating asociado al id.
+GET http://localhost:8080/api/rating/1
+Content-Type: application/json
+
+
+##### READ AVERAGE RATING BY BRANCH ID
+GET http://localhost:8080/api/rating/?branchId=1
+Content-Type: application/json
+
+
+##### CREAR UN RATING: esta ruta crea un rating con datos en formato "json".
+POST http://localhost:8080/api/rating
+Content-Type: application/json
+
+{
+    "score": 1,
+    "favoriteStatus": true,
+    "idBranch":1,
+    "idUser":1
+}
+
+
+##### ACTUALIZAR UN RATING POR ID: esta ruta actualza un rating con datos en formato "json" asociado al id.
+PUT http://localhost:8080/api/rating/1
+Content-Type: application/json
+
+{
+    "score": 5,
+    "favoriteStatus": true,
+    "idBranch":1,
+    "idUser":1
+}
+
+
+##### BORRAR UN RATING POR ID: esta ruta borra un rating asociado al id.
+DELETE http://localhost:8080/api/rating/1
+Content-Type: application/json

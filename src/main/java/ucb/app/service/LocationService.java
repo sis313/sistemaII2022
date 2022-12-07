@@ -28,15 +28,17 @@ public class LocationService {
                 .orElseThrow(() -> new Exception("Could not find location"));
     }
 
-    public LocationDto saveDto(Location location) {
+    public LocationDto saveDto(LocationDto locationDto) {
+        Location location = new Location(locationDto.getIdLocation(), locationDto.getLatitude(),
+                locationDto.getLongitude());
         Location response = locationRepository.save(location);
         return locationToLocationDto(response);
     }
 
-    public LocationDto updateDto(Integer locationId, Location location) {
+    public LocationDto updateDto(Integer locationId, LocationDto locationDto) {
         Location locationFound = locationRepository.getReferenceById(locationId);
-        locationFound.setLatitude(location.getLatitude());
-        locationFound.setLongitude(location.getLongitude());
+        locationFound.setLatitude(locationDto.getLatitude());
+        locationFound.setLongitude(locationDto.getLongitude());
         Location response = locationRepository.save(locationFound);
         return locationToLocationDto(response);
     }

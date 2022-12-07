@@ -1,0 +1,97 @@
+# --------------------------------- BRANCH CRUD
+
+
+##### LEER TODAS LAS SUCURSALES: esta ruta devuelve todas las sucursales en forma de lista.
+GET http://localhost:8080/api/branch
+Content-Type: application/json
+
+
+##### LEER UNA SUCURSAL POR ID: esta ruta devuelve la sucursal asociada al id.
+GET http://localhost:8080/api/branch/1
+Content-Type: application/json
+
+
+##### CREAR UNA SUCURSAL: esta ruta crea una sucursal con datos en formato "multipart/form-data". Es necesario pasar la imagen dentro dentro del cuerpo de datos para guardarlo y hacerlo publico a traves de un url.
+POST http://localhost:8080/api/branch
+Content-Type: multipart/form-data
+
+{
+    "address": "branch address",
+    "openHour": "10:01:01",
+    "closeHour": "10:01:01",
+    "attentionDays": "Monday",
+    "image": "aW1hZ2UgZmlsZQ==",
+    "idZone": 1,
+    "idLocation": 1,
+    "idBusiness": 1,
+    "status": 1
+}
+
+
+##### CREAR UNA SUCURSAL: esta ruta crea una sucursal con datos en formato "json". No es requerido pasar la imagen y se recomienda utilizar como imagen un url.
+POST http://localhost:8080/api/branch/json
+Content-Type: application/json
+
+{
+    "address": "branch address",
+    "openHour": "0000-00-00T10:01:01",
+    "closeHour": "0000-00-00T10:01:01",
+    "attentionDays": "Monday",
+    "image": "aW1hZ2UgZmlsZQ==",
+    "idZone": 1,
+    "idLocation": 1,
+    "idBusiness": 1,
+    "status": 1
+}
+
+
+##### ACTUALIZAR UNA SUCURSAL POR ID: esta ruta actualza una sucursal con datos en formato "multipart/form-data" asociada al id.
+PUT http://localhost:8080/api/branch/1
+Content-Type: multipart/form-data
+
+{
+    "address": "branch address update",
+    "openHour": "2022-01-01T10:01:01",
+    "closeHour": "2022-01-01T10:01:01",
+    "attentionDays": "Monday",
+    "image": "aW1hZ2UgZmlsZQ==",
+    "idZone": 1,
+    "idLocation": 1,
+    "idBusiness": 1,
+    "status": 1
+}
+
+
+##### ACTUALIZAR UNA SUCURSAL POR ID: esta ruta actualza una sucursal con datos en formato "json" correspondiente al id. No es requerido pasar la imagen y se recomienda utilizar como imagen un url.
+PUT http://localhost:8080/api/branch/json/1
+Content-Type: application/json
+
+{
+    "address": "branch address update",
+    "openHour": "0000-00-00T10:01:01",
+    "closeHour": "0000-00-00T10:01:01",
+    "attentionDays": "Monday",
+    "image": "aW1hZ2UgZmlsZQ==",
+    "idZone": 1,
+    "idLocation": 1,
+    "idBusiness": 1,
+    "status": 1
+}
+
+
+##### BORRAR UNA SUCURSAL POR ID: esta ruta borrar de forma logica una sucursal asociada al id. Esta ruta conmuta entre 0 y 1 es estado logico de la sucural.
+DELETE http://localhost:8080/api/branch/1
+Content-Type: application/json
+
+
+# --------------------------------- BRANCH CRUD BY GROUP
+
+
+##### LEER TODAS LAS SUCURSALES POR ID DE NEGOCIO: ----- GRUPO 5 ----- esta ruta devuelve todas las sucursales en forma de lista asociadas a un negocio.
+GET http://localhost:8080/api/branch/?businessId=1
+Content-Type: application/json
+
+
+##### LEER TODAS LAS SUCURSALES AGREGANDO UBICACION: ----- GRUPO 3 ----- esta ruta devuelve todas las sucursales en forma de lista agregando la unicacion de coordenadas.
+GET http://localhost:8080/api/branch/location
+Content-Type: application/json

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.dto.CommentDto;
-import ucb.app.model.Comment;
 import ucb.app.service.CommentService;
 
 @RestController
@@ -47,16 +46,31 @@ public class CommentController {
         return new ResponseEntity<>(comments, HttpStatus.OK);
     }
 
+    // GRUPO 3 ROUTE
+    @GetMapping(path = "/user/{id}")
+    public ResponseEntity<List<CommentDto>> getCommentsByUserId(@PathVariable("id") Integer id) {
+        List<CommentDto> comments = commentService.findByUserIdDto(id);
+        return new ResponseEntity<>(comments, HttpStatus.OK);
+    }
+
+    // GRUPO 3 ROUTE
+    @GetMapping(path = "/IdAndUser/{id_user}/{id_comment}")
+    public ResponseEntity<List<CommentDto>> getCommentsByUserIdAndCommentId(@PathVariable("id_user") Integer id_user,
+            @PathVariable("id_comment") Integer id_comment) {
+        List<CommentDto> comments = commentService.findByUserIdAndCommentIdDto(id_user, id_comment);
+        return new ResponseEntity<>(comments, HttpStatus.OK);
+    }
+
     @PostMapping
-    public ResponseEntity<CommentDto> postComment(@RequestBody Comment comment) {
-        CommentDto response = commentService.saveDto(comment);
+    public ResponseEntity<CommentDto> postComment(@RequestBody CommentDto commentDto) {
+        CommentDto response = commentService.saveDto(commentDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping(path = "/{commentId}")
     public ResponseEntity<CommentDto> putComment(@PathVariable("commentId") Integer commentId,
-            @RequestBody Comment comment) {
-        CommentDto response = commentService.updateDto(commentId, comment);
+            @RequestBody CommentDto commentDto) {
+        CommentDto response = commentService.updateDto(commentId, commentDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

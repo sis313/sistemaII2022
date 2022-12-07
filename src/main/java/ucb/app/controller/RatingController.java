@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.dto.RatingAverageDto;
+import ucb.app.dto.RatingDetailDto;
 import ucb.app.dto.RatingDto;
-import ucb.app.model.Rating;
 import ucb.app.service.RatingService;
 
 @RestController
@@ -36,6 +36,12 @@ public class RatingController {
         return new ResponseEntity<>(ratings, HttpStatus.OK);
     }
 
+    @GetMapping(path = "/detail")
+    public ResponseEntity<List<RatingDetailDto>> getRatingDetails() {
+        List<RatingDetailDto> ratings = ratingService.findAllDetailDto();
+        return new ResponseEntity<>(ratings, HttpStatus.OK);
+    }
+
     @GetMapping(path = "/{ratingId}")
     public ResponseEntity<RatingDto> getRatingById(@PathVariable("ratingId") Integer ratingId) throws Exception {
         RatingDto rating = ratingService.findByIdDto(ratingId);
@@ -49,14 +55,15 @@ public class RatingController {
     }
 
     @PostMapping
-    public ResponseEntity<RatingDto> postRating(@RequestBody Rating rating) {
-        RatingDto response = ratingService.saveDto(rating);
+    public ResponseEntity<RatingDto> postRating(@RequestBody RatingDto ratingDto) {
+        RatingDto response = ratingService.saveDto(ratingDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping(path = "/{ratingId}")
-    public ResponseEntity<RatingDto> putRating(@PathVariable("ratingId") Integer ratingId, @RequestBody Rating rating) {
-        RatingDto response = ratingService.updateDto(ratingId, rating);
+    public ResponseEntity<RatingDto> putRating(@PathVariable("ratingId") Integer ratingId,
+            @RequestBody RatingDto ratingDto) {
+        RatingDto response = ratingService.updateDto(ratingId, ratingDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

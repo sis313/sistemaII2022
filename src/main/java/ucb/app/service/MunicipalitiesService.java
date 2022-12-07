@@ -30,15 +30,17 @@ public class MunicipalitiesService {
                 .orElseThrow(() -> new Exception("Could not find municipalities"));
     }
 
-    public MunicipalitiesDto saveDto(Municipalities municipalities) {
+    public MunicipalitiesDto saveDto(MunicipalitiesDto municipalitiesDto) {
+        Municipalities municipalities = new Municipalities(municipalitiesDto.getIdMunicipalities(),
+                municipalitiesDto.getName(), municipalitiesDto.getIdCity());
         Municipalities response = municipalitiesRepository.save(municipalities);
         return municipalitiesToMunicipalitiesDto(response);
     }
 
-    public MunicipalitiesDto updateDto(Integer municipalitiesId, Municipalities municipalities) {
+    public MunicipalitiesDto updateDto(Integer municipalitiesId, MunicipalitiesDto municipalitiesDto) {
         Municipalities municipalitiesFound = municipalitiesRepository.getReferenceById(municipalitiesId);
-        municipalitiesFound.setName(municipalities.getName());
-        municipalitiesFound.setIdCity(municipalities.getIdCity());
+        municipalitiesFound.setName(municipalitiesDto.getName());
+        municipalitiesFound.setIdCity(municipalitiesDto.getIdCity());
         Municipalities response = municipalitiesRepository.save(municipalitiesFound);
         return municipalitiesToMunicipalitiesDto(response);
     }

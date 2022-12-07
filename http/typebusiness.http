@@ -1,0 +1,34 @@
+# --------------------------------- TYPE BUSINESS CRUD
+
+
+##### LEER TODOS LOS TIPOS DE NEGOCIO: esta ruta devuelve todos los tipos de negocio en forma de lista.
+GET http://localhost:8080/api/typeBusiness
+Content-Type: application/json
+
+
+##### LEER UN TIPO DE NEGOCIO POR ID: esta ruta devuelve el tipo de negocio asociado al id.
+GET http://localhost:8080/api/typeBusiness/1
+Content-Type: application/json
+
+
+##### CREAR UN TIPO DE NEGOCIO: esta ruta crea un tipo de negocio con datos en formato "json".
+POST http://localhost:8080/api/typeBusiness
+Content-Type: application/json
+
+{
+    "name": "Type business 1"
+}
+
+
+##### ACTUALIZAR UN TIPO DE NEGOCIO POR ID: esta ruta actualza un tipo de negocio con datos en formato "json" asociado al id.
+PUT http://localhost:8080/api/typeBusiness/1
+Content-Type: application/json
+
+{
+    "name": "Type business 1 update"
+}
+
+
+##### BORRAR UN TIPO DE NEGOCIO POR ID: esta ruta borra un tipo de negocio asociado al id.
+DELETE http://localhost:8080/api/typeBusiness/1
+Content-Type: application/json

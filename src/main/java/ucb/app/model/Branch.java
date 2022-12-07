@@ -2,18 +2,35 @@ package ucb.app.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.JoinColumn;
+import javax.persistence.SqlResultSetMapping;
+import javax.persistence.ConstructorResult;
+import javax.persistence.ColumnResult;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import ucb.app.dto.BranchRatingCountDto;
 
 /**
  *
@@ -28,12 +45,22 @@ import javax.persistence.TemporalType;
         @NamedQuery(name = "Branch.findByOpenHour", query = "SELECT b FROM Branch b WHERE b.openHour = :openHour"),
         @NamedQuery(name = "Branch.findByCloseHour", query = "SELECT b FROM Branch b WHERE b.closeHour = :closeHour"),
         @NamedQuery(name = "Branch.findByAttentionDays", query = "SELECT b FROM Branch b WHERE b.attentionDays = :attentionDays"),
+        @NamedQuery(name = "Branch.findByImage", query = "SELECT b FROM Branch b WHERE b.image = :image"),
         @NamedQuery(name = "Branch.findByIdZone", query = "SELECT b FROM Branch b WHERE b.idZone = :idZone"),
         @NamedQuery(name = "Branch.findByIdLocation", query = "SELECT b FROM Branch b WHERE b.idLocation = :idLocation"),
         @NamedQuery(name = "Branch.findByIdBusiness", query = "SELECT b FROM Branch b WHERE b.idBusiness = :idBusiness"),
         @NamedQuery(name = "Branch.findByCreateDate", query = "SELECT b FROM Branch b WHERE b.createDate = :createDate"),
         @NamedQuery(name = "Branch.findByUpdateDate", query = "SELECT b FROM Branch b WHERE b.updateDate = :updateDate"),
         @NamedQuery(name = "Branch.findByStatus", query = "SELECT b FROM Branch b WHERE b.status = :status") })
+
+@SqlResultSetMapping(name = "BranchRatingCount", classes = @ConstructorResult(targetClass = BranchRatingCountDto.class, columns = {
+        @ColumnResult(name = "idBusiness", type = Integer.class),
+        @ColumnResult(name = "name", type = String.class),
+        @ColumnResult(name = "idBranch", type = Integer.class),
+        @ColumnResult(name = "address", type = String.class),
+        @ColumnResult(name = "averageScore", type = Double.class),
+        @ColumnResult(name = "countIdRating", type = Integer.class) }))
+
 public class Branch implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,9 +83,8 @@ public class Branch implements Serializable {
     @Basic(optional = false)
     @Column(name = "attention_days")
     private String attentionDays;
-    @Lob
     @Column(name = "image")
-    private byte[] image;
+    private String image;
     @Basic(optional = false)
     @Column(name = "id_zone")
     private int idZone;
@@ -68,17 +94,35 @@ public class Branch implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_business")
     private int idBusiness;
+    @CreationTimestamp
     @Basic(optional = false)
-    @Column(name = "create_date")
+    @Column(name = "create_date", updatable = false)
     @Temporal(TemporalType.DATE)
     private Date createDate;
     @Basic(optional = false)
-    @Column(name = "update_date")
+    @UpdateTimestamp
+    @Column(name = "update_date", updatable = true)
     @Temporal(TemporalType.DATE)
     private Date updateDate;
     @Basic(optional = false)
     @Column(name = "status")
     private int status;
+
+    // CODE CHANGE - START
+    @JoinColumn(name = "id_location", referencedColumnName = "id_location", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Location location;
+
+    @JoinColumn(name = "id_business", referencedColumnName = "id_business", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Business business;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idBranch", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Rating> ratingList;
+    // CODE CHANGE - STOP
 
     public Branch() {
     }
@@ -142,11 +186,11 @@ public class Branch implements Serializable {
         this.attentionDays = attentionDays;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -197,6 +241,32 @@ public class Branch implements Serializable {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    // CODE CHANGE - START
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Business getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(Business business) {
+        this.business = business;
+    }
+
+    public List<Rating> getRatingList() {
+        return ratingList;
+    }
+
+    public void setRatingList(List<Rating> ratingList) {
+        this.ratingList = ratingList;
+    }
+    // CODE CHANGE - STOP
 
     @Override
     public int hashCode() {

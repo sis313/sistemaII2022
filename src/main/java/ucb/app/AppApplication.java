@@ -18,7 +18,9 @@ public class AppApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**").allowedOrigins("https://serviceprojectspring.herokuapp.com",
-						"http://localhost:4200").allowedMethods("GET", "POST", "PUT", "DELETE");
+						"http://localhost:4200", "http://localhost:9000", "https://shell-app-sand.vercel.app",
+						"https://shell-spa-beta.vercel.app")
+						.allowedMethods("GET", "POST", "PUT", "DELETE");
 			}
 		};
 	}

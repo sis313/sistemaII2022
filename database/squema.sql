@@ -18,7 +18,7 @@ CREATE TABLE branch (
     open_hour time NOT NULL,
     close_hour time NOT NULL,
     attention_days varchar(100) NOT NULL,
-    image blob NULL,
+    image varchar(200) NULL,
     id_zone int NOT NULL,
     id_location int NOT NULL,
     id_business int NOT NULL,
@@ -113,6 +113,19 @@ CREATE TABLE user (
     status varchar(10) NOT NULL,
     CONSTRAINT user_pk PRIMARY KEY (id_user)
 );
+-- Table: roles
+CREATE TABLE roles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(250) NOT NULL
+);
+-- Table: users_roles
+CREATE TABLE users_roles (
+    user_id INTEGER NOT NULL,
+    role_id INTEGER NOT NULL,
+    FOREIGN KEY(user_id) REFERENCES user(id_user),
+    FOREIGN KEY(role_id) REFERENCES roles(id),
+    PRIMARY KEY (user_id, role_id)
+);
 -- Table: verification_token
 CREATE TABLE verification_token (
     id_verification_token int NOT NULL AUTO_INCREMENT,
@@ -129,6 +142,25 @@ CREATE TABLE zone (
     id_municipalities int NOT NULL,
     CONSTRAINT zone_pk PRIMARY KEY (id_zone)
 );
+-- Table: log
+CREATE TABLE log (
+    id_log int NOT NULL AUTO_INCREMENT,
+    date date NOT NULL,
+    id_business int NOT NULL,
+    id_branch int NOT NULL,
+    id_user int NOT NULL,
+    CONSTRAINT log_pk PRIMARY KEY (id_log)
+);
+
+-- Table: refresh_token
+CREATE TABLE refresh_token (
+    id_refresh_token int NOT NULL AUTO_INCREMENT,
+    token varchar(300) NOT NULL,
+    expiry_date timestamp NOT NULL,
+    id_user int NOT NULL,
+    CONSTRAINT refresh_token_pk PRIMARY KEY (id_refresh_token)
+);
+
 -- foreign keys
 -- Reference: booking_product (table: booking)
 ALTER TABLE booking
@@ -178,4 +210,7 @@ ADD CONSTRAINT verification_token_user FOREIGN KEY verification_token_user (id_u
 -- Reference: zone_municipalities (table: zone)
 ALTER TABLE zone
 ADD CONSTRAINT zone_municipalities FOREIGN KEY zone_municipalities (id_municipalities) REFERENCES municipalities (id_municipalities);
+-- Reference: refresh_token_user (table: refresh_token)
+ALTER TABLE refresh_token
+ADD CONSTRAINT refresh_token_user FOREIGN KEY refresh_token_user (id_user) REFERENCES user (id_user);
 -- End of file.
