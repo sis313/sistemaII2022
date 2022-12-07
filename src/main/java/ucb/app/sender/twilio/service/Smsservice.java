@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
-import Spring.Twilio.Smsrequest;
+import ucb.app.sender.twilio.Smsrequest;
 
 @Service
 public class Smsservice {
