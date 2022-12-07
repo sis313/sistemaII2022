@@ -1,0 +1,70 @@
+# --------------------------------- BUSINESS CRUD
+
+
+##### LEER TODAS LOS NEGOCIOS: esta ruta devuelve todos los negocios en forma de lista.
+GET http://localhost:8080/api/business
+Content-Type: application/json
+
+
+##### LEER UN NEGOCIO POR ID: esta ruta devuelve el negocio asociada al id.
+GET http://localhost:8080/api/business/1
+Content-Type: application/json
+
+
+##### CREAR UN NEGOCIO: esta ruta crea un negocio con datos en formato "json".
+POST http://localhost:8080/api/business
+Content-Type: application/json
+
+{
+  "name": "business name",
+  "description": "business description",
+  "idTypeBusiness": 1,
+  "idUser": 1,
+  "status": 1
+}
+
+
+##### ACTUALIZAR UN NEGECIO POR ID: esta ruta actualza un negocio con datos en formato "json" asociada al id.
+PUT http://localhost:8080/api/business/1
+Content-Type: application/json
+
+{
+  "name": "business name update",
+  "description": "business description update",
+  "idTypeBusiness": 1,
+  "idUser": 1,
+  "status": 1
+}
+
+
+##### BORRAR UN NEGOCIO POR ID: esta ruta borrar de forma logica un negocio asociada al id. Esta ruta conmuta entre 0 y 1 el estado logico de el negocio.
+DELETE http://localhost:8080/api/business/1
+Content-Type: application/json
+
+
+# --------------------------------- BUSINESS CRUD BY GROUP
+
+
+##### LEER TODOS LOS NEGOCIO POR ID DE USUARIO: ----- GROUP 5 ----- esta ruta devuelve todas los negocios en forma de lista asociados a un usario.
+GET http://localhost:8080/api/business/?userId=1
+Content-Type: application/json
+
+
+##### LEER TODOS LOS NEGOCIO POR ESTADO: ----- GROUP 2 ----- esta ruta devuelve todas los negocios en forma de lista asociados a un estado de 0 o 1.
+GET http://localhost:8080/api/business/status=1
+Content-Type: application/json
+
+
+##### LEER TODOS LOS NEGOCIO POR NONBRE: ----- GROUP 3 ----- esta ruta devuelve todas los negocios en forma de lista asociados a un nombre.
+GET http://localhost:8080/api/business/name/name1
+Content-Type: application/json
+
+
+##### LEER TODOS LOS NEGOCIO POR TIPO: ----- GROUP 3 ----- esta ruta devuelve todas los negocios en forma de lista asociados a un tipo.
+GET http://localhost:8080/api/business/Type/type1
+Content-Type: application/json
+
+
+##### LEER TODOS LOS NEGOCIO POR NOMBRE Y TIPO: ----- GROUP 3 ----- esta ruta devuelve todas los en forma de lista negocios asociados a un nombre y tipo.
+GET http://localhost:8080/api/business/filter/type1/name1
+Content-Type: application/json

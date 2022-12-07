@@ -1,15 +1,22 @@
 package ucb.app.model;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  *
@@ -32,6 +39,12 @@ public class TypeBusiness implements Serializable {
     @Basic(optional = false)
     @Column(name = "name")
     private String name;
+
+    // CODE CHANGE - START
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTypeBusiness", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Business> businessList;
+    // CODE CHANGE - STOP
 
     public TypeBusiness() {
     }
@@ -60,6 +73,16 @@ public class TypeBusiness implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    // CODE CHANGE - START
+    public List<Business> getBusinessList() {
+        return businessList;
+    }
+
+    public void setBusinessList(List<Business> businessList) {
+        this.businessList = businessList;
+    }
+    // CODE CHANGE - STOP
 
     @Override
     public int hashCode() {

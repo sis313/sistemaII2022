@@ -28,15 +28,16 @@ public class ZoneService {
                 .orElseThrow(() -> new Exception("Could not find zone"));
     }
 
-    public ZoneDto saveDto(Zone zone) {
+    public ZoneDto saveDto(ZoneDto zoneDto) {
+        Zone zone = new Zone(zoneDto.getIdZone(), zoneDto.getName(), zoneDto.getIdMunicipalities());
         Zone response = zoneRepository.save(zone);
         return zoneToZoneDto(response);
     }
 
-    public ZoneDto updateDto(Integer zoneId, Zone zone) {
+    public ZoneDto updateDto(Integer zoneId, ZoneDto zoneDto) {
         Zone zoneFound = zoneRepository.getReferenceById(zoneId);
-        zoneFound.setName(zone.getName());
-        zoneFound.setIdMunicipalities(zone.getIdMunicipalities());
+        zoneFound.setName(zoneDto.getName());
+        zoneFound.setIdMunicipalities(zoneDto.getIdMunicipalities());
         Zone response = zoneRepository.save(zoneFound);
         return zoneToZoneDto(response);
     }

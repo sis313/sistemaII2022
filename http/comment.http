@@ -1,0 +1,58 @@
+# --------------------------------- COMMENT CRUD
+
+
+##### LEER TODAS LOS COMENTARIOS: esta ruta devuelve todas los comentarios en forma de lista.
+GET http://localhost:8080/api/comment
+Content-Type: application/json
+
+
+##### LEER UN COMENTARIO POR ID: esta ruta devuelve el comentario asociado al id.
+GET http://localhost:8080/api/comment/1
+Content-Type: application/json
+
+
+##### CREAR UN COMENTARIO: esta ruta crea un comentario con datos en formato "json".
+POST http://localhost:8080/api/comment
+Content-Type: application/json
+
+{
+    "message": "message 1",
+    "idUser": 1,
+    "idBusiness": 1,
+    "status": 1
+}
+
+
+##### ACTUALIZAR UN COMENTARIO POR ID: esta ruta actualza un comentario con datos en formato "json" asociado al id.
+PUT http://localhost:8080/api/comment/1
+Content-Type: application/json
+
+{
+    "message": "message 1 update",
+    "idUser": 1,
+    "idBusiness": 1,
+    "status": 1
+}
+
+
+##### BORRAR UN COMENTARIO POR ID: esta ruta borrar de forma logica un comnetario asociado al id. Esta ruta conmuta entre 0 y 1 es estado logico de el comentario.
+DELETE http://localhost:8080/api/comment/1
+Content-Type: application/json
+
+
+# --------------------------------- COMMENT CRUD BY GROUP
+
+
+##### LEER TODAS LOS COMENTARIOS POR ID DE NEGOCIO: ----- GRUPO 5 ----- esta ruta devuelve todas los comentarios en forma de lista asociados a un negocio.
+GET http://localhost:8080/api/comment/?businessId=1
+Content-Type: application/json
+
+
+##### LEER TODAS LOS COMENTARIOS POR ID DE USUARIO: ----- GRUPO 3 ----- esta ruta devuelve todas los comentarios en forma de lista asociados a un usuario.
+GET http://localhost:8080/api/comment/user/1
+Content-Type: application/json
+
+
+##### LEER TODAS LOS COMENTARIOS POR ID Y ID DE USUARIO: ----- GRUPO 3 ----- esta ruta devuelve todas los comentarios en forma de lista asociados a un comentario y usuario.
+GET http://localhost:8080/api/comment/IdAndUser/1/1
+Content-Type: application/json

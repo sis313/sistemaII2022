@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ucb.app.dto.RatingAverageDto;
+import ucb.app.dto.RatingDetailDto;
 import ucb.app.dto.RatingDto;
 import ucb.app.model.Rating;
 import ucb.app.repository.RatingRepository;
@@ -24,6 +25,10 @@ public class RatingService {
         return ratingRepository.findAll().stream().map(this::ratingToRatingDto).collect(Collectors.toList());
     }
 
+    public List<RatingDetailDto> findAllDetailDto() {
+        return ratingRepository.findAll().stream().map(this::ratingToRatingDetailDto).collect(Collectors.toList());
+    }
+
     public RatingDto findByIdDto(Integer ratingId) throws Exception {
         return ratingRepository.findById(ratingId).stream().map(this::ratingToRatingDto).findFirst()
                 .orElseThrow(() -> new Exception("Could not find rating"));
@@ -35,17 +40,19 @@ public class RatingService {
         return ratingAverageDto;
     }
 
-    public RatingDto saveDto(Rating rating) {
+    public RatingDto saveDto(RatingDto ratingDto) {
+        Rating rating = new Rating(ratingDto.getIdRating(), ratingDto.getScore(), ratingDto.isFavoriteStatus(),
+                ratingDto.getIdBranch(), ratingDto.getIdUser());
         Rating response = ratingRepository.save(rating);
         return ratingToRatingDto(response);
     }
 
-    public RatingDto updateDto(Integer ratingId, Rating rating) {
+    public RatingDto updateDto(Integer ratingId, RatingDto ratingDto) {
         Rating ratingFound = ratingRepository.getReferenceById(ratingId);
-        ratingFound.setScore(rating.getScore());
-        ratingFound.setFavoriteStatus(rating.getFavoriteStatus());
-        ratingFound.setIdBranch(rating.getIdBranch());
-        ratingFound.setIdUser(rating.getIdUser());
+        ratingFound.setScore(ratingDto.getScore());
+        ratingFound.setFavoriteStatus(ratingDto.isFavoriteStatus());
+        ratingFound.setIdBranch(ratingDto.getIdBranch());
+        ratingFound.setIdUser(ratingDto.getIdUser());
         Rating response = ratingRepository.save(ratingFound);
         return ratingToRatingDto(response);
     }
@@ -59,5 +66,12 @@ public class RatingService {
         RatingDto ratingDto = new RatingDto(rating.getIdRating(), rating.getScore(), rating.getFavoriteStatus(),
                 rating.getIdBranch(), rating.getIdUser());
         return ratingDto;
+    }
+
+    private RatingDetailDto ratingToRatingDetailDto(Rating rating) {
+        RatingDetailDto ratingDetailDto = new RatingDetailDto(rating.getIdRating(), rating.getScore(),
+                rating.getFavoriteStatus(), rating.getIdBranch(), rating.getBranch().getBusiness().getName(),
+                rating.getIdUser());
+        return ratingDetailDto;
     }
 }

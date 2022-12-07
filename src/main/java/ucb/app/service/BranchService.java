@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import ucb.app.dto.BranchDto;
+import ucb.app.dto.BranchLocationDto;
 import ucb.app.model.Branch;
 import ucb.app.repository.BranchRepository;
 
@@ -27,6 +28,10 @@ public class BranchService {
         return branchRepository.findAll().stream().map(this::branchToBranchDto).collect(Collectors.toList());
     }
 
+    public List<BranchLocationDto> findAllWithLocationDto() {
+        return branchRepository.findAll().stream().map(this::branchToBranchLocationDto).collect(Collectors.toList());
+    }
+
     public BranchDto findByIdDto(Integer branchId) throws Exception {
         return branchRepository.findById(branchId).stream().map(this::branchToBranchDto).findFirst()
                 .orElseThrow(() -> new Exception("Could not find branch"));
@@ -38,7 +43,7 @@ public class BranchService {
     }
 
     public BranchDto saveDto(String address, Date openHour, Date closeHour, String attentionDays, MultipartFile image,
-            int idZone, int idLocation, int idBusiness, Date createDate, Date updateDate, int status) {
+            int idZone, int idLocation, int idBusiness, int status) {
         String imageName = fileService.uploadFile(image);
         Branch branch = new Branch();
         branch.setAddress(address);
@@ -49,14 +54,39 @@ public class BranchService {
         branch.setIdZone(idZone);
         branch.setIdLocation(idLocation);
         branch.setIdBusiness(idBusiness);
-        branch.setCreateDate(createDate);
-        branch.setUpdateDate(updateDate);
+        // branch.setCreateDate(createDate);
+        // branch.setUpdateDate(updateDate);
         branch.setStatus(status);
         Branch response = branchRepository.save(branch);
         return branchToBranchDto(response);
     }
 
-    public BranchDto updateDto(Integer branchId, Branch branch) {
+    public BranchDto saveJsonDto(BranchDto branchDto) {
+        Branch branch = new Branch(branchDto.getIdBranch(), branchDto.getAddress(), branchDto.getOpenHour(),
+                branchDto.getCloseHour(), branchDto.getAttentionDays(), branchDto.getIdZone(),
+                branchDto.getIdLocation(), branchDto.getIdBusiness(), branchDto.getCreateDate(),
+                branchDto.getUpdateDate(), branchDto.getStatus());
+        Branch response = branchRepository.save(branch);
+        return branchToBranchDto(response);
+    }
+
+    public BranchDto updateDto(Integer branchId, String address, Date openHour, Date closeHour, String attentionDays,
+            MultipartFile image,
+            int idZone, int idLocation, int idBusiness, int status) {
+        String imageName = fileService.uploadFile(image);
+        Branch branch = new Branch();
+        branch.setAddress(address);
+        branch.setOpenHour(openHour);
+        branch.setCloseHour(closeHour);
+        branch.setAttentionDays(attentionDays);
+        branch.setImage(imageName);
+        branch.setIdZone(idZone);
+        branch.setIdLocation(idLocation);
+        branch.setIdBusiness(idBusiness);
+        // branch.setCreateDate(createDate);
+        // branch.setUpdateDate(updateDate);
+        branch.setStatus(status);
+
         Branch branchFound = branchRepository.getReferenceById(branchId);
         branchFound.setAddress(branch.getAddress());
         branchFound.setOpenHour(branch.getOpenHour());
@@ -66,9 +96,24 @@ public class BranchService {
         branchFound.setIdZone(branch.getIdZone());
         branchFound.setIdLocation(branch.getIdLocation());
         branchFound.setIdBusiness(branch.getIdBusiness());
-        branchFound.setCreateDate(branch.getCreateDate());
-        branchFound.setUpdateDate(branch.getUpdateDate());
+        // branchFound.setCreateDate(branch.getCreateDate());
+        // branchFound.setUpdateDate(branch.getUpdateDate());
         branchFound.setStatus(branch.getStatus());
+        Branch response = branchRepository.save(branchFound);
+        return branchToBranchDto(response);
+    }
+
+    public BranchDto updateJsonDto(Integer branchId, BranchDto branchDto) {
+        Branch branchFound = branchRepository.getReferenceById(branchId);
+        branchFound.setAddress(branchDto.getAddress());
+        branchFound.setOpenHour(branchDto.getOpenHour());
+        branchFound.setCloseHour(branchDto.getCloseHour());
+        branchFound.setAttentionDays(branchDto.getAttentionDays());
+        branchFound.setImage(branchDto.getImage());
+        branchFound.setIdZone(branchDto.getIdZone());
+        branchFound.setIdLocation(branchDto.getIdLocation());
+        branchFound.setIdBusiness(branchDto.getIdBusiness());
+        branchFound.setStatus(branchDto.getStatus());
         Branch response = branchRepository.save(branchFound);
         return branchToBranchDto(response);
     }
@@ -87,4 +132,15 @@ public class BranchService {
                 branch.getStatus());
         return branchDto;
     }
+
+    private BranchLocationDto branchToBranchLocationDto(Branch branch) {
+        BranchLocationDto branchLocationDto = new BranchLocationDto(branch.getIdBranch(), branch.getAddress(),
+                branch.getOpenHour(),
+                branch.getCloseHour(), branch.getAttentionDays(), branch.getImage(), branch.getIdZone(),
+                branch.getIdBusiness(), branch.getCreateDate(), branch.getUpdateDate(),
+                branch.getStatus(), branch.getLocation().getLatitude(), branch.getLocation().getLongitude(),
+                branch.getBusiness().getName(), branch.getBusiness().getTypeBusiness().getName());
+        return branchLocationDto;
+    }
+
 }

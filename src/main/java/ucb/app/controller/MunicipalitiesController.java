@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.dto.MunicipalitiesDto;
-import ucb.app.model.Municipalities;
 import ucb.app.service.MunicipalitiesService;
 
 @RestController
@@ -42,15 +41,16 @@ public class MunicipalitiesController {
     }
 
     @PostMapping
-    public ResponseEntity<MunicipalitiesDto> postMunicipalities(@RequestBody Municipalities municipalities) {
-        MunicipalitiesDto response = municipalitiesService.saveDto(municipalities);
+    public ResponseEntity<MunicipalitiesDto> postMunicipalities(@RequestBody MunicipalitiesDto municipalitiesDto) {
+        MunicipalitiesDto response = municipalitiesService.saveDto(municipalitiesDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping(path = "/{municipalitiesId}")
     public ResponseEntity<MunicipalitiesDto> putMunicipalities(
-            @PathVariable("municipalitiesId") Integer municipalitiesId, @RequestBody Municipalities municipalities) {
-        MunicipalitiesDto response = municipalitiesService.updateDto(municipalitiesId, municipalities);
+            @PathVariable("municipalitiesId") Integer municipalitiesId,
+            @RequestBody MunicipalitiesDto municipalitiesDto) {
+        MunicipalitiesDto response = municipalitiesService.updateDto(municipalitiesId, municipalitiesDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

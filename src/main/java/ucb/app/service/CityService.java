@@ -28,14 +28,15 @@ public class CityService {
                 .orElseThrow(() -> new Exception("Could not find city"));
     }
 
-    public CityDto saveDto(City city) {
+    public CityDto saveDto(CityDto cityDto) {
+        City city = new City(cityDto.getIdCity(), cityDto.getName());
         City response = cityRepository.save(city);
         return cityToCityDto(response);
     }
 
-    public CityDto updateDto(Integer cityId, City city) {
+    public CityDto updateDto(Integer cityId, CityDto cityDto) {
         City cityFound = cityRepository.getReferenceById(cityId);
-        cityFound.setName(city.getName());
+        cityFound.setName(cityDto.getName());
         City response = cityRepository.save(cityFound);
         return cityToCityDto(response);
     }

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.dto.TypeBusinessDto;
-import ucb.app.model.TypeBusiness;
 import ucb.app.service.TypeBusinessService;
 
 @RestController
@@ -42,15 +41,15 @@ public class TypeBusinessController {
     }
 
     @PostMapping
-    public ResponseEntity<TypeBusinessDto> postTypeBusiness(@RequestBody TypeBusiness typeBusiness) {
-        TypeBusinessDto response = typeBusinessService.saveDto(typeBusiness);
+    public ResponseEntity<TypeBusinessDto> postTypeBusiness(@RequestBody TypeBusinessDto typeBusinessDto) {
+        TypeBusinessDto response = typeBusinessService.saveDto(typeBusinessDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping(path = "/{typeBusinessId}")
     public ResponseEntity<TypeBusinessDto> putTypeBusiness(@PathVariable("typeBusinessId") Integer typeBusinessId,
-            @RequestBody TypeBusiness typeBusiness) {
-        TypeBusinessDto response = typeBusinessService.updateDto(typeBusinessId, typeBusiness);
+            @RequestBody TypeBusinessDto typeBusinessDto) {
+        TypeBusinessDto response = typeBusinessService.updateDto(typeBusinessId, typeBusinessDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

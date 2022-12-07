@@ -30,14 +30,15 @@ public class TypeBusinessService {
                 .orElseThrow(() -> new Exception("Could not find typeBusiness"));
     }
 
-    public TypeBusinessDto saveDto(TypeBusiness typeBusiness) {
+    public TypeBusinessDto saveDto(TypeBusinessDto typeBusinessDto) {
+        TypeBusiness typeBusiness = new TypeBusiness(typeBusinessDto.getIdTypeBusiness(), typeBusinessDto.getName());
         TypeBusiness response = typeBusinessRepository.save(typeBusiness);
         return typeBusinessToTypeBusinessDto(response);
     }
 
-    public TypeBusinessDto updateDto(Integer typeBusinessId, TypeBusiness typeBusiness) {
+    public TypeBusinessDto updateDto(Integer typeBusinessId, TypeBusinessDto typeBusinessDto) {
         TypeBusiness typeBusinessFound = typeBusinessRepository.getReferenceById(typeBusinessId);
-        typeBusinessFound.setName(typeBusiness.getName());
+        typeBusinessFound.setName(typeBusinessDto.getName());
         TypeBusiness response = typeBusinessRepository.save(typeBusinessFound);
         return typeBusinessToTypeBusinessDto(response);
     }

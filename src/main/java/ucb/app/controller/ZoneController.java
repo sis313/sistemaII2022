@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ucb.app.dto.ZoneDto;
-import ucb.app.model.Zone;
 import ucb.app.service.ZoneService;
 
 @RestController
@@ -41,14 +40,14 @@ public class ZoneController {
     }
 
     @PostMapping
-    public ResponseEntity<ZoneDto> postZone(@RequestBody Zone zone) {
-        ZoneDto response = zoneService.saveDto(zone);
+    public ResponseEntity<ZoneDto> postZone(@RequestBody ZoneDto zoneDto) {
+        ZoneDto response = zoneService.saveDto(zoneDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping(path = "/{zoneId}")
-    public ResponseEntity<ZoneDto> putZone(@PathVariable("zoneId") Integer zoneId, @RequestBody Zone zone) {
-        ZoneDto response = zoneService.updateDto(zoneId, zone);
+    public ResponseEntity<ZoneDto> putZone(@PathVariable("zoneId") Integer zoneId, @RequestBody ZoneDto zoneDto) {
+        ZoneDto response = zoneService.updateDto(zoneId, zoneDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

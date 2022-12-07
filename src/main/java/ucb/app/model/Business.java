@@ -2,17 +2,40 @@ package ucb.app.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.SqlResultSetMapping;
+import javax.persistence.ConstructorResult;
+import javax.persistence.ColumnResult;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import ucb.app.dto.BusinessBranchActiveCountDto;
+import ucb.app.dto.BusinessCountDto;
+import ucb.app.dto.BusinessZoneDto;
+import ucb.app.dto.RatingAverageDto;
 
 /**
  *
@@ -30,6 +53,34 @@ import javax.persistence.TemporalType;
         @NamedQuery(name = "Business.findByCreateDate", query = "SELECT b FROM Business b WHERE b.createDate = :createDate"),
         @NamedQuery(name = "Business.findByUpdateDate", query = "SELECT b FROM Business b WHERE b.updateDate = :updateDate"),
         @NamedQuery(name = "Business.findByStatus", query = "SELECT b FROM Business b WHERE b.status = :status") })
+
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "Business.findByType", query = "SELECT b.* FROM business AS b, type_business AS t WHERE b.id_type_business = t.id_type_business AND t.name = :type", resultClass = Business.class),
+        @NamedNativeQuery(name = "Business.findByNameAndType", query = "SELECT b.* FROM business AS b, type_business AS t WHERE b.id_type_business = t.id_type_business AND b.name = :name AND t.name = :type", resultClass = Business.class) })
+
+@SqlResultSetMapping(name = "BusinessCount", classes = @ConstructorResult(targetClass = BusinessCountDto.class, columns = {
+        @ColumnResult(name = "name", type = String.class),
+        @ColumnResult(name = "numberBusiness", type = Integer.class),
+        @ColumnResult(name = "idZone", type = Integer.class) }))
+
+@SqlResultSetMapping(name = "BusinessZone", classes = @ConstructorResult(targetClass = BusinessZoneDto.class, columns = {
+        @ColumnResult(name = "name", type = String.class),
+        @ColumnResult(name = "id_business", type = Integer.class) }))
+
+@SqlResultSetMapping(name = "BusinessBranchActiveCount", classes = @ConstructorResult(targetClass = BusinessBranchActiveCountDto.class, columns = {
+        @ColumnResult(name = "idBusiness", type = Integer.class),
+        @ColumnResult(name = "name", type = String.class),
+        @ColumnResult(name = "description", type = String.class),
+        @ColumnResult(name = "idTypeBusiness", type = Integer.class),
+        @ColumnResult(name = "idUser", type = Integer.class),
+        @ColumnResult(name = "createDate", type = Date.class),
+        @ColumnResult(name = "updateDate", type = Date.class),
+        @ColumnResult(name = "status", type = Integer.class),
+        @ColumnResult(name = "activeBranchCount", type = Integer.class) }))
+
+@SqlResultSetMapping(name = "BusinessRatingCount", classes = @ConstructorResult(targetClass = RatingAverageDto.class, columns = {
+        @ColumnResult(name = "averageScore", type = Integer.class) }))
+
 public class Business implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,17 +101,30 @@ public class Business implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_user")
     private int idUser;
+    @CreationTimestamp
     @Basic(optional = false)
-    @Column(name = "create_date")
+    @Column(name = "create_date", updatable = false)
     @Temporal(TemporalType.DATE)
     private Date createDate;
+    @UpdateTimestamp
     @Basic(optional = false)
-    @Column(name = "update_date")
+    @Column(name = "update_date", updatable = true)
     @Temporal(TemporalType.DATE)
     private Date updateDate;
     @Basic(optional = false)
     @Column(name = "status")
     private int status;
+
+    // CODE CHANGE - START
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idBusiness", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Branch> branchList;
+
+    @JoinColumn(name = "id_type_business", referencedColumnName = "id_type_business", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonBackReference
+    private TypeBusiness typeBusiness;
+    // CODE CHANGE - STOP
 
     public Business() {
     }
@@ -76,8 +140,8 @@ public class Business implements Serializable {
         this.description = description;
         this.idTypeBusiness = idTypeBusiness;
         this.idUser = idUser;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
+        // this.createDate = createDate;
+        // this.updateDate = updateDate;
         this.status = status;
     }
 
@@ -144,6 +208,24 @@ public class Business implements Serializable {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    // CODE CHANGE - START
+    public List<Branch> getBranchList() {
+        return branchList;
+    }
+
+    public void setBranchList(List<Branch> branchList) {
+        this.branchList = branchList;
+    }
+
+    public TypeBusiness getTypeBusiness() {
+        return typeBusiness;
+    }
+
+    public void setLocation(TypeBusiness typeBusiness) {
+        this.typeBusiness = typeBusiness;
+    }
+    // CODE CHANGE - STOP
 
     @Override
     public int hashCode() {

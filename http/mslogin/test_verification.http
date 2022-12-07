@@ -1,0 +1,74 @@
+###
+POST http://localhost:8080/v1/api/user/publico/register
+Content-Type: application/json
+
+{
+  "name": "Mireya Huanca",
+  "email": "mire11@gmail.com",
+  "nickname": "Mire",
+  "password": "mire",
+  "idTypeUser": 1
+}
+
+###
+POST http://localhost:8080/v1/api/user/publico/register
+Content-Type: application/json
+
+{
+  "name": "Suu Valda",
+  "email": "susan.valda@ucb.edu.bo",
+  "nickname": "isuuki",
+  "password": "tuki",
+  "idTypeUser": 1
+}
+
+###
+GET http://localhost:8080/v1/api/user/2
+
+###
+GET http://localhost:8080/confirm-account?token=5cb3faa9-48db-4ab2-ab91-e7d43bd46a09
+
+###
+GET http://localhost:80/resend
+Content-Type: application/json
+
+{
+  "name": "Test1",
+  "email": "sv.kokonoe@gmail.com",
+  "nickname": "test_si",
+  "password": "test123",
+  "idTypeUser": 1
+}
+
+###
+POST http://localhost:8080/auth/signin
+Content-Type: application/json
+
+{
+  "username": "Mire",
+  "password": "mire"
+}
+
+###
+POST http://localhost:8080/auth/signin
+Content-Type: application/json
+
+{
+"username": "isuuki",
+"password": "tuki"
+}
+
+###
+POST http://localhost:8080/auth/refreshtoken
+Content-Type: application/json
+
+{
+  "refreshToken": "664c911a-c371-4785-a18b-d2dd19efc6ec"
+}
+
+###
+POST http://localhost:8080/auth/signout?username=isuuki
+
+
+###
+GET http://localhost:8080/v1/api/user
