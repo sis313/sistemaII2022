@@ -42,9 +42,9 @@ INSERT Into roles (name) VALUES ('USER');
 INSERT Into roles (name) VALUES ('ADMIN');
 
 -- Table: user
-INSERT INTO user (name, email, nickname, password, id_type_user, create_date, update_date, status) VALUES ("Carlos", "Carlos@email.com", "CarlosNickname", "carlospassword", 3, "2022-01-01", "2022-01-01", 1);
-INSERT INTO user (name, email, nickname, password, id_type_user, create_date, update_date, status) VALUES ("Mauro", "Mauro@email.com", "MauroNickname", "mauropassword", 3, "2022-01-01", "2022-01-01", 1);
-INSERT INTO user (name, email, nickname, password, id_type_user, create_date, update_date, status) VALUES ("Jhoan", "Jhoan@email.com", "JhoanNickname", "jhoanpassword", 3, "2022-01-01", "2022-01-01", 1);
+INSERT INTO user (name, email, nickname, password, id_type_user, create_date, update_date, status) VALUES ("Carlos", "Carlos@email.com", "CarlosNickname", "carlospassword", 1, "2022-01-01", "2022-01-01", 1);
+INSERT INTO user (name, email, nickname, password, id_type_user, create_date, update_date, status) VALUES ("Mauro", "Mauro@email.com", "MauroNickname", "mauropassword", 1, "2022-01-01", "2022-01-01", 1);
+INSERT INTO user (name, email, nickname, password, id_type_user, create_date, update_date, status) VALUES ("Jhoan", "Jhoan@email.com", "JhoanNickname", "jhoanpassword", 1, "2022-01-01", "2022-01-01", 1);
 
 -- Table: type_business
 INSERT INTO type_business (name) VALUES ("Ferreteria");
