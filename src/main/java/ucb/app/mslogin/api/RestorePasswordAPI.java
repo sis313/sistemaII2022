@@ -1,7 +1,6 @@
 package ucb.app.mslogin.api;
 
 import ucb.app.mslogin.bl.RestorePasswordBl;
-import ucb.app.mslogin.bl.UserBl;
 import ucb.app.mslogin.dto.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,11 +40,13 @@ public class RestorePasswordAPI {
 
         if (res == null) {
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
-                    .location(URI.create("localhost:4200/error-recuperacion")).build();
+                    .location(URI.create("https://shell-spa-beta.vercel.app/dev4#/error-recuperacion")).build();
         }
 
         return ResponseEntity.status(HttpStatus.FOUND)
-                .location(URI.create("http://localhost:4200/envio-recuperacion?user=" + res.getNickname())).build();
+                .location(URI
+                        .create("https://shell-spa-beta.vercel.app/dev4#/envio-recuperacion?user=" + res.getNickname()))
+                .build();
     }
 
     @PostMapping(value = "/reset-password")
